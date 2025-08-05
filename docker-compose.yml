@@ -1,0 +1,15 @@
+services:
+  eleventy:
+    # Build the Docker image from the Dockerfile in the current directory
+    build: .
+    # Name the container for easier reference
+    container_name: eleventy_dev
+    # Map port 8080 on the host to port 8080 in the container
+    ports:
+      - "8080:8080"
+    # Mount the current directory on the host to /app in the container
+    # This allows for live-reloading as you edit your files locally
+    volumes:
+      - .:/usr/src/app
+      # Anonymize the node_modules directory to prevent conflicts with local modules
+      - /app/node_modules
