@@ -1,0 +1,9 @@
+---
+layout: "layout.njk"
+---
+<article class="prose prose-invert lg:prose-xl max-w-none">
+  <h1>{{ title }}</h1>
+  <p class="text-gray-400">Published on: {{ date | readableDate }}</p>
+  
+  {{ content | safe }}
+</article>
