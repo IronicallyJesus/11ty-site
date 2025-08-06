@@ -2,7 +2,6 @@
   "name": "eleventy",
   "version": "1.0.0",
   "description": "A basic Eleventy project.",
-  "main": "index.js",
   "scripts": {
     "start": "npx @11ty/eleventy --serve",
     "build": "npx @11ty/eleventy"
