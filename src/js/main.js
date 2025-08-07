@@ -8,6 +8,29 @@ if (mobileMenuButton && mobileMenu) {
     });
 }
 
+// Typewriter Effect
+const typewriterElement = document.getElementById('typewriter');
+const text = "Specializing in ISP Environments";
+let index = 0;
+let isDeleting = false;
+
+function type() {
+    const currentText = text.substring(0, index);
+    typewriterElement.textContent = currentText;
+
+    if (!isDeleting && index < text.length) {
+        index++;
+        setTimeout(type, 100);
+    } else {
+        // Keep the full text visible
+    }
+}
+
+// Start typing effect on load
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(type, 500);
+});
+
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
