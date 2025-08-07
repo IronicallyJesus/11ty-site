@@ -1,0 +1,18 @@
+[
+    { 
+        "name": "Networking", 
+        "keywords": "Design, Addressing, VLAN/VPN, Metro Ethernet, FTTX, Fixed Wireless"
+    },
+    { 
+        "name": "Protocols & Technologies", 
+        "keywords": "NFS, SMB, FTP, DHCP, OSPF, IS-IS, BGP, MPLS, STP, G.8032, 802.1ad, SIP/VOIP"
+    },
+    { 
+        "name": "Systems & Software", 
+        "keywords": "Linux, macOS, MS Windows, Excel, Visio, SharePoint, OPNSense, DD-WRT"
+    },
+    { 
+        "name": "Vendors & Platforms", 
+        "keywords": "Juniper, Accedian, Adtran, Calix, Ciena, Cisco, Incognito, Alcatel-Lucent"
+    }
+]
