@@ -37,5 +37,10 @@
         "company": "Hargray",
         "featured": false,
         "time": "May 2014 - February 2016"
+    },
+    {
+        "title": "Delivery Driver",
+        "company": "Pizza Hut",
+        "featured": false
     }
 ]
