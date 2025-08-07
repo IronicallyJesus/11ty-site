@@ -1,11 +1,10 @@
 ---
-title: "Second blog post"
-date: "2025-08-06"
+title: "Test page!"
+date: "2025-08-07"
 layout: "post.njk"
+tags: "posts"
+excerpt: This post is a feature showcase of what you can do with Eleventy
 ---
-
-## Purpose
-This post is a feature showcase of what you can do with Eleventy
 
 ## What is Eleventy?
 Eleventy (or 11ty) is a simpler static site generator. It's written in JavaScript and transforms a directory of templates of various types into a folder of plain HTML files. It's known for its flexibility, speed, and the fact that it doesn't ship any client-side JavaScript by default.
@@ -54,11 +53,15 @@ You can extend Markdown's functionality with plugins. For example, with `markdow
 
 ## Templating and Data
 Eleventy can use data from JSON or JavaScript files. Imagine you have a `_data/users.json` file. 
-<pre><code class="language-json">[
+
+```json
+[
     { "name": "Alice", "role": "Developer" },
     { "name": "Bob", "role": "Designer" }
+    ...
 ]
-</code></pre>
+```
+
 You could then use a templating language like Nunjucks within your Markdown file to loop through this data:
 
 ### Team Members:
@@ -85,7 +88,8 @@ Layouts allow you to wrap your content in a parent template. For example, this e
 In your Markdown file's front matter, you would specify the layout like this:
 ```
 ---
-layout: base.njk
+layout: post.njk
 title: My Awesome Page
 ---
 Your Markdown content goes here...
+```
