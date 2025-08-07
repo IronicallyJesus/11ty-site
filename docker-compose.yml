@@ -6,10 +6,20 @@ services:
     container_name: eleventy_dev
     # Map port 8080 on the host to port 8080 in the container
     ports:
-      - "8080:8080"
+      - 8080:8080
     # Mount the current directory on the host to /app in the container
     # This allows for live-reloading as you edit your files locally
     volumes:
       - .:/usr/src/app
       # Anonymize the node_modules directory to prevent conflicts with local modules
       - /app/node_modules
+    labels:
+      diun.enable: false
+      homepage.group: Tools
+      homepage.name: Eleventy
+      homepage.icon: eleventy
+      homepage.href: ${APP_URL}
+networks: {}
+x-dockge:
+  urls:
+    - ${APP_URL}
