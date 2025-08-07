@@ -28,6 +28,11 @@ body {
     margin-bottom: 0.5rem;
     display: inline-block;
 }
+.glass-card {
+    background: rgba(31, 41, 55, 0.5); /* bg-gray-800 with opacity */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
 .btn {
     display: inline-block;
     font-weight: 600;
@@ -35,17 +40,42 @@ body {
     vertical-align: middle;
     cursor: pointer;
     user-select: none;
-    background-color: #4299e1;
+    background-color: #2563EB;
     color: white;
     border: 1px solid transparent;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 2rem;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: 0.5rem;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-radius: 9999px;
+    transition-property: transform, background-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+.btngray {
+    display: inline-block;
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: #374151;
+    color: white;
+    border: 1px solid transparent;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 9999px;
+    transition-property: transform, background-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
 }
 .btn:hover {
-    background-color: #3182ce;
+    background-color: #1D4ED8;
+    transform: scale(1.05);
+}
+.btngray:hover {
+    background-color: #4B5563;
+    transform: scale(1.05);
 }
 .icon {
     font-size: 1.5rem;
