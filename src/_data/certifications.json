@@ -1,0 +1,22 @@
+[
+    { 
+        "name": "JNCIA - DevOps", 
+        "earned": "July 2025" 
+    },
+    { 
+        "name": "JNCIS - Service Provider", 
+        "earned": "June 2025" 
+    },
+    {
+        "name": "JNCIS - Enterprise",
+        "earned": "March 2025"
+    },
+    {
+        "name": "JNCIA - Junos",
+        "earned": "May 2023"
+    },
+    {
+        "name": "CCNA",
+        "earned": "April 2023"
+    }
+]
