@@ -1,0 +1,41 @@
+[
+    { 
+        "title": "Service Activation Engineer", 
+        "company": "Sparklight",
+        "time": "June 2024 - Present",
+        "featured": true,
+        "description": "Expertly activated new DIA, EPL, and CBH Ethernet services through design, deployment, and testing. Proactively identified and resolved network constraints to facilitate multi-gigabit services. Contributed to key company initiatives including billing migration and IP entanglement projects."
+    },
+    { 
+        "title": "Service Activation Technician III", 
+        "company": "Cable One",
+        "featured": true,
+        "description": "Led the activation of complex Ethernet services, ensuring high standards of quality and performance. Collaborated with cross-functional teams to enhance service delivery processes and improve customer satisfaction.",
+        "time": "April 2023 - June 2024" 
+    },
+    {
+        "title": "Service Activation Technician II",
+        "company": "Cable One",
+        "featured": true,
+        "description": "Managed the activation of Ethernet services, focusing on efficiency and reliability. Played a key role in troubleshooting and resolving service issues to maintain high customer satisfaction.",
+        "time": "July 2020 - April 2023"
+    },
+    {
+        "title": "Service Activation Technician I",
+        "company": "Hargray",
+        "featured": false,
+        "time": "May 2017 - July 2020"
+    },
+    {
+        "title": "IT - Helpdesk Technician",
+        "company": "Hargray",
+        "featured": false,
+        "time": "February 2016 - May 2017"
+    },
+    {
+        "title": "TAC Support Technician",
+        "company": "Hargray",
+        "featured": false,
+        "time": "May 2014 - February 2016"
+    }
+]

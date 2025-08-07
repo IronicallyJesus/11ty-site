@@ -1,0 +1,32 @@
+[
+    { 
+        "name": "Network Design & Architecture", 
+        "icon": "fa-network-wired",
+        "description": "Custom network designs for scalability and performance, including LAN/WAN, VLAN/VPN, and Metro Ethernet solutions."
+    },
+    { 
+        "name": "Service Activation & Provisioning", 
+        "icon": "fa-plug",
+        "description": "Expert activation for DIA, EPL, and CBH Ethernet services. End-to-end project management from design to deployment."
+    },
+    { 
+        "name": "Troubleshooting & Root Cause Analysis", 
+        "icon": "fa-tools",
+        "description": "Proactive identification and resolution of network constraints and issues to ensure optimal performance and reliability."
+    },
+    { 
+        "name": "Automation & Scripting", 
+        "icon": "fa-code",
+        "description": "Developing automation solutions using Python, Ansible, and Jinja to streamline network operations and reduce manual errors."
+    },
+    { 
+        "name": "Homelabbing & Self-Hosting", 
+        "icon": "fa-server",
+        "description": "Consultation on server hardware, web hosting, hypervisors (like Proxmox/ESXi), Docker, and storage arrays (NAS/SAN)."
+    },
+    { 
+        "name": "Technical Training", 
+        "icon": "fa-chalkboard-teacher",
+        "description": "Providing cross-departmental training on network technologies, protocols, and best practices."
+    }
+]
