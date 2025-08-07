@@ -96,11 +96,9 @@ article h1, article h2, article h3, article h4, article h5, article h6 {
     line-height: 1.2;
 }
 article h1 { font-size: 2.5em; }
-article h2 { font-size: 2em; }
-article h3 { font-size: 1.75em; }
-article h4 { font-size: 1.5em; }
-article h5 { font-size: 1.25em; }
-article h6 { font-size: 1em; }
+article h2 { font-size: 1.5em; }
+article h3 { font-size: 1.0em; }
+article h4 { font-size: 0.5em; }
 
 article a {
     color: #60a5fa;
