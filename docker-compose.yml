@@ -13,6 +13,7 @@ services:
       - .:/usr/src/app
       # Anonymize the node_modules directory to prevent conflicts with local modules
       - /app/node_modules
+    restart: unless-stopped
     labels:
       diun.enable: false
       homepage.group: Tools
