@@ -8,7 +8,7 @@ layout: "layout.njk"
     <p id="typewriter" class="text-xl md:text-2xl text-blue-400 font-medium mb-8 h-8"></p>
     <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8">10+ years of experience in troubleshooting, designing, and deploying robust network solutions. Let's build a reliable and efficient network for your business.</p>
     <div class="flex justify-center space-x-4">
-        <a href="#contact" class="btngray">Get in Touch</a>
+        <a href="#contact" class="btngray">Contact Me</a>
     </div>
 </section>
 <!-- About Me Section -->
@@ -84,14 +84,14 @@ layout: "layout.njk"
             <i class="fas fa-briefcase text-white text-xs"></i>
             </span>
             <div class="card">
-                <h3 class="flex items-center mb-1 text-lg font-semibold text-white">
+                <h3 class="flex items-center text-lg font-semibold text-white">
                     {{ role.title }}
-                    {% if role.company %}
-                    <span class="text-blue-400 text-sm font-medium ml-2">
-                    @ {{ role.company }} 
-                    </span>
-                    {% endif %}
                 </h3>
+                {% if role.company %}
+                <p class="text-blue-400 text-md font-medium mb-2 ">
+                {{ role.company }}
+                </p>
+                {% endif %}
                 <time class="block mb-2 text-sm font-normal leading-none text-gray-500">{{ role.time }}</time>
                 {% if role.description %}
                 <p class="mb-4 text-base font-normal text-gray-400">{{ role.description }}</p>
@@ -106,12 +106,16 @@ layout: "layout.njk"
             </span>
             <div class="card">
                 <h3 class="text-lg font-semibold text-white">Previous Roles</h3>
-                <time class="block mb-2 text-sm font-normal leading-none text-gray-500">Since May 2014</time>
+                <time class="block mb-2 text-sm font-normal leading-none text-gray-500">Since 2014</time>
                 <ul class="list-disc list-inside text-gray-400">
                     {% for role in roles %}
                     {% if not role.featured %}
-                    <li>{{ role.title }}</li>
+                        {% if role.company %}
+                    <li>
+                        {{ role.title }} at <span class="text-blue-400 text-md font-medium">{{ role.company }}</span>
+                    </li>
                     {% endif %}
+                        {% endif %}
                     {% endfor %}
                 </ul>
             </div>
