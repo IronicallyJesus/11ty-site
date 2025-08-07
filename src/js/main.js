@@ -16,8 +16,9 @@ let isDeleting = false;
 
 function type() {
     const currentText = text.substring(0, index);
-    typewriterElement.textContent = currentText;
-
+    if (typewriterElement) {
+        typewriterElement.textContent = currentText;
+    }
     if (!isDeleting && index < text.length) {
         index++;
         setTimeout(type, 100);
@@ -28,7 +29,9 @@ function type() {
 
 // Start typing effect on load
 document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(type, 500);
+    if (typewriterElement) {
+        setTimeout(type, 500);
+    }
 });
 
 // Smooth scrolling for anchor links
@@ -53,6 +56,21 @@ document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
         // Close mobile menu on any nav link click
         if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
             mobileMenu.classList.add('hidden');
+        }
+    });
+});
+
+// Smooth scrolling for the main home link
+document.querySelectorAll('a[href="/"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        // If we are already on the homepage
+        if (window.location.pathname === '/') {
+            e.preventDefault(); // Prevent the page from reloading
+            // Scroll smoothly to the top of the page
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         }
     });
 });
