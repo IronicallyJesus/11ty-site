@@ -1,27 +1,12 @@
-**/.classpath
-**/.dockerignore
-**/.env
-**/.git
-**/.gitignore
-**/.project
-**/.settings
-**/.toolstarget
-**/.vs
-**/.vscode
-**/*.*proj.user
-**/*.dbmdl
-**/*.jfm
-**/charts
-**/docker-compose*
-**/compose*
-**/Dockerfile*
-**/node_modules
-**/npm-debug.log
-**/obj
-**/secrets.dev.yaml
-**/values.dev.yaml
-LICENSE
-README.md
+# Ignore the node_modules directory, as it will be installed inside the container
+node_modules
 
 # Ignore Eleventy's default output directory
 _site
+
+# Ignore npm debug logs
+npm-debug.log
+
+# Ignore Docker files
+Dockerfile
+docker-compose.yml
