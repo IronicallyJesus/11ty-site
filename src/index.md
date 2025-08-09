@@ -4,7 +4,7 @@ layout: "layout.njk"
 ---
 <!-- Hero Section -->
 <section id="hero" class="text-center py-20">
-    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Senior Network Engineer</h1>
+    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Proven Network Engineer</h1>
     <p id="typewriter" class="text-xl md:text-2xl text-blue-400 font-medium mb-8 h-8"></p>
     <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8">10+ years of experience in troubleshooting, designing, and deploying robust network solutions. Let's build a reliable and efficient network for your business.</p>
     <div class="flex justify-center space-x-4">
@@ -34,8 +34,10 @@ layout: "layout.njk"
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {%- for service in services -%}
         <div class="card">
-            <i class="fas {{ service.icon }} icon"></i>
-            <h3 class="text-xl font-bold mb-2 text-white">{{ service.name }}</h3>
+            <div class="flex md:flex-row items-center mb-2">
+                <i class="fas {{ service.icon }} icon"></i>
+                <h3 class="text-xl font-bold text-white">{{ service.name }}</h3>
+            </div>
             <p class="text-gray-400">{{ service.description }}</p>
         </div>
         {%- endfor -%}
@@ -50,8 +52,8 @@ layout: "layout.njk"
             <h3 class="text-2xl font-bold mb-6 text-center text-white">Technical Skills</h3>
             <div class="card">
                 {% for skill in skills %}
-                <h4 class="text-lg font-semibold mb-2 text-blue-400">{{ skill.name }}</h4>
-                <p class="text-gray-400 mb-4">{{ skill.keywords }}</p>
+                <h4 class="text-lg font-semibold mb-1 text-blue-400">{{ skill.name }}</h4>
+                <p class="text-gray-400 mb-5">{{ skill.keywords }}</p>
                 {%- endfor -%}
             </div>
         </div>
@@ -89,7 +91,7 @@ layout: "layout.njk"
                 </h3>
                 {% if role.company %}
                 <p class="text-blue-400 text-md font-medium mb-2 ">
-                {{ role.company }}
+                    {{ role.company }}
                 </p>
                 {% endif %}
                 <time class="block mb-2 text-sm font-normal leading-none text-gray-500">{{ role.time }}</time>
@@ -110,12 +112,12 @@ layout: "layout.njk"
                 <ul class="list-disc list-inside text-gray-400">
                     {% for role in roles %}
                     {% if not role.featured %}
-                        {% if role.company %}
+                    {% if role.company %}
                     <li>
                         {{ role.title }} at <span class="text-blue-400 text-md font-medium">{{ role.company }}</span>
                     </li>
                     {% endif %}
-                        {% endif %}
+                    {% endif %}
                     {% endfor %}
                 </ul>
             </div>
