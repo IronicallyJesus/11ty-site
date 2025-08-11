@@ -4,5 +4,5 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-EXPOSE 8080
-CMD [ "npx", "@11ty/eleventy", "--serve" ]
+EXPOSE 8080 9229
+CMD [ "npm", "start" ]
