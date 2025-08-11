@@ -1,12 +1,11 @@
-# Ignore the node_modules directory, as it will be installed inside the container
 node_modules
 
-# Ignore Eleventy's default output directory
 _site
 
-# Ignore npm debug logs
 npm-debug.log
 
-# Ignore Docker files
 Dockerfile
 docker-compose.yml
+
+.git
+.gitignore
