@@ -1,22 +1,27 @@
 [
     { 
         "name": "JNCIA - DevOps", 
-        "earned": "July 2025" 
+        "earned": "July 2025",
+        "expires": "July 2028"
     },
     { 
         "name": "JNCIS - Service Provider", 
-        "earned": "June 2025" 
+        "earned": "June 2025",
+        "expires": "June 2028"
     },
     {
         "name": "JNCIS - Enterprise",
-        "earned": "March 2025"
+        "earned": "March 2025",
+        "expires": "March 2028"
     },
     {
         "name": "JNCIA - Junos",
-        "earned": "May 2023"
+        "earned": "May 2023",
+        "expires": "July 2028"
     },
     {
         "name": "CCNA",
-        "earned": "April 2023"
+        "earned": "April 2023",
+        "expires": "August 2026"
     }
 ]
