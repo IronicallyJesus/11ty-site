@@ -66,7 +66,7 @@ layout: "layout.njk"
                     <i class="fas fa-certificate icon text-yellow-400"></i>
                     <div>
                         <h4 class="font-bold text-white">{{ certification.name}}</h4>
-                        <p class="text-gray-400">Earned: {{ certification.earned}}</p>
+                        <p class="text-gray-400">Expires: {{ certification.expires}}</p>
                     </div>
                 </div>
                 {%- endfor -%}
