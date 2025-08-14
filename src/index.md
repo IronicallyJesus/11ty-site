@@ -6,7 +6,7 @@ layout: "layout.njk"
 <section id="hero" class="text-center py-20">
     <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Proven Network Engineer</h1>
     <p id="typewriter" class="text-xl md:text-2xl text-blue-400 font-medium mb-8 h-8"></p>
-    <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8">10+ years of experience in troubleshooting, designing, and deploying robust network solutions. Let's build a reliable and efficient network for your business.</p>
+    <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8">10+ years of experience in troubleshooting, designing, and deploying robust network solutions.</p>
     <div class="flex justify-center space-x-4">
         <a href="#contact" class="btngray">Contact Me</a>
         <a href="/{{ site.resumeUrl }}" target="_blank" class="md:hidden btn">View Resume</a>
@@ -30,6 +30,7 @@ layout: "layout.njk"
     </div>
 </section>
 <!-- Services Section -->
+<!--
 <section id="services" class="py-16">
     <h2 class="text-3xl font-bold text-center section-title">Consultation Services</h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -44,6 +45,7 @@ layout: "layout.njk"
         {%- endfor -%}
     </div>
 </section>
+-->
 <!-- Skills & Certifications Section -->
 <section id="skills" class="py-16">
     <h2 class="text-3xl font-bold text-center section-title">Skills & Certifications</h2>
