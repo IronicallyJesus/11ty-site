@@ -103,7 +103,7 @@ article h4 { font-size: 1.0em; }
 article a {
     color: #60a5fa;
     text-decoration: none;
-    overflow-wrap: break-word;
+    word-break: break-all;
 }
 article a:hover {
     text-decoration: underline;
