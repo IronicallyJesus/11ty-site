@@ -3,7 +3,7 @@ layout: "layout.njk"
 ---
 <article>
     <h1>{{ title }}</h1>
-    <p class="text-gray-400">Published on: {{ date | readableDate }}</p>
+    <p class="text-gray-400">Published on {{ date | readableDate }}</p>
     <br/>
     {{ content | safe }}
 </article>
