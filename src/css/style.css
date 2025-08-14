@@ -165,4 +165,6 @@ article ol {
 }
 article li {
     margin-bottom: 0.5rem;
+    overflow-wrap: break-word;
+    word-break: break-all;
 }
