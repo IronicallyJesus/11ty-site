@@ -104,7 +104,6 @@ article h4 { font-size: 1.0em; }
 article a {
     color: #60a5fa;
     text-decoration: none;
-    word-break: break-all;
 }
 article a:hover {
     text-decoration: underline;
@@ -165,6 +164,5 @@ article ol {
 }
 article li {
     margin-bottom: 0.5rem;
-    overflow-wrap: break-word;
     word-break: break-all;
 }
