@@ -6,7 +6,7 @@ descrption: "A website showcasing my skills and experience as a network engineer
 <!-- Hero Section -->
 <section id="hero" class="text-center py-20">
     <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Proven Network Engineer</h1>
-    <p id="typewriter" class="text-xl md:text-2xl text-blue-400 font-medium mb-8 h-8"></p>
+    <p id="typewriter" style="font-family: 'Roboto Mono', monospace;" class="text-lg md:text-2xl text-blue-400 font-medium mb-8 h-8"></p>
     <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8">10+ years of experience in troubleshooting, designing, and deploying robust network solutions.</p>
     <div class="flex justify-center space-x-4">
         <a href="#contact" class="btngray">Contact Me</a>
@@ -22,7 +22,7 @@ descrption: "A website showcasing my skills and experience as a network engineer
         </div>
         <div class="md:w-2/3">
             <p class="text-lg text-gray-400 mb-4">
-                I am a highly motivated and adaptable telecommunications engineer with a proven ability to troubleshoot and resolve complex network issues. I am passionate about all things computer networking and thrive in challenging environments where continuous learning and meaningful contributions are valued.
+                I am Jesus, a highly motivated and adaptable telecommunications engineer with a proven ability to troubleshoot and resolve complex network issues. I am passionate about all things computer networking and thrive in challenging environments where continuous learning and meaningful contributions are valued.
             </p>
             <p class="text-lg text-gray-400">
                 My goal is to leverage my decade of experience to help businesses optimize their network infrastructure, ensuring high availability, security, and performance. I believe in a healthy work-life balance, which allows me to stay sharp and bring my best to every project.
