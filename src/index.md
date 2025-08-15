@@ -1,6 +1,8 @@
 ---
 title: "Jesus - Network Engineer"
 layout: "layout.njk"
+descrption: "A website showcasing my skills and experience as a network engineer"
+
 ---
 <!-- Hero Section -->
 <section id="hero" class="text-center py-20">
@@ -29,6 +31,7 @@ layout: "layout.njk"
         </div>
     </div>
 </section>
+
 <!-- Services Section -->
 <!--
 <section id="services" class="py-16">
@@ -46,6 +49,7 @@ layout: "layout.njk"
     </div>
 </section>
 -->
+
 <!-- Skills & Certifications Section -->
 <section id="skills" class="py-16">
     <h2 class="text-3xl font-bold text-center section-title">Skills & Certifications</h2>
@@ -54,8 +58,8 @@ layout: "layout.njk"
         <div>
             <h3 class="text-2xl font-bold mb-6 text-center text-white">Technical Skills</h3>
             <div class="card">
-                {% for skill in skills %}
-                <h4 class="text-lg font-semibold mb-1 text-blue-400">{{ skill.name }}</h4>
+                {%- for skill in skills -%}
+                <p class="text-lg font-semibold mb-1 text-blue-400">{{ skill.name }}</p>
                 <p class="text-gray-400 mb-5">{{ skill.keywords }}</p>
                 {%- endfor -%}
             </div>
@@ -68,8 +72,8 @@ layout: "layout.njk"
                 <div class="flex items-center">
                     <i class="fas fa-certificate icon text-yellow-400"></i>
                     <div>
-                        <h4 class="font-bold text-white">{{ certification.name}}</h4>
-                        <p class="text-gray-400">Expires: {{ certification.expires}}</p>
+                        <h4 class="font-bold text-white">{{ certification.name }}</h4>
+                        <p class="text-gray-400">Expires: {{ certification.expires }}</p>
                     </div>
                 </div>
                 {%- endfor -%}
@@ -82,8 +86,8 @@ layout: "layout.njk"
     <h2 class="text-3xl font-bold text-center section-title">Work Experience</h2>
     <div class="relative border-l-2 border-gray-700 ml-6">
         {# Loop through and display all "featured" roles #}
-        {% for role in roles %}
-        {% if role.featured %}
+        {%- for role in roles -%}
+        {%- if role.featured -%}
         <div class="mb-10 ml-6">
             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-500 rounded-full -left-3 ring-8 ring-gray-900">
             <i class="fas fa-briefcase text-white text-xs"></i>
@@ -92,19 +96,19 @@ layout: "layout.njk"
                 <h3 class="flex items-center text-lg font-semibold text-white">
                     {{ role.title }}
                 </h3>
-                {% if role.company %}
+                {%- if role.company -%}
                 <p class="text-blue-400 text-md font-medium mb-2 ">
                     {{ role.company }}
                 </p>
-                {% endif %}
+                {%- endif -%}
                 <time class="block mb-2 text-sm font-normal leading-none text-gray-500">{{ role.time }}</time>
-                {% if role.description %}
+                {%- if role.description -%}
                 <p class="mb-4 text-base font-normal text-gray-400">{{ role.description }}</p>
-                {% endif %}
+                {%- endif -%}
             </div>
         </div>
-        {% endif %}
-        {% endfor %}
+        {%- endif -%}
+        {%- endfor -%}
         <div class="ml-6">
             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-500 rounded-full -left-3 ring-8 ring-gray-900">
             <i class="fas fa-briefcase text-white text-xs"></i>
@@ -113,15 +117,15 @@ layout: "layout.njk"
                 <h3 class="text-lg font-semibold text-white">Previous Roles</h3>
                 <time class="block mb-2 text-sm font-normal leading-none text-gray-500">Since 2014</time>
                 <ul class="list-disc list-inside text-gray-400">
-                    {% for role in roles %}
-                    {% if not role.featured %}
-                    {% if role.company %}
+                    {%- for role in roles -%}
+                    {%- if not role.featured -%}
+                    {%- if role.company -%}
                     <li>
                         {{ role.title }} at <span class="text-blue-400 text-md font-medium">{{ role.company }}</span>
                     </li>
-                    {% endif %}
-                    {% endif %}
-                    {% endfor %}
+                    {%- endif -%}
+                    {%- endif -%}
+                    {%- endfor -%}
                 </ul>
             </div>
         </div>
