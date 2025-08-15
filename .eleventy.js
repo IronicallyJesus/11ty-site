@@ -5,7 +5,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/resume");
   eleventyConfig.addPassthroughCopy("src/assets/images");
- eleventyConfig.addPassthroughCopy({ "favicon" : "/" } );
+  eleventyConfig.addPassthroughCopy({ "favicon" : "/" } );
   // Add a filter for readable dates using vanilla JS
   eleventyConfig.addFilter("readableDate", dateObj => {
     // The toLocaleDateString method can be used to format dates
