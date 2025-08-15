@@ -2,7 +2,6 @@
 title: "Jesus - Network Engineer"
 layout: "layout.njk"
 descrption: "A website showcasing my skills and experience as a network engineer"
-
 ---
 <!-- Hero Section -->
 <section id="hero" class="text-center py-20">
