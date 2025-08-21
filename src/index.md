@@ -12,7 +12,7 @@ sitemapChangefreq: "weekly"
     <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8">10+ years of experience in troubleshooting, designing, and deploying robust network solutions.</p>
     <div class="flex justify-center space-x-4">
         <a href="#contact" class="btngray">Contact Me</a>
-        <a href="/{{ site.resumeUrl }}" target="_blank" class="md:hidden btn">View Resume</a>
+        <a href="{{ site.resumeUrl }}" target="_blank" class="md:hidden btn">View Resume</a>
     </div>
 </section>
 <!-- About Me Section -->
