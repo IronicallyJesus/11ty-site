@@ -6,6 +6,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/resume");
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy({ "favicon" : "/" } );
+  eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' });
+  eleventyConfig.addPassthroughCopy({ 'src/sitemap.xml': '/sitemap.xml' });
+
   // Add a filter for readable dates using vanilla JS
   eleventyConfig.addFilter("readableDate", dateObj => {
     // The toLocaleDateString method can be used to format dates
@@ -17,6 +20,14 @@ module.exports = function(eleventyConfig) {
       day: 'numeric',
       timeZone: 'UTC' 
     });
+  });
+
+  // Add htmlDateString filter for sitemap <lastmod>
+  eleventyConfig.addFilter("htmlDateString", dateObj => {
+    if (!dateObj) return "";
+    // Format date as YYYY-MM-DD for sitemaps
+    const d = new Date(dateObj);
+    return d.toISOString().split("T")[0];
   });
 
   // Shortcode for creating a callout box
