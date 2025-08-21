@@ -115,7 +115,7 @@ article a {
     text-decoration: none;
 }
 article a:hover {
-    text-decoration: underline;
+    color: #93c5fd;
 }
 article code {
     background-color: #374151;
