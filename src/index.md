@@ -2,6 +2,8 @@
 title: "Jesus - Network Engineer"
 layout: "layout.njk"
 descrption: "A website showcasing my skills and experience as a network engineer"
+sitemapPriority: 0.9
+sitemapChangefreq: "weekly"
 ---
 <!-- Hero Section -->
 <section id="hero" class="text-center py-20">
