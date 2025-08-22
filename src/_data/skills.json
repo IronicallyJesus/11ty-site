@@ -1,18 +1,22 @@
 [
     { 
-        "name": "Networking", 
-        "keywords": "Design, Addressing, VLAN/VPN, Metro Ethernet, FTTX, Fixed Wireless"
+        "name": "Core Networking & Architecture", 
+        "keywords": "LAN/WAN Design, IP Addressing (IPv4/IPv6), VLANs, VPNs, Metro Ethernet, FTTX, Fixed Wireless"
     },
     { 
-        "name": "Protocols & Technologies", 
-        "keywords": "NFS, SMB, FTP, DHCP, OSPF, IS-IS, BGP, MPLS, STP, G.8032, 802.1ad, SIP/VOIP"
+        "name": "Routing & Switching Protocols", 
+        "keywords": "BGP, OSPF, IS-IS, MPLS, STP & RSTP, G.8032 (ERPS), 802.1ad (Q-in-Q), LACP"
     },
     { 
-        "name": "Systems & Software", 
-        "keywords": "Linux, macOS, MS Windows, Excel, Visio, SharePoint, OPNSense, DD-WRT"
+        "name": "Vendor Platforms & OS", 
+        "keywords": "Juniper (Junos), Cisco (IOS/XE), Ciena (SAOS 6, 8, 10), Adtran, Calix, Accedian, Alcatel-Lucent"
     },
     { 
-        "name": "Vendors & Platforms", 
-        "keywords": "Juniper, Accedian, Adtran, Calix, Ciena, Cisco, Incognito, Alcatel-Lucent"
+        "name": "Systems & Automation", 
+        "keywords": "Linux, Python, Ansible, Jinja, Bash, Git, Docker, OPNSense"
+    },
+    {
+        "name": "Network Services & Tools",
+        "keywords": "DHCP, DNS, FTP, SIP/VOIP, Wireshark, Incognito, Microsoft Visio"
     }
 ]
