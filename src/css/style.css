@@ -124,6 +124,7 @@ article a:hover {
 }
 article code {
     background-color: #374151;
+    font-family: "Red Hat Mono", monospace;
     color: #e5e7eb;
     padding: 0.2em 0.4em;
     margin: 0;
