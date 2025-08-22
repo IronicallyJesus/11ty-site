@@ -4,6 +4,7 @@ layout: "layout.njk"
 description: "A website showcasing my skills and experience as a network engineer"
 sitemapPriority: 0.9
 sitemapChangefreq: "weekly"
+image: "/assets/images/jesus.jpg"
 ---
 <!-- Hero Section -->
 <section id="hero" class="text-center py-20">
