@@ -3,12 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (viewCountElement) {
         const slug = viewCountElement.dataset.slug;
-        const serverUrl = 'http://localhost:3000'; // IMPORTANT: Replace with your server's IP/domain
 
         // Function to fetch and display the view count
         const getViews = async () => {
             try {
-                const response = await fetch(`${serverUrl}/api/views/${slug}`);
+                const response = await fetch(`/api/views/${slug}`);
                 if (!response.ok) throw new Error('Failed to fetch views');
                 const data = await response.json();
                 viewCountElement.textContent = `${data.count} views`;
@@ -24,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Use a flag in localStorage to prevent incrementing on every refresh
                 const viewed = localStorage.getItem(`viewed-${slug}`);
                 if (!viewed) {
-                    await fetch(`${serverUrl}/api/views/${slug}`, { method: 'POST' });
+                    await fetch(`/api/views/${slug}`, { method: 'POST' });
                     localStorage.setItem(`viewed-${slug}`, 'true');
                 }
             } catch (error) {

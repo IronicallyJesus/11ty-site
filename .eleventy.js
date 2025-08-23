@@ -1,4 +1,5 @@
 module.exports = function(eleventyConfig) {
+  const { createProxyMiddleware } = require('http-proxy-middleware');
 
   // Pass through static assets from the "src" directory
   eleventyConfig.addPassthroughCopy("src/css");
@@ -41,6 +42,21 @@ module.exports = function(eleventyConfig) {
 
   // Add a shortcode for the current year for the footer
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+
+  // Only add the proxy middleware when in serve mode
+  if (process.env.ELEVENTY_RUN_MODE === "serve") {
+    // Dev server options
+    eleventyConfig.setServerOptions({
+      // When the site is served by Eleventy's dev server, proxy API requests
+      // to the API server which is running in a separate container.
+      middleware: [
+        createProxyMiddleware('/api', {
+          target: 'http://api:3000', // The 'api' service container
+          changeOrigin: true,
+        }),
+      ],
+    });
+  }
 
   return {
     // Set the source and output directories
