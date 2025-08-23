@@ -4,7 +4,8 @@
   "description": "An Eleventy project with Docker and VS Code debugging.",
   "scripts": {
     "start": "eleventy --serve --watch",
-    "debug": "node --inspect=0.0.0.0:9229 ./node_modules/.bin/eleventy --serve --watch"
+    "debug": "node --inspect=0.0.0.0:9229 ./node_modules/.bin/eleventy --serve --watch",
+    "build": "eleventy"
   },
   "keywords": [],
   "author": "",
