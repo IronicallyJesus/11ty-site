@@ -93,5 +93,28 @@
             </div>
         </footer>
         <script src="/js/main.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // Define a unique slug for the home page
+                const slug = 'homepage';
+                
+                // Use a flag in localStorage to prevent incrementing on every refresh
+                const viewed = localStorage.getItem(`viewed-${slug}`);
+
+                if (!viewed) {
+                    // We only need to send the update, not get the result
+                    fetch(`/api/views/${slug}`, { method: 'POST' })
+                        .then(response => {
+                            if (response.ok) {
+                                // Mark as viewed in this session if the update was successful
+                                localStorage.setItem(`viewed-${slug}`, 'true');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error updating home page view count:', error);
+                        });
+                }
+            });
+        </script>
     </body>
 </html>
