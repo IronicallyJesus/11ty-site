@@ -4,13 +4,8 @@ const fs = require('fs-extra');
 const path = require('path');
 
 const app = express();
-const port = 3000; // You can change this port if needed
+const port = 3000;
 
-// Enable trust proxy to ensure Express correctly handles protocols (http/https)
-// and client IP addresses when running behind a reverse proxy.
-// This is crucial for correct URL generation in redirects and for security features
-// like rate limiting. The value 'true' trusts the X-Forwarded-* headers
-// set by the immediate upstream proxy.
 app.set('trust proxy', true);
 
 // Path to the file where view counts will be stored
@@ -23,7 +18,7 @@ if (initialData.length === 0) {
     fs.writeJsonSync(dbPath, {});
 }
 
-app.use(cors()); // Enable Cross-Origin Resource Sharing
+app.use(cors());
 app.use(express.json());
 
 // In production, the server also serves the static site from the `_site` directory.
@@ -56,6 +51,12 @@ app.post('/api/views/:slug', async (req, res) => {
         console.error('Error updating view count:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
+});
+
+// --- 404 Handler (Catch-All) ---
+// This MUST be the last route or middleware added.
+app.use((req, res, next) => {
+  res.redirect('/404.html');
 });
 
 app.listen(port, () => {
