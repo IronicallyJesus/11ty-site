@@ -50,7 +50,8 @@ module.exports = function(eleventyConfig) {
       // When the site is served by Eleventy's dev server, proxy API requests
       // to the API server which is running in a separate container.
       middleware: [
-        createProxyMiddleware('/api', {
+        createProxyMiddleware({
+          pathFilter: '/api/**',
           target: 'http://api:3000', // The 'api' service container
           changeOrigin: true,
         }),
