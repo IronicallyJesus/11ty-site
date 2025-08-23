@@ -151,3 +151,4 @@ image: "/assets/images/jesus.jpg"
     </div>
 </section>
 <script src="/js/view-counter.js"></script>
+<span data-slug="homepage"></span>
