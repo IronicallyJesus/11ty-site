@@ -8,6 +8,7 @@ services:
     build:
       context: .
       target: production # Use the 'production' stage from the Dockerfile
+    platform: linux/arm64
     container_name: eleventy_prod
     ports:
       - 3000:3000
