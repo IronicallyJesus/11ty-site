@@ -1,10 +1,40 @@
+# docker-compose.yml for development
+# This setup runs two services:
+# 1. The Eleventy dev server for live-reloading site changes.
+# 2. The Express API server for the view counter.
+#
+# To start both, run: docker-compose up
+#
+# Your site will be available at http://localhost:8080
+# Your API will be available at http://localhost:3000
 services:
+  # This service runs the Eleventy development server.
   eleventy:
-    build: .
+    build:
+      context: .
+      target: development # Use the 'development' stage from the Dockerfile
     container_name: eleventy_dev
     ports:
-      - 8080:8080
-      - 9229:9229
+      - "8080:8080" # Eleventy dev server port
+    volumes:
+      # Mount the project directory for live-reloading.
+      # The anonymous volume for node_modules prevents the local one from overwriting the container's.
+      - .:/app
+      - /app/node_modules
+    # This command runs Eleventy's dev server with file watching.
+    command: npm start
+
+  # This service runs your Express API server.
+  api:
+    build:
+      context: .
+      target: development # Use the same 'development' stage
+    container_name: api_dev
+    ports:
+      - "3000:3000" # Express API server port
+      - "9229:9229" # Node.js debugger port
     volumes:
       - .:/app
       - /app/node_modules
+    # Use nodemon to automatically restart the server on file changes.
+    command: npx nodemon --inspect=0.0.0.0:9229 src/server.js
