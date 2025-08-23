@@ -39,23 +39,29 @@ WORKDIR /app
 # Create a non-root user for better security
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
+# Install su-exec for dropping privileges from root
+RUN apk add --no-cache su-exec
+
 # Copy only the necessary artifacts from the builder stage
 # Using --chown ensures the non-root user owns the files.
 COPY --from=builder --chown=appuser:appgroup /app/node_modules ./node_modules
 COPY --from=builder --chown=appuser:appgroup /app/package.json ./package.json
 COPY --from=builder --chown=appuser:appgroup /app/src/server.js .
 COPY --from=builder --chown=appuser:appgroup /app/_site ./_site
-COPY --from=builder --chown=appuser:appgroup /app/src/_data ./_data
+# The _data directory is handled by the volume, but we copy it so the volume can be pre-populated on first run.
+COPY --from=builder --chown=appuser:appgroup /app/src/_data/ ./_data/
 COPY --chown=appuser:appgroup healthcheck.js .
 
-USER appuser
+# Copy and set up the entrypoint script
+COPY --chown=root:root entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Expose the port the server runs on
 EXPOSE 3000
 
 # Add a healthcheck to ensure the container is running correctly.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
-  CMD [ "node", "healthcheck.js" ]
+  CMD ["su-exec", "appuser", "node", "healthcheck.js"]
 
-# The command to start the server
-CMD [ "node", "server.js" ]
+ENTRYPOINT ["entrypoint.sh"]
+CMD ["node", "server.js"]
