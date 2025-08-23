@@ -9,8 +9,12 @@ layout: "layout.njk"
         </a>
     </div>
     <h1>{{ title }}</h1>
-    <p class="text-gray-400">Published on {{ date | readableDate }}</p>
+    <div class="post-meta">
+        <p class="text-gray-400">Published on {{ date | readableDate }}</p>
+        <span class="view-count" data-view-count data-slug="{{ page.fileSlug }}">Loading views...</span>
+    </div>
     <br/>
     {{ content | safe }}
 </article>
+<script src="/js/view-counter.js"></script>
 <div id="bottom"></div>
