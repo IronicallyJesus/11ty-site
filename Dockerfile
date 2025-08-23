@@ -1,40 +1,61 @@
-# STAGE 1: Development
-# This stage installs all dependencies (including devDependencies) and copies the source code.
-# It's used as a base for the 'builder' stage and for the development environment via docker-compose.
-FROM node:18-alpine AS development
+# Dockerfile optimized for Raspberry Pi (ARM64) and faster builds.
+
+# Docker BuildKit arguments for multi-platform builds.
+# These are automatically populated by Docker.
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+
+# STAGE 1: Dependencies
+# This stage installs all dependencies (dev and prod) from package-lock.json
+# It's used as a base for both development and builder stages to leverage caching.
+FROM --platform=${BUILDPLATFORM} node:18-alpine AS deps
 WORKDIR /app
-
-# Copy project files and install dependencies
 COPY package*.json ./
-RUN npm install
+# Use `npm ci` for faster, more reliable builds from package-lock.json
+RUN npm ci
+
+# STAGE 2: Development
+# This stage is for local development. It includes devDependencies and source code.
+# In docker-compose.dev.yml, the source is mounted for hot-reloading.
+FROM deps AS development
 COPY . .
+# The command is specified in docker-compose.dev.yml, but we can add a default.
+CMD ["npm", "start"]
 
-# STAGE 2: Builder
+# STAGE 3: Builder
 # This stage builds the Eleventy site for production.
-FROM development AS builder
-# The output will be in the default `_site` directory
-RUN npx @11ty/eleventy
+FROM deps AS builder
+COPY . .
+# Build the site. Requires a "build": "eleventy" script in package.json
+RUN npm run build
+# After building, remove development dependencies to keep the final image small.
+RUN npm prune --production
 
-# STAGE 3: Production
+# STAGE 4: Production
 # This stage creates a lean, production-ready image.
 FROM node:18-alpine AS production
 WORKDIR /app
 
-# Copy server dependencies from the builder stage
-COPY --from=builder /app/package*.json ./
+# Create a non-root user for better security
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
-# Install only production dependencies for the server
-RUN npm install --omit=dev
+# Copy only the necessary artifacts from the builder stage
+# Using --chown ensures the non-root user owns the files.
+COPY --from=builder --chown=appuser:appgroup /app/node_modules ./node_modules
+COPY --from=builder --chown=appuser:appgroup /app/package.json ./package.json
+COPY --from=builder --chown=appuser:appgroup /app/src/server.js .
+COPY --from=builder --chown=appuser:appgroup /app/_site ./_site
+COPY --from=builder --chown=appuser:appgroup /app/src/_data ./_data
+COPY --chown=appuser:appgroup healthcheck.js .
 
-# Copy the server, the built Eleventy site, and the data file for the view counter.
-# Note: The paths here are relative to the WORKDIR inside the 'builder' stage (/app).
-COPY --from=builder /app/src/server.js .
-COPY --from=builder /app/_site ./_site
-# The server expects the _data directory in /app/_data, and your config places it in src/_data.
-COPY --from=builder /app/src/_data ./_data
+USER appuser
 
 # Expose the port the server runs on
 EXPOSE 3000
+
+# Add a healthcheck to ensure the container is running correctly.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+  CMD [ "node", "healthcheck.js" ]
 
 # The command to start the server
 CMD [ "node", "server.js" ]
