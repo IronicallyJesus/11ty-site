@@ -4,7 +4,7 @@
     {
       "label": "docker-compose-up",
       "type": "shell",
-      "command": "docker compose up --build",
+      "command": "docker compose -f docker-compose.dev.yml up --build",
       "isBackground": true,
       "problemMatcher": [
         {
