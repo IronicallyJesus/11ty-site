@@ -4,6 +4,4 @@ Allow: /
 User-agent: GPTBot
 Disallow: /
 
-Host: https://jesus.twk95.com
-
 Sitemap: https://jesus.twk95.com/sitemap.xml
