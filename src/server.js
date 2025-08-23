@@ -19,6 +19,9 @@ if (initialData.length === 0) {
 app.use(cors()); // Enable Cross-Origin Resource Sharing
 app.use(express.json());
 
+// In production, the server also serves the static site from the `_site` directory.
+app.use(express.static('_site'));
+
 // --- API Endpoints ---
 
 // GET: Fetch the view count for a specific post slug
