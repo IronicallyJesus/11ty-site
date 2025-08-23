@@ -6,6 +6,13 @@ const path = require('path');
 const app = express();
 const port = 3000; // You can change this port if needed
 
+// Enable trust proxy to ensure Express correctly handles protocols (http/https)
+// and client IP addresses when running behind a reverse proxy.
+// This is crucial for correct URL generation in redirects and for security features
+// like rate limiting. The value 'true' trusts the X-Forwarded-* headers
+// set by the immediate upstream proxy.
+app.set('trust proxy', true);
+
 // Path to the file where view counts will be stored
 const dbPath = path.join(__dirname, '_data', 'views.json');
 
