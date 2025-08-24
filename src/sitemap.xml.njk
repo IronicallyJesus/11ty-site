@@ -6,13 +6,13 @@ eleventyExcludeFromCollections: true
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {%- for page in collections.all %}
     {%- set draft = page.data.draft %}
-    {%- if not draft  %}   
+    {%- if not draft  %}
       {%- set priority = page.data.priority if page.data.priority else "0.5" %}
       <url>
         <loc>{{ site.url }}{{ page.url }}</loc>
         <lastmod>{{ page.date | htmlDateString }}</lastmod>
         <changefreq>{{ page.data.sitemapChangefreq | default("monthly") }}</changefreq>
-        <priority>{{ page.data.sitemapPriority | default(0.8) }}</priority>
+        <priority>{{ page.data.sitemapPriority | default(0.5) }}</priority>
       </url>
     {%- endif %}
   {%- endfor %}
