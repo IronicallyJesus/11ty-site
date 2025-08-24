@@ -9,7 +9,7 @@ eleventyExcludeFromCollections: true
     {%- if not draft  %}
       {%- set priority = page.data.priority if page.data.priority else "0.5" %}
       <url>
-        <loc>{{ site.url }}{{ page.url }}</loc>
+        <loc>{{ site.url }}{{ page.url | url }}</loc>
         <lastmod>{{ page.date | htmlDateString }}</lastmod>
         <changefreq>{{ page.data.sitemapChangefreq | default("monthly") }}</changefreq>
         <priority>{{ page.data.sitemapPriority | default(0.5) }}</priority>
