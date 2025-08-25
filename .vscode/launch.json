@@ -9,8 +9,9 @@
       "address": "localhost",
       "localRoot": "${workspaceFolder}",
       "remoteRoot": "/usr/src/app",
-      "restart": true,
-      "preLaunchTask": "docker-compose-up"
+      "restart": false,
+      "preLaunchTask": "docker-compose-up",
+      "postDebugTask": "docker-compose-down"
     }
   ]
 }
