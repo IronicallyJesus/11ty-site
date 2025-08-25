@@ -19,7 +19,7 @@
           "background": {
             "activeOnStart": true,
             "beginsPattern": "Attaching to",
-            "endsPattern": "Server at"
+            "endsPattern": "Debugger listening on"
           }
         }
       ]
@@ -27,7 +27,7 @@
     {
       "label": "docker-compose-down",
       "type": "shell",
-      "command": "docker compose down"
+      "command": "docker compose -f docker-compose.dev.yml down"
     }
   ]
 }
