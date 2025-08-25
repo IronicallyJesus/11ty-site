@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         return response.json();
                     })
                     .then(data => {
-                        element.textContent = data.count ?? 'Error';
+                        const count = data.count ?? 'Error';
+                        element.textContent = `${count} ${count === 1 ? 'view' : 'views'}`;
                         // Mark as viewed to prevent re-counting on refresh.
                         localStorage.setItem(`viewed-${slug}`, 'true');
                     })
@@ -47,7 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         return response.json();
                     })
                     .then(data => {
-                        element.textContent = data.count ?? 0;
+                        const count = data.count ?? 0;
+                        element.textContent = `${count} ${count === 1 ? 'view' : 'views'}`;
                     })
                     .catch(error => {
                         console.error(`Error fetching view count for slug ${slug}:`, error);
