@@ -182,3 +182,18 @@ article ol {
 article li {
     margin-bottom: 0.5rem;
 }
+.like-icon {
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+.like-icon:hover {
+    color: #fff;
+    transform: scale(1.15);
+}
+.like-icon.liked {
+    cursor: pointer;
+    color: #e2264d;
+}
+.like-icon.liked:hover {
+    transform: scale(1.15);
+}
