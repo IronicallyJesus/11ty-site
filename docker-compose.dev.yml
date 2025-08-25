@@ -54,7 +54,7 @@ services:
     # Use Node's built-in --watch mode instead of nodemon. It can be more
     # stable inside Docker and avoids some of nodemon's complexities.
     # The --inspect flag is still used for debugging.
-    command: node --watch --inspect=0.0.0.0:9229 src/server.js
+    command: node --inspect=0.0.0.0:9229 src/server.js
 
 networks:
   dev_network:
