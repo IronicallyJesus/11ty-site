@@ -19,9 +19,3 @@ sitemapChangefreq: "monthly"
     </object>
   </div>
 </div>
-
-<div style="text-align: center; margin-top: 2rem;">
-  <a href="/resume/jesus.pdf" download="Jesus_E_Otero_Lagunes_Resume.pdf" class="btn">
-    <i class="fas fa-download mr-2"></i>Download
-  </a>
-</div>
