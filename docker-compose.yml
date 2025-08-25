@@ -14,8 +14,8 @@ services:
       - 3000:3000
     volumes:
       # Persist the view count data in a named volume.
-      - views_data:/app/_data
+      - data:/app/_data
     restart: unless-stopped
 volumes:
-  views_data: null
+  data: null
 networks: {}

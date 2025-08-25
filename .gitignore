@@ -2,3 +2,4 @@ node_modules
 _site
 .DS_Store
 src/_data/views.json
+src/_data/likes.json
