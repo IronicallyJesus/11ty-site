@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "An Eleventy project with Docker and VS Code debugging.",
   "scripts": {
-    "start": "eleventy --serve --watch",
+    "start": "eleventy --serve",
     "debug": "node --inspect=0.0.0.0:9229 ./node_modules/.bin/eleventy --serve --watch",
     "build": "eleventy"
   },
@@ -12,12 +12,13 @@
   "license": "ISC",
   "dependencies": {
     "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "fs-extra": "^11.3.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0",
-    "http-proxy-middleware": "^3.0.0"
+    "http-proxy-middleware": "^3.0.0",
+    "nodemon": "^3.1.0"
   }
 }
