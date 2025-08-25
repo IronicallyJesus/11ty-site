@@ -10,12 +10,20 @@ services:
       target: production # Use the 'production' stage from the Dockerfile
     platform: linux/arm64
     container_name: eleventy_prod
-    ports:
-      - 3000:3000
     volumes:
       # Persist the view count data in a named volume.
       - data:/app/_data
     restart: unless-stopped
+    labels:
+      diun.enable: true
+      homepage.group: Tools
+      homepage.name: 11ty Website
+      homepage.icon: https://jesus.twk95.com/android-chrome-192x192.png
+      homepage.href: ${APP_URL}
+    networks:
+      - proxy
 volumes:
   data: null
-networks: {}
+networks:
+  proxy:
+    external: true
