@@ -26,6 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             const isLiked = localStorage.getItem(storageKey) === 'true';
             updateUI(isLiked, data.count || 0);
+            // Check if the user has ever interacted with this button before
+            if (localStorage.getItem(storageKey) === null) {
+                // If not, add the animation class
+                likeIcon.classList.add('hint-animation');
+                // Remove the animation after it runs to prevent it from looping
+                setTimeout(() => {
+                    likeIcon.classList.remove('hint-animation');
+                }, 2000); // Animation duration is 2s
+            }
         } catch (error) {
             console.error('Error fetching likes:', error);
         }
@@ -33,6 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add click event listener to the icon
     likeIcon.addEventListener('click', async () => {
+        // Stop the hint animation if it's running
+        likeIcon.classList.remove('hint-animation');
+        // Toggle the liked state
         const isCurrentlyLiked = likeIcon.classList.contains('liked');
         const method = isCurrentlyLiked ? 'DELETE' : 'POST';
 
