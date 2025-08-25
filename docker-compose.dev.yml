@@ -13,6 +13,10 @@ services:
     build:
       context: .
       target: development # Use the 'development' stage from the Dockerfile
+    # Adding `init: true` ensures that the container's main process receives
+    # signals correctly (like SIGINT/SIGTERM) when you stop the container.
+    # This helps the dev server to shut down gracefully.
+    init: true
     container_name: eleventy_dev
     ports:
       - "8080:8080" # Eleventy dev server port
@@ -21,6 +25,10 @@ services:
       # The anonymous volume for node_modules prevents the local one from overwriting the container's.
       - .:/app
       - /app/node_modules
+    networks:
+      # Both services need to be on the same network for the Eleventy dev server
+      # to proxy requests to the API container using its service name ('api').
+      - dev_network
     # This command runs Eleventy's dev server with file watching.
     command: npm start
 
@@ -29,6 +37,10 @@ services:
     build:
       context: .
       target: development # Use the same 'development' stage
+    # Adding `init: true` is especially important for debugging. It ensures
+    # the Node.js process receives shutdown signals, allowing the debugger
+    # to detach cleanly.
+    init: true
     container_name: api_dev
     ports:
       - "3000:3000" # Express API server port
@@ -36,5 +48,13 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
-    # Use nodemon to automatically restart the server on file changes.
-    command: npx nodemon --inspect=0.0.0.0:9229 src/server.js
+    networks:
+      - dev_network
+    # Use Node's built-in --watch mode instead of nodemon. It can be more
+    # stable inside Docker and avoids some of nodemon's complexities.
+    # The --inspect flag is still used for debugging.
+    command: node --watch --inspect=0.0.0.0:9229 src/server.js
+
+networks:
+  dev_network:
+    driver: bridge
