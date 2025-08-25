@@ -115,5 +115,5 @@ app.use((req, res, next) => {
 });
 
 app.listen(port, () => {
-    console.log(`View counter server listening at http://localhost:${port}`);
+    console.log(`Page stats server listening at http://localhost:${port}`);
 });
