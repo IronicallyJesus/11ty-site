@@ -13,10 +13,11 @@ sitemapChangefreq: "monthly"
             data="/resume/jesus.pdf#view=FitH&toolbar=0&navpanes=0"
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">
             <iframe
-                src="document.pdf"
+                id="fallback-pdf-viewer"
+                src="/resume/jesus.pdf#view=FitH&toolbar=0&navpanes=0"
                 width="100%"
                 height="100%"
-                style="border: none"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
                 title="Fallback PDF Viewer"
                 >
                 <div class="flex flex-col items-center justify-center h-full text-center p-8 bg-gray-800 rounded-lg">
