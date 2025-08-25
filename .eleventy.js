@@ -1,5 +1,6 @@
 module.exports = function(eleventyConfig) {
   const { createProxyMiddleware } = require('http-proxy-middleware');
+  const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
   // Pass through static assets from the "src" directory
   eleventyConfig.addPassthroughCopy("src/css");
@@ -9,6 +10,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "favicon" : "/" } );
   eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' });
   eleventyConfig.addPassthroughCopy({ 'src/sitemap.xml': '/sitemap.xml' });
+
+  eleventyConfig.addPlugin(syntaxHighlight);
 
   // Add a filter for readable dates using vanilla JS
   eleventyConfig.addFilter("readableDate", dateObj => {
