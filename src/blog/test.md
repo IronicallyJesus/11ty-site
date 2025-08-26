@@ -1,8 +1,8 @@
 ---
 title: "Test page!"
-date: "2025-08-07"
+date: "2025-10-13"
 layout: "post.njk"
-draft: true
+tags: "general"
 excerpt: This post is a feature showcase of what you can do with Eleventy
 ---
 
