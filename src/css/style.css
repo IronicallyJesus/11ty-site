@@ -184,7 +184,6 @@ article li {
 }
 .like-icon {
     cursor: pointer;
-    transition: color 0.2s ease-in-out;
     transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 .like-icon:hover, .like-icon:active {
@@ -210,9 +209,17 @@ article li {
     75% { transform: translateX(0) rotate(-1deg) scale(1.1); }
 }
 @media (hover: hover) {
+    .like-icon {
+        cursor: pointer;
+        transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    }
     .like-icon:hover {
         color: #fff;
         transform: scale(1.15);
+    }
+    .like-icon.liked {
+        cursor: pointer;
+        color: #e2264d;
     }
     .like-icon.liked:hover {
         transform: scale(1.15);
