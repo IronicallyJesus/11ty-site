@@ -1,6 +1,8 @@
+const { createProxyMiddleware } = require('http-proxy-middleware');
+const { DateTime } = require("luxon");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+
 module.exports = function(eleventyConfig) {
-  const { createProxyMiddleware } = require('http-proxy-middleware');
-  const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
   // Pass through static assets from the "src" directory
   eleventyConfig.addPassthroughCopy("src/css");
@@ -13,25 +15,21 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPlugin(syntaxHighlight);
 
-  // Add a filter for readable dates using vanilla JS
-  eleventyConfig.addFilter("readableDate", dateObj => {
-    // The toLocaleDateString method can be used to format dates
-    // without any external libraries.
-    // The 'UTC' timeZone option is added to prevent off-by-one day errors.
-    return new Date(dateObj).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      timeZone: 'UTC' 
-    });
+  // Add a filter for readable dates using Luxon
+  eleventyConfig.addFilter("readableDate", (dateObj) => {
+    if (!dateObj) return "";
+    // When Eleventy parses a date like "2025-08-25", it creates a Date object
+    // at midnight UTC. Using Luxon to format this date while treating it as UTC
+    // prevents the date from shifting to the previous day due to timezone conversion.
+    return DateTime.fromJSDate(dateObj, { zone: 'UTC' }).toFormat('LLLL d, yyyy');
   });
 
   // Add htmlDateString filter for sitemap <lastmod>
-  eleventyConfig.addFilter("htmlDateString", dateObj => {
+  eleventyConfig.addFilter("htmlDateString", (dateObj) => {
     if (!dateObj) return "";
-    // Format date as YYYY-MM-DD for sitemaps
-    const d = new Date(dateObj);
-    return d.toISOString().split("T")[0];
+    // toISODate() will return the date in YYYY-MM-DD format.
+    // We specify UTC zone to ensure the date is not affected by the system's timezone.
+    return DateTime.fromJSDate(dateObj, { zone: 'UTC' }).toISODate();
   });
 
   // Shortcode for creating a callout box
