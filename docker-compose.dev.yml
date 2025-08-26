@@ -19,6 +19,7 @@ services:
     init: true
     container_name: eleventy_dev
     ports:
+      - "9229:9229" # Node.js debugger port
       - "8080:8080" # Eleventy dev server port
     volumes:
       # Mount the project directory for live-reloading.
@@ -30,7 +31,7 @@ services:
       # to proxy requests to the API container using its service name ('api').
       - dev_network
     # This command runs Eleventy's dev server with file watching.
-    command: npm start
+    command: npm run debug
 
   # This service runs your Express API server.
   api:
@@ -44,17 +45,15 @@ services:
     container_name: api_dev
     # The API port does not need to be exposed to the host. The 'eleventy'
     # service proxies requests to it over the internal Docker network.
-    ports:
-      - "9229:9229" # Node.js debugger port
     volumes:
       - .:/app
       - /app/node_modules
     networks:
       - dev_network
     # Use Node's built-in --watch mode instead of nodemon. It can be more
-    # stable inside Docker and avoids some of nodemon's complexities.
-    # The --inspect flag is still used for debugging.
-    command: node --inspect=0.0.0.0:9229 src/server.js
+    # stable inside Docker and avoids some of nodemon's complexities. The
+    # --inspect flag has been moved to the eleventy service.
+    command: node --watch src/server.js
 
 networks:
   dev_network:
