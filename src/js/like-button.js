@@ -9,7 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to update the UI based on liked state and count
     const updateUI = (isLiked, count) => {
         if (likeCountSpan) {
-            likeCountSpan.textContent = count;
+            if (count === 0) {
+                likeCountSpan.textContent = 'No likes';
+            } else if (count === 1) {
+                likeCountSpan.textContent = '1 like';
+            } else {
+                likeCountSpan.textContent = `${count} likes`;
+            }
         }
         if (isLiked) {
             likeIcon.classList.add('liked');
