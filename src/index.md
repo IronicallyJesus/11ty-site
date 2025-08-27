@@ -4,7 +4,7 @@ layout: "layout.njk"
 description: "A website showcasing my skills and experience as a network engineer"
 sitemapPriority: 0.9
 sitemapChangefreq: "weekly"
-image: "/assets/images/jesus.jpg"
+image: "/assets/images/jesus.webp"
 ---
 <!-- Hero Section -->
 <section id="hero" class="text-center py-20">
@@ -17,7 +17,7 @@ image: "/assets/images/jesus.jpg"
     <h2 class="text-3xl font-bold text-center section-title">About Me</h2>
     <div class="flex flex-col md:flex-row items-center gap-12">
         <div class="md:w-1/3 text-center">
-            <img src="/assets/images/jesus.jpg" width="300" height="300" alt="Jesus Otero Lagunes" class="rounded-full mx-auto shadow-2xl border-4 border-gray-700">
+            <img src="{{ image }}" width="300" height="300" alt="Jesus Otero Lagunes" class="rounded-full mx-auto shadow-2xl border-4 border-gray-700">
         </div>
         <div class="md:w-2/3">
             <p class="text-lg text-gray-400 mb-4">
