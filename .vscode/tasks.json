@@ -27,7 +27,7 @@
     {
       "label": "docker-compose-down",
       "type": "shell",
-      "command": "docker compose -f docker-compose.dev.yml down"
+      "command": "docker compose -f docker-compose.dev.yml down --volumes"
     }
   ]
 }
