@@ -18,8 +18,10 @@ RUN npm ci
 # This stage is for local development. It includes devDependencies and source code.
 # In docker-compose.dev.yml, the source is mounted for hot-reloading.
 FROM deps AS development
-COPY . .
-# The command is specified in docker-compose.dev.yml, but we can add a default.
+
+# The source code is mounted via docker-compose for development,
+# so we don't need to COPY it into the image. This keeps the dev image small.
+# We only need the WORKDIR and the installed node_modules from the 'deps' stage.
 CMD ["npm", "start"]
 
 # STAGE 3: Builder
