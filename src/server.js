@@ -2,11 +2,37 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs-extra');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 const port = 3000;
 
-app.set('trust proxy', true);
+// trust proxy:
+// Used by express-rate-limit to obtain the client's IP address.
+// '1' means that the first hop (your reverse proxy) is trusted.
+app.set('trust proxy', 1);
+
+// --- Security Middleware ---
+
+// 1. CORS Configuration: Only allow requests from your own domain.
+// We create a list of allowed origins, so the API works in both
+// development (localhost) and production (the APP_URL).
+const allowedOrigins = ['http://localhost:8080'];
+if (process.env.APP_URL) {
+  allowedOrigins.push(process.env.APP_URL);
+}
+const corsOptions = {
+  origin: allowedOrigins,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
+// 2. Rate Limiting: Apply to all API requests to prevent abuse.
+const apiLimiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	max: 100, // Limit each IP to 100 requests per windowMs
+});
+app.use('/api/', apiLimiter);
 
 // Path to the file where metadata counts will be stored
 const dbPath = path.join(__dirname, '_data', 'views.json');
@@ -25,17 +51,25 @@ if (initialLikesData.length === 0) {
     fs.writeJsonSync(likesDbPath, {});
 }
 
-
-app.use(cors());
 app.use(express.json());
 
 // In production, the server also serves the static site from the `_site` directory.
 app.use(express.static('_site'));
 
+// 3. Input Validation Middleware
+const validateSlug = (req, res, next) => {
+    const { slug } = req.params;
+    // Basic slug validation: allow alphanumeric characters, hyphens, underscores, and dots.
+    if (!/^[a-z0-9_.-]+$/.test(slug)) {
+        return res.status(400).json({ error: 'Invalid slug format.' });
+    }
+    next();
+};
+
 // --- API Endpoints ---
 
 // GET: Fetch the view count for a specific post slug
-app.get('/api/views/:slug', async (req, res) => {
+app.get('/api/views/:slug', validateSlug, async (req, res) => {
     try {
         const { slug } = req.params;
         const views = await fs.readJson(dbPath);
@@ -48,7 +82,7 @@ app.get('/api/views/:slug', async (req, res) => {
 });
 
 // GET: Fetch the like count for a specific post slug
-app.get('/api/likes/:slug', async (req, res) => {
+app.get('/api/likes/:slug', validateSlug, async (req, res) => {
     try {
         const { slug } = req.params;
         const likes = await fs.readJson(likesDbPath);
@@ -62,7 +96,7 @@ app.get('/api/likes/:slug', async (req, res) => {
 
 
 // POST: Increment the view count for a specific post slug
-app.post('/api/views/:slug', async (req, res) => {
+app.post('/api/views/:slug', validateSlug, async (req, res) => {
     try {
         const { slug } = req.params;
         const views = await fs.readJson(dbPath);
@@ -76,7 +110,7 @@ app.post('/api/views/:slug', async (req, res) => {
 });
 
 // POST: Increment the like count for a specific post slug
-app.post('/api/likes/:slug', async (req, res) => {
+app.post('/api/likes/:slug', validateSlug, async (req, res) => {
     try {
         const { slug } = req.params;
         const likes = await fs.readJson(likesDbPath);
@@ -90,7 +124,7 @@ app.post('/api/likes/:slug', async (req, res) => {
 });
 
 // DELETE: Decrement the like count for a specific post slug (unlike)
-app.delete('/api/likes/:slug', async (req, res) => {
+app.delete('/api/likes/:slug', validateSlug, async (req, res) => {
     try {
         const { slug } = req.params;
         const likes = await fs.readJson(likesDbPath);
