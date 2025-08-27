@@ -82,22 +82,22 @@ image: "/assets/images/jesus.webp"
 <!-- Work Experience Section -->
 <section id="experience" class="py-16">
     <h2 class="text-3xl font-bold text-center section-title">Work Experience</h2>
-    <div class="relative border-l-2 border-gray-700 ml-6">
+    <div class="relative border-l-2 border-gray-700 ml-4">
         {# Loop through and display all "featured" roles #}
         {%- for role in roles -%}
         {%- if role.featured -%}
-        <div class="mb-10 mx-6">
+        <div class="mb-10 mx-4">
             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-500 rounded-full -left-3 ring-8 ring-gray-900">
             <i class="fas fa-briefcase text-white text-xs"></i>
             </span>
             <div class="card">
-                <div class="flex flex-col md:flex-row md:items-baseline md:gap-x-2 mb-2">
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-x-2 mb-2">
                     <h3 class="text-lg font-semibold text-white">
                         {{ role.title }}
                     </h3>
                     {%- if role.company -%}
                     <p class="text-lg font-medium text-blue-400">
-                        <span class="hidden md:inline text-gray-400">@ </span>{{ role.company }}
+                        <span class="mr-2 hidden sm:inline text-gray-400">@</span>{{ role.company }}
                     </p>
                     {%- endif -%}
                 </div>
@@ -116,12 +116,15 @@ image: "/assets/images/jesus.webp"
             <div class="card">
                 <h3 class="text-lg font-semibold text-white mb-2">Previous Roles</h3>
                 <time class="block mb-2 text-sm font-normal leading-none text-gray-200 mb-2">Since 2014</time>
-                <ul class="list-disc list-inside text-gray-400">
+                <ul class="list-disc list-outside pl-4 text-base font-normal text-gray-400">
                     {%- for role in roles -%}
                     {%- if not role.featured -%}
                     {%- if role.company -%}
-                    <li>
-                        {{ role.title }} at <span class="text-blue-400 text-md font-medium">{{ role.company }}</span>
+                    <li class="mb-2">
+                        {{ role.title -}}
+                        <p class="block sm:inline-block sm:ml-2 font-medium text-blue-400">
+                            <span class="mr-2 hidden sm:inline text-gray-400">@</span>{{ role.company }}
+                        </p>
                     </li>
                     {%- endif -%}
                     {%- endif -%}
