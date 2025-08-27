@@ -109,7 +109,7 @@ image: "/assets/images/jesus.webp"
         </div>
         {%- endif -%}
         {%- endfor -%}
-        <div class="mx-6">
+        <div class="mb-10 mx-4">
             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-500 rounded-full -left-3 ring-8 ring-gray-900">
             <i class="fas fa-briefcase text-white text-xs"></i>
             </span>
