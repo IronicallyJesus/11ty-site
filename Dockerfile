@@ -58,9 +58,6 @@ COPY --chown=appuser:appgroup healthcheck.js .
 COPY --chown=root:root entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Expose the port the server runs on
-EXPOSE 3000
-
 # Add a healthcheck to ensure the container is running correctly.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
   CMD ["su-exec", "appuser", "node", "healthcheck.js"]
