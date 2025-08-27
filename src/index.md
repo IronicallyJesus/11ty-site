@@ -86,7 +86,7 @@ image: "/assets/images/jesus.webp"
         {# Loop through and display all "featured" roles #}
         {%- for role in roles -%}
         {%- if role.featured -%}
-        <div class="mb-10 ml-6">
+        <div class="mb-10 mx-6">
             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-500 rounded-full -left-3 ring-8 ring-gray-900">
             <i class="fas fa-briefcase text-white text-xs"></i>
             </span>
@@ -109,7 +109,7 @@ image: "/assets/images/jesus.webp"
         </div>
         {%- endif -%}
         {%- endfor -%}
-        <div class="ml-6">
+        <div class="mx-6">
             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-500 rounded-full -left-3 ring-8 ring-gray-900">
             <i class="fas fa-briefcase text-white text-xs"></i>
             </span>
