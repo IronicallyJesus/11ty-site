@@ -114,8 +114,8 @@ image: "/assets/images/jesus.webp"
             <i class="fas fa-briefcase text-white text-xs"></i>
             </span>
             <div class="card">
-                <h3 class="text-lg font-semibold text-white">Previous Roles</h3>
-                <time class="block mb-2 text-sm font-normal leading-none text-gray-500">Since 2014</time>
+                <h3 class="text-lg font-semibold text-white mb-2">Previous Roles</h3>
+                <time class="block mb-2 text-sm font-normal leading-none text-gray-200 mb-2">Since 2014</time>
                 <ul class="list-disc list-inside text-gray-400">
                     {%- for role in roles -%}
                     {%- if not role.featured -%}
