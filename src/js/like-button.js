@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const slug = likeIcon.dataset.slug;
     const likeCountSpan = document.querySelector(`[data-like-count][data-slug="${slug}"]`);
     const storageKey = `liked-${slug}`;
+    let isRequestInProgress = false;
 
     // Function to update the UI based on liked state and count
     const updateUI = (isLiked, count) => {
@@ -48,6 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add click event listener to the icon
     likeIcon.addEventListener('click', async () => {
+        // If a request is already in progress, do nothing.
+        if (isRequestInProgress) {
+            return;
+        }
+        isRequestInProgress = true;
+
         // Stop the hint animation if it's running
         likeIcon.classList.remove('hint-animation');
         // Toggle the liked state
@@ -56,7 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const response = await fetch(`/api/likes/${slug}`, { method });
-            if (!response.ok) return;
+            if (!response.ok) {
+                throw new Error(`Server responded with ${response.status}`);
+            }
             const data = await response.json();
 
             const isNowLiked = !isCurrentlyLiked;
@@ -67,6 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error('Error submitting like/unlike:', error);
+        } finally {
+            isRequestInProgress = false;
         }
     });
 

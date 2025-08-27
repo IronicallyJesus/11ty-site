@@ -3,9 +3,14 @@ const cors = require('cors');
 const fs = require('fs-extra');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
+const { Mutex } = require('async-mutex');
 
 const app = express();
 const port = 3000;
+
+// Create mutexes to prevent race conditions when updating JSON files
+const viewsMutex = new Mutex();
+const likesMutex = new Mutex();
 
 // trust proxy:
 // Used by express-rate-limit to obtain the client's IP address.
@@ -97,6 +102,7 @@ app.get('/api/likes/:slug', validateSlug, async (req, res) => {
 
 // POST: Increment the view count for a specific post slug
 app.post('/api/views/:slug', validateSlug, async (req, res) => {
+    const release = await viewsMutex.acquire();
     try {
         const { slug } = req.params;
         const views = await fs.readJson(dbPath);
@@ -106,11 +112,14 @@ app.post('/api/views/:slug', validateSlug, async (req, res) => {
     } catch (error) {
         console.error('Error updating view count:', error);
         res.status(500).json({ error: 'Internal Server Error' });
+    } finally {
+        release();
     }
 });
 
 // POST: Increment the like count for a specific post slug
 app.post('/api/likes/:slug', validateSlug, async (req, res) => {
+    const release = await likesMutex.acquire();
     try {
         const { slug } = req.params;
         const likes = await fs.readJson(likesDbPath);
@@ -120,11 +129,14 @@ app.post('/api/likes/:slug', validateSlug, async (req, res) => {
     } catch (error) {
         console.error('Error updating like count:', error);
         res.status(500).json({ error: 'Internal Server Error' });
+    } finally {
+        release();
     }
 });
 
 // DELETE: Decrement the like count for a specific post slug (unlike)
 app.delete('/api/likes/:slug', validateSlug, async (req, res) => {
+    const release = await likesMutex.acquire();
     try {
         const { slug } = req.params;
         const likes = await fs.readJson(likesDbPath);
@@ -139,6 +151,8 @@ app.delete('/api/likes/:slug', validateSlug, async (req, res) => {
     } catch (error) {
         console.error('Error updating like count:', error);
         res.status(500).json({ error: 'Internal Server Error' });
+    } finally {
+        release();
     }
 });
 
