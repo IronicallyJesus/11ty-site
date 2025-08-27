@@ -91,15 +91,17 @@ image: "/assets/images/jesus.webp"
             <i class="fas fa-briefcase text-white text-xs"></i>
             </span>
             <div class="card">
-                <h3 class="flex items-center text-lg font-semibold text-white">
-                    {{ role.title }}
-                </h3>
-                {%- if role.company -%}
-                <p class="text-blue-400 text-md font-medium mb-2 ">
-                    {{ role.company }}
-                </p>
-                {%- endif -%}
-                <time class="block mb-2 text-sm font-normal leading-none text-gray-500">{{ role.time }}</time>
+                <div class="flex flex-col md:flex-row md:items-baseline md:gap-x-2 mb-2">
+                    <h3 class="text-lg font-semibold text-white">
+                        {{ role.title }}
+                    </h3>
+                    {%- if role.company -%}
+                    <p class="text-lg font-medium text-blue-400">
+                        <span class="hidden md:inline text-gray-400">@ </span>{{ role.company }}
+                    </p>
+                    {%- endif -%}
+                </div>
+                <time class="block mb-2 text-sm text-gray-200">{{ role.time }}</time>
                 {%- if role.description -%}
                 <p class="mb-4 text-base font-normal text-gray-400">{{ role.description }}</p>
                 {%- endif -%}
