@@ -5,6 +5,10 @@
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 
+# Arguments for user and group IDs. Default to a common non-root user ID.
+ARG UID=1000
+ARG GID=1000
+
 # STAGE 1: Dependencies
 # This stage installs all dependencies (dev and prod) from package-lock.json
 # It's used as a base for both development and builder stages to leverage caching.
@@ -38,21 +42,20 @@ RUN npm prune --production
 FROM node:18-alpine AS production
 WORKDIR /app
 
-# Create a non-root user for better security
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-
+# The node:18-alpine image comes with a non-root 'node' user (UID/GID 1000)
+# which we will use. We only need su-exec to drop privileges in the entrypoint.
 # Install su-exec for dropping privileges from root
 RUN apk add --no-cache su-exec
 
 # Copy only the necessary artifacts from the builder stage
 # Using --chown ensures the non-root user owns the files.
-COPY --from=builder --chown=appuser:appgroup /app/node_modules ./node_modules
-COPY --from=builder --chown=appuser:appgroup /app/package.json ./package.json
-COPY --from=builder --chown=appuser:appgroup /app/src/server.js .
-COPY --from=builder --chown=appuser:appgroup /app/_site ./_site
+COPY --from=builder --chown=node:node /app/node_modules ./node_modules
+COPY --from=builder --chown=node:node /app/package.json ./package.json
+COPY --from=builder --chown=node:node /app/src/server.js .
+COPY --from=builder --chown=node:node /app/_site ./_site
 # The _data directory is handled by the volume, but we copy it so the volume can be pre-populated on first run.
-COPY --from=builder --chown=appuser:appgroup /app/src/_data/ ./_data/
-COPY --chown=appuser:appgroup healthcheck.js .
+COPY --from=builder --chown=node:node /app/src/_data/ ./_data/
+COPY --chown=node:node healthcheck.js .
 
 # Copy and set up the entrypoint script
 COPY --chown=root:root entrypoint.sh /usr/local/bin/
@@ -60,7 +63,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Add a healthcheck to ensure the container is running correctly.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
-  CMD ["su-exec", "appuser", "node", "healthcheck.js"]
+  CMD ["su-exec", "node", "node", "healthcheck.js"]
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["node", "server.js"]
