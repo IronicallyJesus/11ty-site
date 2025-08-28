@@ -190,6 +190,13 @@ article li {
     cursor: pointer;
     color: #e2264d;
 }
+.like-icon:active {
+    color: #fff;
+    transform: scale(1.15);
+}
+.like-icon.liked:active {
+    transform: scale(1.15);
+}
 /* Apply hover effects only on devices that can hover to avoid sticky hover on mobile */
 @media (hover: hover) {
     .like-icon:hover {
