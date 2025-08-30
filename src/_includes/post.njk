@@ -18,21 +18,21 @@ layout: "layout.njk"
             <span>Published on {{ page.date | readableDate }}</span>
         </div>
         <!--- Views Section -->
-        <span class="hidden md:inline mx-2 text-gray-600">|</span>
+        <span class="hidden md:inline mx-2 text-gray-600">•</span>
         <div class="flex items-center mb-1 md:mb-0">
             <i class="fas fa-fw fa-eye mr-2"></i>
             <span class="view-count" data-view-count data-slug="{{ page.fileSlug }}">Loading views</span>
         </div>
         <!--- Comments Section -->
         <!---
-        <span class="hidden md:inline mx-2 text-gray-600">|</span>
+        <span class="hidden md:inline mx-2 text-gray-600">•</span>
         <div class="flex items-center mb-1 md:mb-0">
             <i class="fas fa-fw fa-comments mr-2"></i>
             <a href="#disqus_thread">Comments</a>
         </div>
          -->
         <!--- Likes Section -->
-        <span class="hidden md:inline mx-2 text-gray-600">|</span>
+        <span class="hidden md:inline mx-2 text-gray-600">•</span>
         <div class="flex items-center mb-1 md:mb-0">
             <i class="fas fa-fw fa-heart like-icon mr-2" data-like-button data-slug="{{ page.fileSlug }}"></i>
             <span class="like-count" data-like-count data-slug="{{ page.fileSlug }}">No likes</span>
