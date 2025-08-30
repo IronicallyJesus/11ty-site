@@ -41,9 +41,9 @@
         "--target",
         "production",
         "-t",
-        "git.twk95.net/twk95/eleventy:latest",
+        "git.twk95.net/twk95/11ty-site:latest",
         "-t",
-        "git.twk95.net/twk95/eleventy:${input:version}",
+        "git.twk95.net/twk95/11ty-site:${input:version}",
         ".",
         "--push"
       ],
