@@ -11,7 +11,7 @@ layout: "layout.njk"
     </div>
     {% endif %}
     <h1>{{ title }}</h1>
-    <div class="post-meta flex flex-col md:flex-row md:items-center text-gray-400">
+    <div class="post-meta flex flex-col items-start md:flex-row md:items-center text-gray-400">
         <!--- Date Section -->
         <div class="flex items-center mb-1">
             <i class="fas fa-fw fa-calendar-alt mr-2"></i>
@@ -33,8 +33,8 @@ layout: "layout.njk"
          -->
         <!--- Likes Section -->
         <span class="hidden md:inline mx-2 text-gray-600">•</span>
-        <div class="flex items-center mb-1">
-            <i class="fas fa-fw fa-heart like-icon mr-2" data-like-button data-slug="{{ page.fileSlug }}"></i>
+        <div class="flex items-center mb-1 like-icon" data-like-button data-slug="{{ page.fileSlug }}">
+            <i class="fas fa-fw fa-heart mr-2"></i>
             <span class="like-count" data-like-count data-slug="{{ page.fileSlug }}">No likes</span>
         </div>
     </div>
