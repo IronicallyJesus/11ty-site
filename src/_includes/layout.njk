@@ -1,4 +1,5 @@
-<!doctype html><!-- HTML5 -->
+<!doctype html>
+<!-- HTML5 -->
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -23,6 +24,7 @@
         <meta name="twitter:description" content="{{ description }}">
         <meta name="twitter:image" content="{{ site.url }}{{ image }}">
         <!-- Structured Data (JSON-LD) -->
+        {% if date %}
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
@@ -34,13 +36,14 @@
                     "@type": "Person",
                     "name": "{{ site.author.name }}"
                 },
-                "datePublished": "{{ date }}",
+                "datePublished": "{{ date | htmlDateString }}",
                 "mainEntityOfPage": {
                     "@type": "WebPage",
                     "@id": "{{ site.url }}{{ page.url }}"
                     }
             }
         </script>
+        {% endif %}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,8 +67,8 @@
                     <a href="/resume" class="btn">View Resume</a>
                 </div>
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-white focus:outline-none">
-                    <i class="fas fa-bars text-2xl" aria-label="Toggle mobile menu" role="img"></i>
+                    <button id="mobile-menu-button" class="text-white focus:outline-none" aria-label="Toggle mobile menu">
+                    <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
                     </button>
                 </div>
             </nav>
@@ -87,7 +90,7 @@
         </main>
         <!-- Footer -->
         <footer class="bg-gray-900 text-gray-400 py-6">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-6 text-center">
                 <div class="flex justify-center space-x-6 mb-4">
                     <a href="{{ site.author.linkedinUrl }}" target="_blank" class="hover:text-blue-400" aria-label="LinkedIn profile of {{ site.author.name }}"><i class="fab fa-linkedin fa-2x" aria-hidden="true"></i></a>
                     <a href="mailto:{{ site.author.email }}" class="hover:text-blue-400" aria-label="Email {{ site.author.name }}"><i class="fas fa-envelope fa-2x" aria-hidden="true"></i></a>
