@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "An Eleventy project with Docker and VS Code debugging.",
   "scripts": {
-    "start": "eleventy --serve",
-    "debug": "node --inspect=0.0.0.0:9229 ./node_modules/.bin/eleventy --serve --watch",
-    "build": "eleventy"
+    "build:css": "tailwindcss -i ./src/css/input.css -o ./src/css/style.css --minify",
+    "watch:css": "tailwindcss -i ./src/css/input.css -o ./src/css/style.css --watch",
+    "start": "npm-run-all -p serve watch:css",
+    "serve": "eleventy --serve",
+    "debug": "npm-run-all -p debug:eleventy watch:css",
+    "debug:eleventy": "node --inspect=0.0.0.0:9229 ./node_modules/.bin/eleventy --serve --watch",
+    "build": "npm run build:css && eleventy"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +25,10 @@
     "luxon": "^3.7.1"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.19",
     "http-proxy-middleware": "^3.0.0",
-    "nodemon": "^3.1.0"
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3"
   }
 }
