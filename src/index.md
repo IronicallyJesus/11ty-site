@@ -68,7 +68,7 @@ image: "/assets/images/jesus.webp"
             <div class="card space-y-4">
                 {%- for certification in certifications -%}
                 <div class="flex items-center">
-                    <i class="fas fa-certificate icon text-yellow-400"></i>
+                    <i class="fas fa-certificate icon text-yellow-400" aria-hidden="true"></i>
                     <div>
                         <h4 class="font-bold text-white">{{ certification.name }}</h4>
                         <p class="text-gray-400">Expires: {{ certification.expires }}</p>
@@ -88,7 +88,7 @@ image: "/assets/images/jesus.webp"
         {%- if role.featured -%}
         <div class="mb-10 mx-4">
             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-500 rounded-full -left-3 ring-8 ring-gray-900">
-            <i class="fas fa-briefcase text-white text-xs"></i>
+            <i class="fas fa-briefcase text-white text-xs" aria-hidden="true"></i>
             </span>
             <div class="card">
                 <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-x-2 mb-2">
@@ -111,7 +111,7 @@ image: "/assets/images/jesus.webp"
         {%- endfor -%}
         <div class="mb-10 mx-4">
             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-500 rounded-full -left-3 ring-8 ring-gray-900">
-            <i class="fas fa-briefcase text-white text-xs"></i>
+            <i class="fas fa-briefcase text-white text-xs" aria-hidden="true"></i>
             </span>
             <div class="card">
                 <h3 class="text-lg font-semibold text-white mb-2">Previous Roles</h3>
@@ -141,8 +141,8 @@ image: "/assets/images/jesus.webp"
         <p class="text-center text-gray-400 mb-8">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision.</p>
         <form action="https://formspree.io/f/mnnzgdak" method="POST">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 rounded bg-gray-900 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 rounded bg-gray-900 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="text" name="name" autocomplete="name"  placeholder="Your Name" required class="w-full p-3 rounded bg-gray-900 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="email" name="email" autocomplete="family-name" placeholder="Your Email" required class="w-full p-3 rounded bg-gray-900 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
             <textarea name="message" placeholder="Your Message" rows="5" required class="w-full p-3 rounded bg-gray-900 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-6"></textarea>
             <div class="text-center">
