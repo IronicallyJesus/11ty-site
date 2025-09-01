@@ -35,7 +35,7 @@ COPY . .
 # Build the site. Requires a "build": "eleventy" script in package.json
 RUN npm run build
 # After building, remove development dependencies to keep the final image small.
-RUN npm prune --production
+RUN npm prune --omit=dev
 
 # STAGE 4: Production
 # This stage creates a lean, production-ready image.
@@ -63,7 +63,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Add a healthcheck to ensure the container is running correctly.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
-  CMD ["su-exec", "node", "node", "healthcheck.js"]
+  CMD ["su-exec", "node", "healthcheck.js"]
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["node", "server.js"]
