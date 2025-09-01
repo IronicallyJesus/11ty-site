@@ -3,3 +3,5 @@ _site
 .DS_Store
 src/_data/views.json
 src/_data/likes.json
+
+src/css/style.css

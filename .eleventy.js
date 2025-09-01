@@ -4,14 +4,15 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = function(eleventyConfig) {
 
-  // Pass through static assets from the "src" directory
-  eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/resume");
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy({ "src/favicon" : "/" } );
   eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' });
   eleventyConfig.addPassthroughCopy({ 'src/sitemap.xml': '/sitemap.xml' });
+  eleventyConfig.addPassthroughCopy("./src/css/style.css");
+  eleventyConfig.addPassthroughCopy("./src/css/prism-tomorrow.css");
+
 
   eleventyConfig.addPlugin(syntaxHighlight);
 
@@ -59,6 +60,9 @@ module.exports = function(eleventyConfig) {
       ],
     });
   }
+
+  // Watch the Tailwind config file for changes
+  eleventyConfig.addWatchTarget("./tailwind.config.js");
 
   return {
     // Set the source and output directories
