@@ -51,7 +51,7 @@ RUN apk add --no-cache su-exec
 # Using --chown ensures the non-root user owns the files.
 COPY --from=builder --chown=node:node /app/node_modules ./node_modules
 COPY --from=builder --chown=node:node /app/package.json ./package.json
-COPY --from=builder --chown=node:node /app/src/server.js .
+COPY --from=builder --chown=node:node /app/server.js .
 COPY --from=builder --chown=node:node /app/_site ./_site
 # The _data directory is handled by the volume, but we copy it so the volume can be pre-populated on first run.
 COPY --from=builder --chown=node:node /app/src/_data/ ./_data/
