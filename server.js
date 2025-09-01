@@ -40,8 +40,8 @@ const apiLimiter = rateLimit({
 app.use('/api/', apiLimiter);
 
 // Path to the file where metadata counts will be stored
-const dbPath = path.join(__dirname, '_data', 'views.json');
-const likesDbPath = path.join(__dirname, '_data', 'likes.json');
+const dbPath = path.join(__dirname, 'src/_data', 'views.json');
+const likesDbPath = path.join(__dirname, 'src/_data', 'likes.json');
 
 // Ensure the data directory and the .json files exist
 fs.ensureFileSync(dbPath);
