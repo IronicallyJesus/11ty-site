@@ -1,8 +1,15 @@
 [
     { 
+        "title": "Service Activation Engineer II", 
+        "company": "Sparklight",
+        "time": "September 2024 - Present",
+        "featured": true,
+        "description": "Recently promoted to Service Activation Engineer II, taking on greater responsibilities in network design and service deployment. Continuing to lead initiatives that improve service activation processes and customer satisfaction."
+    },
+    { 
         "title": "Service Activation Engineer I", 
         "company": "Sparklight",
-        "time": "June 2024 - Present",
+        "time": "June 2024 - August 2025",
         "featured": true,
         "description": "Expertly activated new DIA, EPL, and Cellular Backhaul Ethernet services through design, deployment, and testing. Proactively identified and resolved network constraints to facilitate multi-gigabit services. Led a company initiative to deploy new CPE for Active Ethernet services."
     },
