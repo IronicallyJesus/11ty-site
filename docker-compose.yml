@@ -52,8 +52,8 @@ services:
       - dev_network
     # Use Node's built-in --watch mode instead of nodemon. It can be more
     # stable inside Docker and avoids some of nodemon's complexities. The
-    # --inspect flag has been moved to the eleventy service.
-    command: node --watch src/server.js
+    # --inspect flag is attached to the 'eleventy' service for debugging.
+    command: node --watch server.js
 
 networks:
   dev_network:
