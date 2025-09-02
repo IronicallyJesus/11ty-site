@@ -12,6 +12,8 @@ jobs:
     container:
       image: docker:latest
     runs-on: runner-latest
+    permissions:
+      packages: write
 
     steps:
       - name: Install Dependencies
