@@ -2,8 +2,8 @@ name: Build and Push Docker Image to Gitea
 run-name: Build and Push Docker Image for ${{ gitea.ref_name }} by @${{ gitea.actor }}
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*.*.*' 
 
 jobs:
   build-and-push-to-gitea:
@@ -27,11 +27,12 @@ jobs:
           username: ${{ gitea.actor }}
           password: ${{ secrets.PUSH_TOKEN }}
 
-      - name: Prepare image tag
+      - name: Prepare image tags
         id: prep
         run: |
           HOST=$(echo ${{ gitea.server_url }} | sed -e 's|^https://||')
-          echo "tag=${HOST}/${{ gitea.repository }}:latest" >> $GITEA_OUTPUT
+          # Prepare two tags: one with the version and one with 'latest'
+          echo "tags=${HOST}/${{ gitea.repository }}:${VERSION},${HOST}/${{ gitea.repository }}:latest" >> $GITEA_OUTPUT
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -45,5 +46,5 @@ jobs:
           context: .
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: ${{ steps.prep.outputs.tag }}
-
+          tags: ${{ steps.prep.outputs.tags }}
+          
