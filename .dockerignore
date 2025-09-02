@@ -6,12 +6,10 @@
 
 # Docker files should not be in the build context
 Dockerfile
-docker-compose.yml
-docker-compose.dev.yml
 
 # Node.js dependencies are installed inside the container
 node_modules
-npm-debug.log
+npm-debug.log*
 
 # Build output is generated inside the container
 _site

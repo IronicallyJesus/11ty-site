@@ -2,16 +2,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Docker: Attach to Node",
+      "name": "Debug Eleventy",
       "type": "node",
-      "request": "attach",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "start"
+      ],
       "port": 9229,
-      "address": "localhost",
-      "localRoot": "${workspaceFolder}",
-      "remoteRoot": "/app",
-      "restart": false,
-      "preLaunchTask": "docker-compose-up",
-      "postDebugTask": "docker-compose-down"
+      "console": "integratedTerminal",
+      "serverReadyAction": {
+        "pattern": "Web Server running at (http://localhost:[0-9]+)",
+        "uriFormat": "%s",
+        "action": "openExternally"
+      }
     }
   ]
 }
