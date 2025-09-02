@@ -11,6 +11,3 @@ sitemapPriority: 0.5
 sitemapChangefreq: "never"
 image: "/assets/images/8.5.25/11ty.jpg"
 ---
-
-![Banner Image]({{ image }}#center)
-<br/>
