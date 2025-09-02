@@ -4,14 +4,17 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = function(eleventyConfig) {
 
+  // Add a global data property for the build time
+  eleventyConfig.addGlobalData("buildTime", () => new Date().getTime());
+
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/resume");
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy({ "src/favicon" : "/" } );
   eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' });
   eleventyConfig.addPassthroughCopy({ 'src/sitemap.xml': '/sitemap.xml' });
-  eleventyConfig.addPassthroughCopy("./src/css/style.css");
-  eleventyConfig.addPassthroughCopy("./src/css/prism-tomorrow.css");
+  eleventyConfig.addPassthroughCopy("src/css/style.css");
+  eleventyConfig.addPassthroughCopy("src/css/prism-tomorrow.css");
 
 
   eleventyConfig.addPlugin(syntaxHighlight);
@@ -54,7 +57,7 @@ module.exports = function(eleventyConfig) {
       middleware: [
         createProxyMiddleware({
           pathFilter: '/api/**',
-          target: 'http://api:3000', // The 'api' service container
+          target: 'http://localhost:3000', // The local API server
           changeOrigin: true,
         }),
       ],
