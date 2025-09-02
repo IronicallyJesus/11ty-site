@@ -18,17 +18,7 @@ COPY package*.json ./
 # Use `npm ci` for faster, more reliable builds from package-lock.json
 RUN npm ci
 
-# STAGE 2: Development
-# This stage is for local development. It includes devDependencies and source code.
-# In docker-compose.dev.yml, the source is mounted for hot-reloading.
-FROM deps AS development
-
-# The source code is mounted via docker-compose for development,
-# so we don't need to COPY it into the image. This keeps the dev image small.
-# We only need the WORKDIR and the installed node_modules from the 'deps' stage.
-CMD ["npm", "start"]
-
-# STAGE 3: Builder
+# STAGE 2: Builder
 # This stage builds the Eleventy site for production.
 FROM deps AS builder
 COPY . .
@@ -37,7 +27,7 @@ RUN npm run build
 # After building, remove development dependencies to keep the final image small.
 RUN npm prune --omit=dev
 
-# STAGE 4: Production
+# STAGE 3: Production
 # This stage creates a lean, production-ready image.
 FROM node:18-alpine AS production
 WORKDIR /app
@@ -53,8 +43,11 @@ COPY --from=builder --chown=node:node /app/node_modules ./node_modules
 COPY --from=builder --chown=node:node /app/package.json ./package.json
 COPY --from=builder --chown=node:node /app/server.js .
 COPY --from=builder --chown=node:node /app/_site ./_site
-# The _data directory is handled by the volume, but we copy it so the volume can be pre-populated on first run.
-COPY --from=builder --chown=node:node /app/src/_data/ ./_data/
+
+# Copy the data directory. The server writes view counts here.
+# This directory should be mounted as a volume
+# to persist the view count data across container restarts.
+COPY --from=builder --chown=node:node /app/src/_data ./_data
 COPY --chown=node:node healthcheck.js .
 
 # Copy and set up the entrypoint script
