@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-and-push-to-gitea:
-    runs-on: docker
+    runs-on: runner-latest
 
     steps:
       - name: Checkout repository
