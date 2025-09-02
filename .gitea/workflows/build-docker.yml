@@ -31,7 +31,7 @@ jobs:
         id: prep
         run: |
           HOST=$(echo ${{ gitea.server_url }} | sed -e 's|^https://||')
-          # Prepare two tags: one with the version and one with 'latest'
+          VERSION=${{ gitea.ref_name }}
           echo "tags=${HOST}/${{ gitea.repository }}:${VERSION},${HOST}/${{ gitea.repository }}:latest" >> $GITEA_OUTPUT
 
       - name: Set up QEMU
