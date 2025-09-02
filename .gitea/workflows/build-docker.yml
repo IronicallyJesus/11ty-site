@@ -9,6 +9,9 @@ jobs:
   build-and-push-to-gitea:
     runs-on: runner-latest
 
+    container:
+      image: docker:latest
+
     steps:
       - name: Install Dependencies
         run: |
