@@ -109,7 +109,7 @@ image: "/assets/images/jesus.webp"
         </div>
         {%- endif -%}
         {%- endfor -%}
-        <div class="mb-10 mx-4">
+        <div class="mx-4">
             <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-500 rounded-full -left-3 ring-8 ring-gray-900">
             <i class="fas fa-briefcase text-white text-xs" aria-hidden="true"></i>
             </span>
@@ -134,6 +134,28 @@ image: "/assets/images/jesus.webp"
         </div>
     </div>
 </section>
+<!-- Blog Posts Section -->
+<section id="blog" class="py-16">
+    <h2 class="text-3xl font-bold text-center section-title">Latest Blog Posts</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {%- set postCount = 0 -%}
+        {%- for post in collections.blog | reverse -%}
+            {%- if not post.data.draft and postCount < 3 -%}
+                {%- set postCount = postCount + 1 -%}
+                <a href="{{ post.url }}" class="card flex flex-col group">
+                    {% if post.data.image %}
+                    <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="rounded-t-lg mb-4 object-cover h-48 w-full">
+                    {% endif %}
+                    <h3 class="text-xl font-bold text-white mb-2 transition-colors group-hover:text-blue-400">{{ post.data.title }}</h3>
+                    <p class="text-gray-400 text-sm mb-4">{{ post.data.excerpt or post.data.description }}</p>
+                    <span class="text-blue-400 group-hover:text-blue-500 font-medium flex items-center mt-auto transition-colors">
+                        Read More <i class="fas fa-arrow-right ml-2"></i>
+                    </span>
+                </a>
+            {%- endif -%}
+        {%- endfor -%}
+    </div>
+</section>
 <!-- Contact Section -->
 <section id="contact" class="py-16">
     <div class="glass-card max-w-3xl mx-auto p-8 md:p-12 rounded-lg">
@@ -141,8 +163,8 @@ image: "/assets/images/jesus.webp"
         <p class="text-center text-gray-400 mb-8">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision.</p>
         <form action="https://formspree.io/f/mnnzgdak" method="POST">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <input type="text" name="name" autocomplete="name"  placeholder="Your Name" required class="w-full p-3 rounded bg-gray-900 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <input type="email" name="email" autocomplete="family-name" placeholder="Your Email" required class="w-full p-3 rounded bg-gray-900 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="text" name="name" autocomplete="name" placeholder="Your Name" required class="w-full p-3 rounded bg-gray-900 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="email" name="email" autocomplete="email" placeholder="Your Email" required class="w-full p-3 rounded bg-gray-900 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
             <textarea name="message" placeholder="Your Message" rows="5" required class="w-full p-3 rounded bg-gray-900 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-6"></textarea>
             <div class="text-center">
