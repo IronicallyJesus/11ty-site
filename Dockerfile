@@ -56,7 +56,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Add a healthcheck to ensure the container is running correctly.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
-  CMD ["su-exec", "node", "healthcheck.js"]
+  CMD ["node", "healthcheck.js"]
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["node", "server.js"]
