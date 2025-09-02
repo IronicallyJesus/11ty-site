@@ -1,4 +1,3 @@
-
 name: Build and Push Docker Image to Gitea
 run-name: Build and Push Docker Image for ${{ gitea.ref_name }} by @${{ gitea.actor }}
 on:
@@ -23,7 +22,7 @@ jobs:
         with:
           registry: ${{ gitea.server_url }}
           username: ${{ gitea.actor }}
-          password: ${{ secrets.GITEA_PUSH_TOKEN }}
+          password: ${{ secrets.PUSH_TOKEN }}
 
       - name: Prepare image tag
         id: prep
