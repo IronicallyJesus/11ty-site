@@ -245,7 +245,7 @@ article li {
     }
 }
 .hint-animation {
-    animation: wobble 1s ease-in-out 1;
+    animation: wobble 1s ease-in-out 3;
 }
 @keyframes wobble {
     0%, 100% { transform: translateX(0) rotate(0deg) scale(1); }
