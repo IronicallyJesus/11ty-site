@@ -2,37 +2,48 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Docker: Build and Push Production Image",
-      "type": "shell",
-      "command": "docker",
-      "args": [
-        "buildx",
-        "build",
-        "--platform",
-        "linux/amd64,linux/arm64",
-        "--target",
-        "production",
-        "-t",
-        "git.twk95.net/twk95/11ty-site:latest",
-        "-t",
-        "git.twk95.net/twk95/11ty-site:${input:version}",
-        ".",
-        "--push"
+      "label": "Release: Tag, Push and Publish",
+      "dependsOn": [
+        "Git: Create Tag",
+        "Git: Push Tag",
+        "Docker: Build and Push Production Image"
       ],
-      "problemMatcher": [],
+      "dependsOrder": "sequence",
       "group": {
         "kind": "build",
         "isDefault": true
       },
-      "detail": "Builds and pushes a multi-platform production image to your container registry."
+      "problemMatcher": [],
+      "detail": "Creates a git tag, pushes it, then builds and pushes a multi-platform production image."
+    },
+    {
+      "label": "Git: Create Tag",
+      "type": "shell",
+      "command": "git",
+      "args": [
+        "tag",
+        "v${input:version}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Git: Push Tag",
+      "type": "shell",
+      "command": "git",
+      "args": [
+        "push",
+        "origin",
+        "v${input:version}"
+      ],
+      "problemMatcher": []
     }
   ],
   "inputs": [
     {
       "id": "version",
       "type": "promptString",
-      "description": "Enter the version tag for the image (e.g., 1.0.0)",
-      "default": "1.0.0"
+      "description": "Enter the version for the tag and image (e.g., 1.0.0)",
+      "default": "1.3.0"
     }
   ]
 }
