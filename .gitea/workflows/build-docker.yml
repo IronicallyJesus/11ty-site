@@ -12,8 +12,6 @@ jobs:
     container:
       image: docker:latest
     runs-on: runner-latest
-    permissions:
-      packages: write
 
     steps:
       - name: Install Dependencies
@@ -28,7 +26,7 @@ jobs:
         with:
           registry: ${{ gitea.server_url }}
           username: ${{ gitea.actor }}
-          password: ${{ secrets.GITEA_TOKEN }}
+          password: ${{ secrets.PUSH_TOKEN }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
