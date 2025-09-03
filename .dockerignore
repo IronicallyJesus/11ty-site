@@ -1,4 +1,5 @@
 # .dockerignore
+.gitea/*
 
 .git
 .gitignore
