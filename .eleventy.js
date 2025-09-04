@@ -13,7 +13,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/favicon" : "/" } );
   eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' });
   eleventyConfig.addPassthroughCopy({ 'src/sitemap.xml': '/sitemap.xml' });
-  eleventyConfig.addPassthroughCopy("src/css/style.css");
   eleventyConfig.addPassthroughCopy("src/css/prism-tomorrow.css");
 
 
@@ -66,6 +65,7 @@ module.exports = function(eleventyConfig) {
 
   // Watch the Tailwind config file for changes
   eleventyConfig.addWatchTarget("./tailwind.config.js");
+  eleventyConfig.addWatchTarget("_site/css/style.css");
 
   return {
     // Set the source and output directories
