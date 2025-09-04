@@ -3,34 +3,33 @@
   "version": "1.0.0",
   "description": "An Eleventy project with Docker and VS Code debugging.",
   "scripts": {
-    "build:css": "tailwindcss -i ./src/css/input.css -o ./src/css/style.css --minify",
-    "watch:css": "tailwindcss -i ./src/css/input.css -o ./src/css/style.css --watch",
+    "prestart": "npm run build:css",
     "start": "npm-run-all -p serve watch:css dev:api",
     "serve": "eleventy --serve",
-    "debug": "npm-run-all -p debug:eleventy watch:css dev:api",
-    "debug:eleventy": "node --inspect=0.0.0.0:9229 ./node_modules/.bin/eleventy --serve --watch",
+    "watch:css": "tailwindcss -i ./src/css/input.css -o ./_site/css/style.css --watch",
     "dev:api": "node --watch server.js",
-    "build": "npm run build:css && eleventy"
+    "build": "npm run build:css && eleventy",
+    "build:css": "tailwindcss -i ./src/css/input.css -o ./_site/css/style.css --minify"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@11ty/eleventy": "^3.1.2",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
-    "@tailwindcss/postcss": "^4.1.12",
-    "async-mutex": "^0.5.0",
-    "autoprefixer": "^10.4.19",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "express-rate-limit": "^8.0.1",
-    "fs-extra": "^11.3.1",
-    "luxon": "^3.7.1",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.17"
+    "async-mutex": "^0.5.0",
+    "fs-extra": "^11.3.1"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "@tailwindcss/postcss": "^4.1.12",
     "http-proxy-middleware": "^3.0.0",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "tailwindcss": "^3.4.17",
+    "postcss": "^8.4.38",
+    "luxon": "^3.7.1"
   }
 }
