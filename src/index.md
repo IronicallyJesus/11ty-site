@@ -115,7 +115,7 @@ image: "/assets/images/jesus.webp"
             </span>
             <div class="card">
                 <h3 class="text-lg font-semibold text-white mb-2">Previous Roles</h3>
-                <time class="block mb-2 text-sm font-normal leading-none text-gray-200 mb-2">Since 2014</time>
+                <time class="block mb-2 text-sm font-normal leading-none text-gray-200">Since 2014</time>
                 <ul class="list-disc list-outside pl-4 text-base font-normal text-gray-400">
                     {%- for role in roles -%}
                     {%- if not role.featured -%}
