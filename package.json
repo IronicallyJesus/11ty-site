@@ -4,8 +4,8 @@
   "description": "An Eleventy project with Docker and VS Code debugging.",
   "scripts": {
     "prestart": "npm run build:css",
-    "start": "npm-run-all -p serve watch:css dev:api",
-    "serve": "eleventy --serve",
+    "start": "npm-run-all -p watch:eleventy watch:css dev:api",
+    "watch:eleventy": "eleventy --watch",
     "watch:css": "tailwindcss -i ./src/css/input.css -o ./_site/css/style.css --watch",
     "dev:api": "node --watch server.js",
     "build": "npm run build:css && eleventy",
