@@ -2,11 +2,10 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Release: Tag, Push and Publish",
+      "label": "Release: Tag and Push",
       "dependsOn": [
         "Git: Create Tag",
-        "Git: Push Tag",
-        "Docker: Build and Push Production Image"
+        "Git: Push Tag"
       ],
       "dependsOrder": "sequence",
       "group": {
@@ -14,7 +13,7 @@
         "isDefault": true
       },
       "problemMatcher": [],
-      "detail": "Creates a git tag, pushes it, then builds and pushes a multi-platform production image."
+      "detail": "Creates a git tag and pushes it"
     },
     {
       "label": "Git: Create Tag",
@@ -36,6 +35,25 @@
         "v${input:version}"
       ],
       "problemMatcher": []
+    },
+    {
+      "label": "Docker: Build and Push Production Image",
+      "type": "shell",
+      "command": "docker",
+      "args": [
+        "buildx",
+        "build",
+        "--platform",
+        "linux/amd64,linux/arm64",
+        "-t",
+        "git.twk95.net/twk95/11ty-site:v${input:version}",
+        "-t",
+        "git.twk95.net/twk95/11ty-site:latest",
+        "--push",
+        "."
+      ],
+      "problemMatcher": [],
+      "detail": "Build a production image and push it"
     }
   ],
   "inputs": [
