@@ -144,7 +144,7 @@ image: "/assets/images/jesus.webp"
                 {%- set postCount = postCount + 1 -%}
                 <a href="{{ post.url }}" class="card flex flex-col group">
                     {% if post.data.image %}
-                    <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="rounded-t-lg mb-4 object-cover h-48 w-full">
+                    <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="rounded-t-lg mb-4 object-cover h-48 w-full" loading="lazy">
                     {% endif %}
                     <h3 class="text-xl font-bold text-white mb-2 transition-colors group-hover:text-blue-400">{{ post.data.title }}</h3>
                     <p class="text-gray-400 text-sm mb-4">{{ post.data.excerpt or post.data.description }}</p>

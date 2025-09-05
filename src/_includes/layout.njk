@@ -44,13 +44,13 @@
             }
         </script>
         {% endif %}
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+        <link rel="preload" href="/assets/googlefonts/ibm-plex-sans-v22-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/googlefonts/red-hat-mono-v15-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="stylesheet" href="/css/style.css?v={{ buildTime }}">
         <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="/css/prism-tomorrow.css?v={{ buildTime }}">
         <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+        <link rel="preload" as="image" href="{{ image }}">
     </head>
     <body class="antialiased">
         <!-- Header & Nav -->
