@@ -38,7 +38,7 @@ image: "/assets/images/jesus.webp"
         {%- for service in services -%}
         <div class="card">
             <div class="flex md:flex-row items-center mb-2">
-                <i class="fas {{ service.icon }} icon"></i>
+                <i class="fa-solid {{ service.icon }} icon"></i>
                 <h3 class="text-xl font-bold text-white">{{ service.name }}</h3>
             </div>
             <p class="text-gray-400">{{ service.description }}</p>
@@ -68,7 +68,7 @@ image: "/assets/images/jesus.webp"
             <div class="card space-y-4">
                 {%- for certification in certifications -%}
                 <div class="flex items-center">
-                    <i class="fas fa-certificate icon text-yellow-400" aria-hidden="true"></i>
+                    <i class="fa-solid fa-certificate icon mr-5 text-yellow-400" aria-hidden="true"></i>
                     <div>
                         <h4 class="font-bold text-white">{{ certification.name }}</h4>
                         <p class="text-gray-400">Expires: {{ certification.expires }}</p>
@@ -87,8 +87,8 @@ image: "/assets/images/jesus.webp"
         {%- for role in roles -%}
         {%- if role.featured -%}
         <div class="mb-10 mx-4">
-            <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-500 rounded-full -left-3 ring-8 ring-gray-900">
-            <i class="fas fa-briefcase text-white text-xs" aria-hidden="true"></i>
+            <span class="absolute flex items-center justify-center w-8 h-8 bg-blue-500 rounded-full -left-4 ring-8 ring-gray-900">
+            <i class="fa-solid fa-briefcase text-white" aria-hidden="true"></i>
             </span>
             <div class="card">
                 <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-x-2 mb-2">
@@ -110,8 +110,8 @@ image: "/assets/images/jesus.webp"
         {%- endif -%}
         {%- endfor -%}
         <div class="mx-4">
-            <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-500 rounded-full -left-3 ring-8 ring-gray-900">
-            <i class="fas fa-briefcase text-white text-xs" aria-hidden="true"></i>
+            <span class="absolute flex items-center justify-center w-8 h-8 bg-blue-500 rounded-full -left-4 ring-8 ring-gray-900">
+            <i class="fa-solid fa-briefcase text-white" aria-hidden="true"></i>
             </span>
             <div class="card">
                 <h3 class="text-lg font-semibold text-white mb-2">Previous Roles</h3>
@@ -149,7 +149,7 @@ image: "/assets/images/jesus.webp"
                     <h3 class="text-xl font-bold text-white mb-2 transition-colors group-hover:text-blue-400">{{ post.data.title }}</h3>
                     <p class="text-gray-400 text-sm mb-4">{{ post.data.excerpt or post.data.description }}</p>
                     <span class="text-blue-400 group-hover:text-blue-500 font-medium flex items-center mt-auto transition-colors">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
+                        Read More <i class="fa-solid fa-arrow-right ml-2"></i>
                     </span>
                 </a>
             {%- endif -%}

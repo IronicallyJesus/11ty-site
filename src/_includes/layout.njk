@@ -44,11 +44,11 @@
             }
         </script>
         {% endif %}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/css/style.css?v={{ buildTime }}">
+        <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="/css/prism-tomorrow.css?v={{ buildTime }}">
         <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     </head>
@@ -68,7 +68,7 @@
                 </div>
                 <div class="md:hidden">
                     <button id="mobile-menu-button" class="text-white focus:outline-none" aria-label="Toggle mobile menu">
-                    <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
+                    <i class="fa-solid fa-bars text-2xl" aria-hidden="true"></i>
                     </button>
                 </div>
             </nav>
@@ -92,8 +92,8 @@
         <footer class="bg-gray-900 text-gray-400 py-6">
             <div class="container mx-auto px-6 text-center">
                 <div class="flex justify-center space-x-6 mb-4">
-                    <a href="{{ site.author.linkedinUrl }}" target="_blank" class="hover:text-blue-400" aria-label="LinkedIn profile of {{ site.author.name }}"><i class="fab fa-linkedin fa-2x" aria-hidden="true"></i></a>
-                    <a href="mailto:{{ site.author.email }}" class="hover:text-blue-400" aria-label="Email {{ site.author.name }}"><i class="fas fa-envelope fa-2x" aria-hidden="true"></i></a>
+                    <a href="{{ site.author.linkedinUrl }}" target="_blank" class="hover:text-blue-400 icon" aria-label="LinkedIn profile of {{ site.author.name }}"><i class="fa-brands fa-linkedin fa-xl" aria-hidden="true"></i></a>
+                    <a href="mailto:{{ site.author.email }}" class="hover:text-blue-400 icon" aria-label="Email {{ site.author.name }}"><i class="fa-solid fa-envelope fa-xl" aria-hidden="true"></i></a>
                 </div>
                 <p>&copy; {% year %} {{ site.author.name }}. All Rights Reserved.</p>
             </div>
