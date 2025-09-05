@@ -14,7 +14,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' });
   eleventyConfig.addPassthroughCopy({ 'src/sitemap.xml': '/sitemap.xml' });
   eleventyConfig.addPassthroughCopy("src/css/prism-tomorrow.css");
-  eleventyConfig.addPassthroughCopy("src/vendor/fontawesome");
+  eleventyConfig.addPassthroughCopy("src/assets/fontawesome");
 
 
   eleventyConfig.addPlugin(syntaxHighlight);
