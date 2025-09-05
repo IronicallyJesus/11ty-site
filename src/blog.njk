@@ -15,10 +15,10 @@ eleventyExcludeFromCollections: true
         <a href="{{ post.url }}" class="text-blue-400 hover:text-blue-500">{{ post.data.title }}</a>
       </h2>
       <div class="flex items-center text-gray-400 mb-4">
-        <i class="fas fa-calendar-alt mr-2" aria-hidden="true"></i>
+        <i class="fa-solid fa-calendar mr-2" aria-hidden="true"></i>
         <p>{{ post.date | readableDate }}</p>
         <span class="mx-2 text-gray-600">|</span>
-        <i class="fas fa-eye mr-2" aria-hidden="true"></i>
+        <i class="fa-solid fa-eye mr-2" aria-hidden="true"></i>
         <span class="view-count" data-view-count data-slug="{{ post.fileSlug }}">...</span>
       </div>
       {% if post.data.excerpt %}
