@@ -46,9 +46,9 @@
         "--platform",
         "linux/amd64,linux/arm64",
         "-t",
-        "git.twk95.net/twk95/11ty-site:v${input:version}",
+        "git.twk95.com/twk95/11ty-site:v${input:version}",
         "-t",
-        "git.twk95.net/twk95/11ty-site:latest",
+        "git.twk95.com/twk95/11ty-site:latest",
         "--push",
         "."
       ],
