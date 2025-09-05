@@ -4,6 +4,38 @@
 html, body {
     height: 100%;
 }
+/* red-hat-mono-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Red Hat Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/googlefonts/red-hat-mono-v15-latin-regular.woff2') format('woff2');
+}
+/* red-hat-mono-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Red Hat Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/assets/googlefonts/red-hat-mono-v15-latin-700.woff2') format('woff2');
+}
+/* ibm-plex-sans-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/googlefonts/ibm-plex-sans-v22-latin-regular.woff2') format('woff2');
+}
+/* ibm-plex-sans-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/assets/googlefonts/ibm-plex-sans-v22-latin-700.woff2') format('woff2');
+}
 body {
     font-family: 'IBM Plex Sans', sans-serif;
     background-color: #1a202c;
