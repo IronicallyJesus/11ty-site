@@ -13,7 +13,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/favicon" : "/" } );
   eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' });
   eleventyConfig.addPassthroughCopy({ 'src/sitemap.xml': '/sitemap.xml' });
-  eleventyConfig.addPassthroughCopy("src/css/prism-tomorrow.css");
+  eleventyConfig.addPassthroughCopy("src/css/prism.css");
   eleventyConfig.addPassthroughCopy("src/assets/fontawesome");
   eleventyConfig.addPassthroughCopy("src/assets/googlefonts");
 
@@ -44,6 +44,14 @@ module.exports = function(eleventyConfig) {
                   <p class="font-bold">${title}</p>
                   <p>${content}</p>
               </div>`;
+  });
+
+  // Shortcode for creating a console output
+  // This is a "paired shortcode" which means it has a start and end tag.
+  eleventyConfig.addPairedShortcode("command", function(content, user, host, output,) {
+      return `<pre class="command-line language-bash" data-user="${ user }" data-host="${ host }" data-output="${ output }">
+                  <code class="language-bash">${content}</code>
+              </pre>`;
   });
 
   // Add a shortcode for the current year for the footer
