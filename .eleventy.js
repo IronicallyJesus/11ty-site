@@ -70,12 +70,14 @@ module.exports = function(eleventyConfig) {
           changeOrigin: true,
         }),
       ],
+      // Watch for changes to the compiled CSS and reload the browser.
+      // This is more efficient than `addWatchTarget` which triggers a full rebuild.
+      watch: ['_site/css/style.css'],
     });
   }
 
   // Watch the Tailwind config file for changes
   eleventyConfig.addWatchTarget("./tailwind.config.js");
-  eleventyConfig.addWatchTarget("_site/css/style.css");
 
   return {
     // Set the source and output directories
