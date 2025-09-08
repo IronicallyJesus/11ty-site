@@ -9,7 +9,6 @@
       "runtimeArgs": [
         "start"
       ],
-      "port": 9229,
       "console": "integratedTerminal",
       "serverReadyAction": {
         "pattern": "Web Server running at (http://localhost:[0-9]+)",
