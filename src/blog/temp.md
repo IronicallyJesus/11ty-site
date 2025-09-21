@@ -3,7 +3,7 @@ title: "Setting up ISC DHCP for Junos ZTP"
 date: "2025-09-11"
 layout: "post.njk"
 permalink: /blog/{{ title | slugify }}/
-tags: ["blog", "isc", "dhcp", "junos", "ztp"]
+tags: ["isc", "dhcp", "junos", "ztp"]
 draft: true
 description: "First post made using Eleventy!"
 excerpt: Made using Eleventy!
