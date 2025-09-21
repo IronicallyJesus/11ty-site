@@ -49,6 +49,7 @@
         <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="/css/prism.css">
         <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+        <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="{{ site.title }} RSS Feed">
         {% if image %}
         <link rel="preload" as="image" href="{{ image }}">
         {% endif %}
@@ -96,6 +97,7 @@
                     <a href="{{ site.author.linkedinUrl }}" target="_blank" class="hover:text-blue-400" aria-label="LinkedIn profile of {{ site.author.name }}"><i class="fa-brands fa-linkedin fa-2xl" aria-hidden="true"></i></a>
                     <a href="mailto:{{ site.author.email }}" class="hover:text-blue-400" aria-label="Email {{ site.author.name }}"><i class="fa-solid fa-envelope fa-2xl" aria-hidden="true"></i></a>
                     <a href="{{ site.author.giteaUrl }}" target="_blank" class="hover:text-blue-400" aria-label="Gitea profile of {{ site.author.name }}"><i class="fa-solid fa-code fa-2xl" aria-hidden="true"></i></a>
+                    <a href="/feed.xml" class="hover:text-blue-400" aria-label="RSS Feed"><i class="fa-solid fa-rss fa-2xl" aria-hidden="true"></i></a>
                 </div>
                 <p>&copy; {% year %} {{ site.author.name }}. All Rights Reserved.</p>
             </div>

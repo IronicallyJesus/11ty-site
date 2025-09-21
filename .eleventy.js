@@ -1,6 +1,7 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const { DateTime } = require("luxon");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function(eleventyConfig) {
 
@@ -17,8 +18,27 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/fontawesome");
   eleventyConfig.addPassthroughCopy("src/assets/googlefonts");
 
-
   eleventyConfig.addPlugin(syntaxHighlight);
+
+  eleventyConfig.addPlugin(feedPlugin, {
+		type: "atom", // or "rss", "json"
+		outputPath: "/feed.xml",
+		collection: {
+			name: "blog", // iterate over `collections.posts`
+			limit: 10,     // 0 means no limit
+		},
+		metadata: {
+			language: "en",
+			title: "Jesus's Blog Posts",
+			subtitle: "An archive of cool projects I have worked on.",
+			base: "https://jesus.twk95.com/",
+			author: {
+				name: "Jesus Otero Lagunes",
+				email: "", // Optional
+			}
+		}
+	});
+
 
   // Add a filter for readable dates using Luxon
   eleventyConfig.addFilter("readableDate", (dateObj) => {
