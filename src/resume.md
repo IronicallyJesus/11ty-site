@@ -1,6 +1,6 @@
 ---
-title: "My Professional Resume"
-date: "2025-08-25"
+title: "Network Engineer Resume"
+date: "2025-09-20"
 layout: "post.njk"
 sitemapPriority: 0.8
 sitemapChangefreq: "monthly"
