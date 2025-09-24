@@ -5,7 +5,8 @@
     "email": "jesus@twk95.com",
     "shortname": "JOL",
     "linkedinUrl": "https://linkedin.twk95.com",
-    "giteaUrl": "https://github.com/IronicallyJesus/11ty-site"
+    "githubUrl": "https://github.com/IronicallyJesus"
   },
-  "resumeUrl": "/resume/jesus.pdf"
+  "resumeUrl": "/resume/jesus.pdf",
+  "source": "https://github.com/IronicallyJesus/11ty-site"
 }
