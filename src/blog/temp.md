@@ -1,7 +1,7 @@
 ---
 title: "Setting up ISC DHCP for Junos ZTP"
 date: "2025-09-11"
-layout: "post.njk"
+layout: "blogpost.njk"
 permalink: /blog/{{ title | slugify }}/
 tags: ["isc", "dhcp", "junos", "ztp"]
 draft: true
