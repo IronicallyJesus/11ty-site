@@ -1,7 +1,7 @@
 ---
 title: "Network Engineer Resume"
 date: "2025-09-20"
-layout: "post.njk"
+layout: "article.njk"
 sitemapPriority: 0.8
 sitemapChangefreq: "monthly"
 ---
