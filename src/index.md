@@ -10,7 +10,7 @@ image: "/assets/images/jesus.webp"
 <section id="hero" class="text-center py-20">
     <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Network Engineer</h1>
     <p id="typewriter" style="font-family: 'Red Hat Mono', monospace;" class="text-lg md:text-2xl text-blue-400 font-medium mb-8 h-8"></p>
-    <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8">10+ years of experience in troubleshooting, designing, and deploying robust network solutions.</p>
+    <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-24">10+ years of experience in troubleshooting, designing, and deploying robust network solutions.</p>
 </section>
 
 <!-- Services Section -->
