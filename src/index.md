@@ -12,23 +12,6 @@ image: "/assets/images/jesus.webp"
     <p id="typewriter" style="font-family: 'Red Hat Mono', monospace;" class="text-lg md:text-2xl text-blue-400 font-medium mb-8 h-8"></p>
     <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8">10+ years of experience in troubleshooting, designing, and deploying robust network solutions.</p>
 </section>
-<!-- About Me Section -->
-<section id="about" class="py-16">
-    <h2 class="text-3xl font-bold text-center section-title">About Me</h2>
-    <div class="flex flex-col md:flex-row items-center gap-12">
-        <div class="md:w-1/3 text-center">
-            <img src="{{ image }}" width="300" height="300" alt="Jesus Otero Lagunes" class="rounded-full mx-auto shadow-2xl border-4 border-gray-700" fetchpriority=high>
-        </div>
-        <div class="md:w-2/3">
-            <p class="text-lg text-gray-400 mb-4">
-                I am Jesus, a highly motivated and adaptable telecommunications engineer with a proven ability to troubleshoot and resolve complex network issues. I am passionate about all things computer networking and thrive in challenging environments where continuous learning and meaningful contributions are valued.
-            </p>
-            <p class="text-lg text-gray-400">
-                My goal is to leverage my decade of experience to help businesses optimize their network infrastructure, ensuring high availability, security, and performance. I believe in a healthy work-life balance, which allows me to stay sharp and bring my best to every project.
-            </p>
-        </div>
-    </div>
-</section>
 
 <!-- Services Section -->
 <!--
