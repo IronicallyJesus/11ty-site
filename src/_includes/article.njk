@@ -7,12 +7,11 @@ layout: "layout.njk"
     {{ content | safe }}
 </article>
 <script src="/js/view-counter.js"></script>
-<script src="/js/prism.js"></script>
 <div id="bottom"></div>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         // Define a unique slug for the home page
-        const slug = 'homepage';
+        const slug = '{{ page.fileSlug }}';
         
         // Use a flag in localStorage to prevent incrementing on every refresh
         const viewed = localStorage.getItem(`viewed-${slug}`);
