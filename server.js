@@ -73,6 +73,28 @@ const validateSlug = (req, res, next) => {
 
 // --- API Endpoints ---
 
+// GET: Fetch all view counts
+app.get('/api/views', async (req, res) => {
+    try {
+        const views = await fs.readJson(dbPath);
+        res.json(views);
+    } catch (error) {
+        console.error('Error reading all view counts:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+// GET: Fetch all like counts
+app.get('/api/likes', async (req, res) => {
+    try {
+        const likes = await fs.readJson(likesDbPath);
+        res.json(likes);
+    } catch (error) {
+        console.error('Error reading all like counts:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 // GET: Fetch the view count for a specific post slug
 app.get('/api/views/:slug', validateSlug, async (req, res) => {
     try {
