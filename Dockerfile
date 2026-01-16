@@ -1,18 +1,9 @@
-# Dockerfile optimized for Raspberry Pi (ARM64) and faster builds.
-
-# Docker BuildKit arguments for multi-platform builds.
-# These are automatically populated by Docker.
-ARG TARGETPLATFORM
-ARG BUILDPLATFORM
-
-# Arguments for user and group IDs. Default to a common non-root user ID.
-ARG UID=1000
-ARG GID=1000
+# Dockerfile with multi-stage for faster and smaller builds.
 
 # STAGE 1: Dependencies
 # This stage installs all dependencies (dev and prod) from package-lock.json
 # It's used as a base for both development and builder stages to leverage caching.
-FROM --platform=${BUILDPLATFORM} node:18-alpine AS deps
+FROM node:18-alpine AS deps
 WORKDIR /app
 COPY package*.json ./
 # Use `npm ci` for faster, more reliable builds from package-lock.json
