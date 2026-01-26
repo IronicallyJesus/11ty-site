@@ -12,7 +12,4 @@ src/_data/likes.json
 npm-debug.log*
 yarn-debug.log*
 
-# Project files
-.vscode/
-
 src/css/style.css
