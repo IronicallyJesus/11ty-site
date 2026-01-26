@@ -4,4 +4,15 @@ _site
 src/_data/views.json
 src/_data/likes.json
 
+# Credentials and environment
+.env
+*.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+
+# Project files
+.vscode/
+
 src/css/style.css
