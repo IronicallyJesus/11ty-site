@@ -4,6 +4,7 @@ module.exports = {
     './src/**/*.{html,njk,md,js}',
     './.eleventy.js',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -15,7 +16,9 @@ module.exports = {
         surface: {
           card: 'rgba(30, 41, 59, 0.7)',
           glass: 'rgba(15, 23, 42, 0.3)',
-        }
+        },
+        'accent-primary': 'var(--accent-primary)',
+        'accent-secondary': 'var(--accent-secondary)',
       },
       animation: {
         'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',

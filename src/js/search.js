@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!noResultsMsg) {
                 noResultsMsg = document.createElement('p');
                 noResultsMsg.id = 'no-results-message';
-                noResultsMsg.className = 'text-center text-gray-500 py-12';
+                noResultsMsg.className = 'text-center article-text py-12';
                 noResultsMsg.textContent = 'No articles found matching your search.';
                 postsContainer.appendChild(noResultsMsg);
             }

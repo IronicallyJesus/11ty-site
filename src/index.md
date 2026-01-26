@@ -11,23 +11,23 @@ image: "/assets/images/jesus.webp"
     <!-- Background Image with Overlay -->
     <div class="absolute inset-0 z-0">
         <img src="/assets/images/hero-bg.png" alt="" class="w-full h-full object-cover opacity-60">
-        <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/20 via-brand-dark/60 to-brand-dark"></div>
+        <div class="absolute inset-0 hero-overlay"></div>
     </div>
     
     <div class="relative z-10 max-w-4xl mx-auto">
-        <span class="inline-block py-1 px-3 mb-6 text-xs font-bold tracking-widest text-blue-400 uppercase bg-blue-400/10 border border-blue-400/20 rounded-full">
+        <span class="inline-block py-1 px-3 mb-6 text-xs font-bold tracking-widest status-pill uppercase border rounded-full">
             Available for Projects
         </span>
-        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
-            Architecting <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Resilient</span> Networks
+        <h1 class="text-5xl md:text-7xl font-extrabold logo-text mb-6 tracking-tight">
+            Architecting <span class="hero-title-grad">Resilient</span> Networks
         </h1>
-        <p id="typewriter" style="font-family: 'Red Hat Mono', monospace;" class="text-xl md:text-3xl text-blue-300 font-medium mb-8 h-10"></p>
-        <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p id="typewriter" style="font-family: 'Red Hat Mono', monospace;" class="text-xl md:text-3xl accent-secondary font-medium mb-8 h-10"></p>
+        <p class="text-lg md:text-xl article-text max-w-2xl mx-auto mb-10 leading-relaxed">
             10+ years of experience in troubleshooting, designing, and deploying robust network solutions for enterprise environments.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#contact" class="btn">Get in Touch</a>
-            <a href="#experience" class="btngray">View Experience</a>
+            <a href="#experience" class="btnalt">View Experience</a>
         </div>
     </div>
 </section>
@@ -56,17 +56,17 @@ image: "/assets/images/jesus.webp"
     <div class="grid md:grid-cols-2 gap-12">
         <!-- Technical Skills -->
         <div class="space-y-6">
-            <h3 class="text-2xl font-bold text-white flex items-center">
-                <i class="fa-solid fa-code-merge text-blue-400 mr-3"></i> Technical Mastery
+            <h3 class="text-2xl font-bold logo-text flex items-center">
+                <i class="fa-solid fa-code-merge accent-primary mr-3"></i> Technical Mastery
             </h3>
             <div class="grid grid-cols-1 gap-4">
                 {%- for skill in skills -%}
-                <div class="card p-6 border-l-4 border-l-blue-500">
-                    <p class="text-xl font-bold text-white mb-2">{{ skill.name }}</p>
+                <div class="card p-6 border-l-4 border-l-accent-primary">
+                    <p class="text-xl font-bold logo-text mb-2">{{ skill.name }}</p>
                     <div class="flex flex-wrap gap-2">
                         {% set keywords = skill.keywords.split(',') %}
                         {%- for keyword in keywords -%}
-                        <span class="text-xs font-semibold px-2 py-1 rounded bg-blue-500/10 text-blue-300 border border-blue-500/20">
+                        <span class="text-xs font-semibold px-2 py-1 rounded skill-badge">
                             {{ keyword.trim() }}
                         </span>
                         {%- endfor -%}
@@ -77,7 +77,7 @@ image: "/assets/images/jesus.webp"
         </div>
         <!-- Certifications -->
         <div class="space-y-6">
-            <h3 class="text-2xl font-bold text-white flex items-center">
+            <h3 class="text-2xl font-bold logo-text flex items-center">
                 <i class="fa-solid fa-award text-yellow-500 mr-3"></i> Professional Credentials
             </h3>
             <div class="card space-y-6">
@@ -85,8 +85,8 @@ image: "/assets/images/jesus.webp"
                 <div class="flex items-center space-x-4">
                     <i class="fa-solid fa-certificate text-yellow-500 text-xl shrink-0" aria-hidden="true"></i>
                     <div>
-                        <h4 class="font-bold text-white text-lg leading-tight">{{ certification.name }}</h4>
-                        <p class="text-blue-400 text-sm font-medium mt-0.5">Expires: {{ certification.expires }}</p>
+                        <h4 class="font-bold card-heading text-lg leading-tight">{{ certification.name }}</h4>
+                        <p class="accent-secondary text-sm font-medium mt-0.5">Expires: {{ certification.expires }}</p>
                     </div>
                 </div>
                 {%- endfor -%}
@@ -99,29 +99,29 @@ image: "/assets/images/jesus.webp"
 <section id="experience" class="py-24">
     <h2 class="section-header">Professional Journey</h2>
     <div class="max-w-4xl mx-auto">
-        <div class="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-blue-500 before:to-transparent">
+        <div class="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-accent-primary before:to-transparent">
             
             {%- for role in roles -%}
             {%- if role.featured -%}
             <!-- Experience Item -->
-            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+            <div class="relative flex items-center justify-between lg:justify-normal lg:odd:flex-row-reverse group">
                 <!-- Icon -->
-                <div class="flex items-center justify-center w-10 h-10 rounded-full border border-blue-500/50 bg-brand-dark text-blue-400 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-all duration-300 group-hover:bg-blue-500 group-hover:text-white">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border border-accent-primary/50 card-icon-bg shadow shrink-0 lg:order-1 lg:group-odd:-translate-x-1/2 lg:group-even:translate-x-1/2 transition-all duration-300">
                     <i class="fa-solid fa-briefcase"></i>
                 </div>
                 <!-- Card -->
-                <div class="w-[calc(100%-4rem)] md:w-[45%] card p-6 hover:border-blue-500/30 transition-all border border-transparent">
+                <div class="w-[calc(100%-4rem)] lg:w-[45%] card p-6 hover:border-accent-primary/30 transition-all border border-transparent ml-6 lg:ml-0">
                     <div class="mb-2">
-                        <div class="font-bold text-white text-lg leading-tight">{{ role.title }}</div>
-                        <time class="font-mono text-sm text-blue-400 block mt-1">{{ role.time }}</time>
+                        <div class="font-bold logo-text text-lg leading-tight">{{ role.title }}</div>
+                        <time class="font-mono text-sm accent-primary block mt-1">{{ role.time }}</time>
                     </div>
                     {%- if role.company -%}
-                    <div class="text-blue-300 font-medium mb-3 flex items-center">
+                    <div class="accent-secondary font-medium mb-3 flex items-center">
                         <i class="fa-solid fa-building text-xs mr-2 opacity-70"></i> {{ role.company }}
                     </div>
                     {%- endif -%}
                     {%- if role.description -%}
-                    <div class="text-gray-400 text-sm leading-relaxed">{{ role.description }}</div>
+                    <div class="article-text text-sm leading-relaxed">{{ role.description }}</div>
                     {%- endif -%}
                 </div>
             </div>
@@ -131,7 +131,7 @@ image: "/assets/images/jesus.webp"
         </div>
 
         <div class="text-center mt-16">
-            <a href="/experience" class="btngray inline-flex items-center">
+            <a href="/experience" class="btnalt inline-flex items-center">
                 View Full Professional History <i class="fa-solid fa-arrow-right-long ml-2"></i>
             </a>
         </div>
@@ -154,11 +154,11 @@ image: "/assets/images/jesus.webp"
                     {% endif %}
                     <div class="flex-1 flex flex-col justify-between pt-4">
                         <div>
-                            <span class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2 block">Network Engineering</span>
-                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">{{ post.data.title }}</h3>
-                            <p class="text-gray-400 text-sm line-clamp-3 mb-6">{{ post.data.excerpt or post.data.description }}</p>
+                            <span class="text-xs font-bold accent-primary uppercase tracking-widest mb-2 block">Network Engineering</span>
+                            <h3 class="text-xl font-bold card-heading mb-2 group-hover:accent-primary transition-colors">{{ post.data.title }}</h3>
+                            <p class="article-text text-sm line-clamp-3 mb-6">{{ post.data.excerpt or post.data.description }}</p>
                         </div>
-                        <span class="text-blue-400 font-bold flex items-center text-sm">
+                        <span class="accent-primary font-bold flex items-center text-sm">
                             Read Full Article <i class="fa-solid fa-arrow-right-long ml-2 transition-transform group-hover:translate-x-2"></i>
                         </span>
                     </div>
@@ -167,7 +167,7 @@ image: "/assets/images/jesus.webp"
         {%- endfor -%}
     </div>
     <div class="text-center mt-12">
-        <a href="/blog" class="btngray inline-flex items-center">
+        <a href="/blog" class="btnalt inline-flex items-center">
             Explore All Posts <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
         </a>
     </div>
@@ -181,26 +181,26 @@ image: "/assets/images/jesus.webp"
         
         <div class="relative z-10">
             <h2 class="section-header">Let's Connect</h2>
-            <p class="text-center text-gray-400 max-w-xl mx-auto mb-12">
+            <p class="text-center article-text max-w-xl mx-auto mb-12">
                 Have a challenging project or looking to build a high-performance network? I'm always open to discussing new opportunities.
             </p>
             <form action="https://formspree.io/f/mnnzgdak" method="POST" class="space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-2">
-                        <label for="name" class="text-sm font-bold text-gray-400 ml-1">Full Name</label>
+                        <label for="name" class="text-sm font-bold article-text ml-1">Full Name</label>
                         <input type="text" id="name" name="name" autocomplete="name" placeholder="John Doe" required 
-                               class="w-full p-4 rounded-xl bg-brand-dark/50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all">
+                               class="w-full p-4 rounded-xl theme-input focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all">
                     </div>
                     <div class="space-y-2">
-                        <label for="email" class="text-sm font-bold text-gray-400 ml-1">Email Address</label>
+                        <label for="email" class="text-sm font-bold article-text ml-1">Email Address</label>
                         <input type="email" id="email" name="email" autocomplete="email" placeholder="john@example.com" required 
-                               class="w-full p-4 rounded-xl bg-brand-dark/50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all">
+                               class="w-full p-4 rounded-xl theme-input focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all">
                     </div>
                 </div>
                 <div class="space-y-2">
-                    <label for="message" class="text-sm font-bold text-gray-400 ml-1">Your Message</label>
+                    <label for="message" class="text-sm font-bold article-text ml-1">Your Message</label>
                     <textarea id="message" name="message" placeholder="Tell me about your project..." rows="6" required 
-                              class="w-full p-4 rounded-xl bg-brand-dark/50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all"></textarea>
+                              class="w-full p-4 rounded-xl theme-input focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all"></textarea>
                 </div>
                 <div class="text-center pt-4">
                     <button type="submit" class="btn px-12 py-4 text-lg">Send Message</button>
