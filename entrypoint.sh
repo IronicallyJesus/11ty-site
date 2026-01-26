@@ -6,5 +6,6 @@
 set -e
 
 # Fix ownership of the data volume and execute the main command as the 'node' user
-chown -R node:node /app/_data
+DATA_DIR=${DATA_DIR:-/app/src/_data}
+chown -R node:node "$DATA_DIR"
 exec su-exec node "$@"

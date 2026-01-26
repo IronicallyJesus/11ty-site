@@ -24,24 +24,28 @@ app.set('trust proxy', 1);
 // development (localhost) and production (the APP_URL).
 const allowedOrigins = ['http://localhost:8080'];
 if (process.env.APP_URL) {
-  allowedOrigins.push(process.env.APP_URL);
+    allowedOrigins.push(process.env.APP_URL);
 }
 const corsOptions = {
-  origin: allowedOrigins,
-  optionsSuccessStatus: 200
+    origin: allowedOrigins,
+    optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
 
 // 2. Rate Limiting: Apply to all API requests to prevent abuse.
 const apiLimiter = rateLimit({
-	windowMs: 15 * 60 * 1000, // 15 minutes
-	max: 100, // Limit each IP to 100 requests per windowMs
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // Limit each IP to 100 requests per windowMs
 });
 app.use('/api/', apiLimiter);
 
 // Path to the file where metadata counts will be stored
-const dbPath = path.join(__dirname, 'src/_data', 'views.json');
-const likesDbPath = path.join(__dirname, 'src/_data', 'likes.json');
+// Path to the file where metadata counts will be stored
+const dataDir = process.env.DATA_DIR || path.join(__dirname, 'src', '_data');
+const dbPath = path.join(dataDir, 'views.json');
+const likesDbPath = path.join(dataDir, 'likes.json');
+
+console.log(`Using data directory: ${dataDir}`);
 
 // Ensure the data directory and the .json files exist
 fs.ensureFileSync(dbPath);
@@ -132,8 +136,8 @@ app.post('/api/views/:slug', validateSlug, async (req, res) => {
         await fs.writeJson(dbPath, views);
         res.json({ count: views[slug] });
     } catch (error) {
-        console.error('Error updating view count:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error(`Error updating data at ${dbPath}:`, error);
+        res.status(500).json({ error: 'Internal Server Error', message: error.message });
     } finally {
         release();
     }
@@ -149,8 +153,8 @@ app.post('/api/likes/:slug', validateSlug, async (req, res) => {
         await fs.writeJson(likesDbPath, likes);
         res.json({ count: likes[slug] });
     } catch (error) {
-        console.error('Error updating like count:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error(`Error updating data at ${likesDbPath}:`, error);
+        res.status(500).json({ error: 'Internal Server Error', message: error.message });
     } finally {
         release();
     }
@@ -171,8 +175,8 @@ app.delete('/api/likes/:slug', validateSlug, async (req, res) => {
         await fs.writeJson(likesDbPath, likes);
         res.json({ count: likes[slug] });
     } catch (error) {
-        console.error('Error updating like count:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        console.error(`Error updating data at ${likesDbPath}:`, error);
+        res.status(500).json({ error: 'Internal Server Error', message: error.message });
     } finally {
         release();
     }
@@ -181,7 +185,7 @@ app.delete('/api/likes/:slug', validateSlug, async (req, res) => {
 // --- 404 Handler (Catch-All) ---
 // This MUST be the last route or middleware added.
 app.use((req, res, next) => {
-  res.redirect('/404.html');
+    res.redirect('/404.html');
 });
 
 app.listen(port, () => {
