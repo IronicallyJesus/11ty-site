@@ -82,11 +82,11 @@ image: "/assets/images/jesus.webp"
             </h3>
             <div class="card space-y-6">
                 {%- for certification in certifications -%}
-                <div class="relative pl-10">
-                    <i class="fa-solid fa-certificate absolute left-0 top-1 text-yellow-500 text-xl" aria-hidden="true"></i>
+                <div class="flex items-center space-x-4">
+                    <i class="fa-solid fa-certificate text-yellow-500 text-xl shrink-0" aria-hidden="true"></i>
                     <div>
-                        <h4 class="font-bold text-white text-lg">{{ certification.name }}</h4>
-                        <p class="text-blue-400 text-sm font-medium">Expires: {{ certification.expires }}</p>
+                        <h4 class="font-bold text-white text-lg leading-tight">{{ certification.name }}</h4>
+                        <p class="text-blue-400 text-sm font-medium mt-0.5">Expires: {{ certification.expires }}</p>
                     </div>
                 </div>
                 {%- endfor -%}
