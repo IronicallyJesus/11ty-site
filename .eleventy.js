@@ -13,12 +13,18 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy({ "src/favicon": "/" });
   eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' });
-  eleventyConfig.addPassthroughCopy({ 'src/sitemap.xml': '/sitemap.xml' });
   eleventyConfig.addPassthroughCopy("src/css/prism.css");
   eleventyConfig.addPassthroughCopy("src/assets/fontawesome");
   eleventyConfig.addPassthroughCopy("src/assets/googlefonts");
 
   eleventyConfig.addPlugin(syntaxHighlight);
+
+  const sitemap = require("@quasibit/eleventy-plugin-sitemap");
+  eleventyConfig.addPlugin(sitemap, {
+    sitemap: {
+      hostname: "https://jesus.twk95.com",
+    },
+  });
 
   eleventyConfig.addPlugin(feedPlugin, {
     type: "atom", // or "rss", "json"
