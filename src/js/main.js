@@ -5,9 +5,10 @@ const header = document.querySelector('header');
 const typewriterElement = document.getElementById('typewriter');
 
 // --- Mobile Menu Toggle ---
-if (mobileMenuButton && mobileMenu) {
+if (mobileMenuButton && mobileMenu && header) {
     mobileMenuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
+        header.classList.toggle('menu-open');
     });
 }
 
@@ -15,7 +16,7 @@ if (mobileMenuButton && mobileMenu) {
 if (typewriterElement) {
     const text = "Specializing in ISP Environments";
     let index = 0;
-    
+
     function type() {
         const currentText = text.substring(0, index);
         typewriterElement.textContent = currentText;
@@ -44,7 +45,7 @@ function jumpToTarget(targetId) {
     // Use 'auto' behavior for an instant jump
     window.scrollTo({
         top: offsetPosition,
-        behavior: 'auto' 
+        behavior: 'auto'
     });
 }
 
@@ -60,7 +61,7 @@ document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
             e.preventDefault();
             // For on-page clicks, we still want a smooth scroll
             const targetElement = document.getElementById(targetId);
-            if(targetElement) {
+            if (targetElement) {
                 const headerOffset = header ? header.offsetHeight : 0;
                 const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
                 const offsetPosition = elementPosition - headerOffset;
@@ -75,13 +76,14 @@ document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
 
         if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
             mobileMenu.classList.add('hidden');
+            header.classList.remove('menu-open');
         }
     });
 });
 
 // 2. Handle clicks on the main home link (e.g., /)
 document.querySelectorAll('a[href="/"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         if (window.location.pathname === '/') {
             e.preventDefault();
             window.scrollTo({
