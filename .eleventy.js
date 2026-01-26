@@ -48,6 +48,14 @@ module.exports = function(eleventyConfig) {
     // prevents the date from shifting to the previous day due to timezone conversion.
     return DateTime.fromJSDate(dateObj, { zone: 'UTC' }).toFormat('LLLL d, yyyy');
   });
+  // Reading time filter
+  eleventyConfig.addFilter("readingTime", (content) => {
+    const wordsPerMinute = 200;
+    const noHtml = content.replace(/<[^>]*>/g, "");
+    const wordCount = noHtml.split(/\s+/).length;
+    const readingTime = Math.ceil(wordCount / wordsPerMinute);
+    return `${readingTime} min read`;
+  });
 
   // Add htmlDateString filter for sitemap <lastmod>
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {

@@ -23,6 +23,9 @@ eleventyExcludeFromCollections: true
         <i class="fa-solid fa-calendar mr-2" aria-hidden="true"></i>
         <p>{{ post.date | readableDate }}</p>
         <span class="mx-2 text-gray-600">|</span>
+        <i class="fa-solid fa-clock mr-2" aria-hidden="true"></i>
+        <span>{{ post.templateContent | readingTime }}</span>
+        <span class="mx-2 text-gray-600">|</span>
         <i class="fa-solid fa-eye mr-2" aria-hidden="true"></i>
         <span class="view-count" data-view-count data-slug="{{ post.fileSlug }}">...</span>
       </div>

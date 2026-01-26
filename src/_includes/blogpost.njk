@@ -17,6 +17,12 @@ layout: "layout.njk"
             <i class="fa-solid fa-fw fa-calendar mr-2" aria-hidden="true"></i>
             <span>Published on {{ page.date | readableDate }}</span>
         </div>
+        <!--- Reading Time Section -->
+        <span class="hidden md:inline mx-2 text-gray-600">•</span>
+        <div class="flex items-center mb-1">
+            <i class="fa-solid fa-fw fa-clock mr-2" aria-hidden="true"></i>
+            <span>{{ content | readingTime }}</span>
+        </div>
         <!--- Views Section -->
         <span class="hidden md:inline mx-2 text-gray-600">•</span>
         <div class="flex items-center mb-1">
