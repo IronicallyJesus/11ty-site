@@ -57,6 +57,11 @@
         {% endif %}
     </head>
     <body class="antialiased selection:bg-blue-500 selection:text-white">
+        {% if '/blog/' in page.url %}
+        <div id="scroll-progress-container" class="fixed top-0 left-0 w-full h-1 z-[100] bg-transparent">
+            <div id="scroll-progress-bar" class="h-full bg-blue-500 transition-all duration-150 ease-out" style="width: 0%;"></div>
+        </div>
+        {% endif %}
         <!-- Header & Nav -->
         <header class="fixed w-full top-0 z-50 glass-card">
             <nav class="container mx-auto px-6 py-4 flex justify-between items-center">

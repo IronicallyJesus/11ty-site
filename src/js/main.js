@@ -103,3 +103,36 @@ window.addEventListener('load', () => {
         jumpToTarget(targetId);
     }
 });
+
+// --- Scroll Progress Bar ---
+const scrollProgressBar = document.getElementById('scroll-progress-bar');
+const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+window.addEventListener('scroll', () => {
+    // Scroll Progress Bar
+    if (scrollProgressBar) {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        scrollProgressBar.style.width = scrolled + "%";
+    }
+
+    // Scroll to Top Button
+    if (scrollToTopBtn) {
+        if (window.scrollY > 300) {
+            scrollToTopBtn.classList.remove('opacity-0', 'translate-y-12', 'pointer-events-none');
+        } else {
+            scrollToTopBtn.classList.add('opacity-0', 'translate-y-12', 'pointer-events-none');
+        }
+    }
+});
+
+if (scrollToTopBtn) {
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
