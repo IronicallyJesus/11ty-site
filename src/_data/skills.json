@@ -9,7 +9,7 @@
     },
     { 
         "name": "Vendor Platforms & OS", 
-        "keywords": "Juniper (Junos), Cisco (IOS/XE), Ciena (SAOS 6, 8, 10), Adtran, Calix, Accedian, Alcatel-Lucent"
+        "keywords": "Juniper (Junos), Cisco (IOS/XE), Ciena, Adtran, Calix, Accedian, Alcatel-Lucent"
     },
     { 
         "name": "Systems & Automation", 
