@@ -7,10 +7,29 @@ sitemapChangefreq: "weekly"
 image: "/assets/images/jesus.webp"
 ---
 <!-- Hero Section -->
-<section id="hero" class="text-center py-20">
-    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Network Engineer</h1>
-    <p id="typewriter" style="font-family: 'Red Hat Mono', monospace;" class="text-lg md:text-2xl text-blue-400 font-medium mb-8 h-8"></p>
-    <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-24">10+ years of experience in troubleshooting, designing, and deploying robust network solutions.</p>
+<section id="hero" class="relative overflow-hidden rounded-3xl mb-16 min-h-[70vh] flex items-center justify-center text-center p-8">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 z-0">
+        <img src="/assets/images/hero-bg.png" alt="" class="w-full h-full object-cover opacity-60">
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/20 via-brand-dark/60 to-brand-dark"></div>
+    </div>
+    
+    <div class="relative z-10 max-w-4xl mx-auto">
+        <span class="inline-block py-1 px-3 mb-6 text-xs font-bold tracking-widest text-blue-400 uppercase bg-blue-400/10 border border-blue-400/20 rounded-full">
+            Available for Projects
+        </span>
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
+            Architecting <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Resilient</span> Networks
+        </h1>
+        <p id="typewriter" style="font-family: 'Red Hat Mono', monospace;" class="text-xl md:text-3xl text-blue-300 font-medium mb-8 h-10"></p>
+        <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+            10+ years of experience in troubleshooting, designing, and deploying robust network solutions for enterprise environments.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#contact" class="btn">Get in Touch</a>
+            <a href="#experience" class="btngray">View Experience</a>
+        </div>
+    </div>
 </section>
 
 <!-- Services Section -->
@@ -32,29 +51,42 @@ image: "/assets/images/jesus.webp"
 -->
 
 <!-- Skills & Certifications Section -->
-<section id="skills" class="py-16">
-    <h2 class="text-3xl font-bold text-center section-title">Skills & Certifications</h2>
+<section id="skills" class="py-24">
+    <h2 class="section-header">Skills & Certifications</h2>
     <div class="grid md:grid-cols-2 gap-12">
-        <!-- Skills -->
-        <div>
-            <h3 class="text-2xl font-bold mb-6 text-center text-white">Technical Skills</h3>
-            <div class="card">
+        <!-- Technical Skills -->
+        <div class="space-y-6">
+            <h3 class="text-2xl font-bold text-white flex items-center">
+                <i class="fa-solid fa-code-merge text-blue-400 mr-3"></i> Technical Mastery
+            </h3>
+            <div class="grid grid-cols-1 gap-4">
                 {%- for skill in skills -%}
-                <p class="text-lg font-semibold mb-1 text-blue-400">{{ skill.name }}</p>
-                <p class="text-gray-400 mb-5">{{ skill.keywords }}</p>
+                <div class="card p-6 border-l-4 border-l-blue-500">
+                    <p class="text-xl font-bold text-white mb-2">{{ skill.name }}</p>
+                    <div class="flex flex-wrap gap-2">
+                        {% set keywords = skill.keywords.split(',') %}
+                        {% for keyword in keywords %}
+                        <span class="text-xs font-semibold px-2 py-1 rounded bg-blue-500/10 text-blue-300 border border-blue-500/20">
+                            {{ keyword.trim() }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </div>
                 {%- endfor -%}
             </div>
         </div>
         <!-- Certifications -->
-        <div>
-            <h3 class="text-2xl font-bold mb-6 text-center text-white">Certifications</h3>
-            <div class="card space-y-4">
+        <div class="space-y-6">
+            <h3 class="text-2xl font-bold text-white flex items-center">
+                <i class="fa-solid fa-award text-yellow-500 mr-3"></i> Professional Credentials
+            </h3>
+            <div class="card space-y-6">
                 {%- for certification in certifications -%}
-                <div class="flex items-center">
-                    <i class="fa-solid fa-certificate icon mr-5 text-yellow-400" aria-hidden="true"></i>
+                <div class="relative pl-10">
+                    <i class="fa-solid fa-certificate absolute left-0 top-1 text-yellow-500 text-xl" aria-hidden="true"></i>
                     <div>
-                        <h4 class="font-bold text-white">{{ certification.name }}</h4>
-                        <p class="text-gray-400">Expires: {{ certification.expires }}</p>
+                        <h4 class="font-bold text-white text-lg">{{ certification.name }}</h4>
+                        <p class="text-blue-400 text-sm font-medium">Expires: {{ certification.expires }}</p>
                     </div>
                 </div>
                 {%- endfor -%}
@@ -62,97 +94,111 @@ image: "/assets/images/jesus.webp"
         </div>
     </div>
 </section>
-<!-- Work Experience Section -->
-<section id="experience" class="py-16">
-    <h2 class="text-3xl font-bold text-center section-title">Work Experience</h2>
-    <div class="relative border-l-2 border-gray-700 ml-4">
-        {# Loop through and display all "featured" roles #}
-        {%- for role in roles -%}
-        {%- if role.featured -%}
-        <div class="mb-10 mx-4">
-            <span class="absolute flex items-center justify-center w-8 h-8 bg-blue-500 rounded-full -left-4 ring-8 ring-gray-900">
-            <i class="fa-solid fa-briefcase text-white" aria-hidden="true"></i>
-            </span>
-            <div class="card">
-                <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-x-2 mb-2">
-                    <h3 class="text-lg font-semibold text-white">
-                        {{ role.title }}
-                    </h3>
+
+<!-- Experience Item -->
+<section id="experience" class="py-24">
+    <h2 class="section-header">Professional Journey</h2>
+    <div class="max-w-4xl mx-auto">
+        <div class="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-blue-500 before:to-transparent">
+            
+            {%- for role in roles -%}
+            {%- if role.featured -%}
+            <!-- Experience Item -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <!-- Icon -->
+                <div class="flex items-center justify-center w-10 h-10 rounded-full border border-blue-500/50 bg-brand-dark text-blue-400 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-all duration-300 group-hover:bg-blue-500 group-hover:text-white">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <!-- Card -->
+                <div class="w-[calc(100%-4rem)] md:w-[45%] card p-6">
+                    <div class="flex items-center justify-between space-x-2 mb-1">
+                        <div class="font-bold text-white text-lg">{{ role.title }}</div>
+                        <time class="font-mono text-sm text-blue-400">{{ role.time }}</time>
+                    </div>
                     {%- if role.company -%}
-                    <p class="text-lg font-medium text-blue-400">
-                        <span class="mr-2 hidden sm:inline text-gray-400">@</span>{{ role.company }}
-                    </p>
+                    <div class="text-blue-300 font-medium mb-3">@ {{ role.company }}</div>
+                    {%- endif -%}
+                    {%- if role.description -%}
+                    <div class="text-gray-400 text-sm leading-relaxed">{{ role.description }}</div>
                     {%- endif -%}
                 </div>
-                <time class="block mb-2 text-sm text-gray-200">{{ role.time }}</time>
-                {%- if role.description -%}
-                <p class="mb-4 text-base font-normal text-gray-400">{{ role.description }}</p>
-                {%- endif -%}
             </div>
-        </div>
-        {%- endif -%}
-        {%- endfor -%}
-        <div class="mx-4">
-            <span class="absolute flex items-center justify-center w-8 h-8 bg-blue-500 rounded-full -left-4 ring-8 ring-gray-900">
-            <i class="fa-solid fa-briefcase text-white" aria-hidden="true"></i>
-            </span>
-            <div class="card">
-                <h3 class="text-lg font-semibold text-white mb-2">Previous Roles</h3>
-                <time class="block mb-2 text-sm font-normal leading-none text-gray-200">Since 2014</time>
-                <ul class="list-disc list-outside pl-4 text-base font-normal text-gray-400">
-                    {%- for role in roles -%}
-                    {%- if not role.featured -%}
-                    {%- if role.company -%}
-                    <li class="mb-2">
-                        {{ role.title -}}
-                        <p class="block sm:inline-block sm:ml-2 font-medium text-blue-400">
-                            <span class="mr-2 hidden sm:inline text-gray-400">@</span>{{ role.company }}
-                        </p>
-                    </li>
-                    {%- endif -%}
-                    {%- endif -%}
-                    {%- endfor -%}
-                </ul>
-            </div>
+            {%- endif -%}
+            {%- endfor -%}
+
         </div>
     </div>
 </section>
+
 <!-- Blog Posts Section -->
-<section id="blog" class="py-16">
-    <h2 class="text-3xl font-bold text-center section-title">Latest Blog Posts</h2>
+<section id="blog" class="py-24">
+    <h2 class="section-header">Insights & Articles</h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {%- set postCount = 0 -%}
         {%- for post in collections.blog | reverse -%}
             {%- if not post.data.draft and postCount < 3 -%}
                 {%- set postCount = postCount + 1 -%}
-                <a href="{{ post.url }}" class="card flex flex-col group">
+                <a href="{{ post.url }}" class="group relative card overflow-hidden flex flex-col h-full hover:border-blue-500/50">
                     {% if post.data.image %}
-                    <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="rounded-t-lg mb-4 object-cover h-48 w-full" loading="lazy">
+                    <div class="overflow-hidden">
+                        <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="object-cover h-48 w-full transition-transform duration-500 group-hover:scale-110" loading="lazy">
+                    </div>
                     {% endif %}
-                    <h3 class="text-xl font-bold text-white mb-2 transition-colors group-hover:text-blue-400">{{ post.data.title }}</h3>
-                    <p class="text-gray-400 text-sm mb-4">{{ post.data.excerpt or post.data.description }}</p>
-                    <span class="text-blue-400 group-hover:text-blue-500 font-medium flex items-center mt-auto transition-colors">
-                        Read More <i class="fa-solid fa-arrow-right ml-2"></i>
-                    </span>
+                    <div class="flex-1 flex flex-col justify-between pt-4">
+                        <div>
+                            <span class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2 block">Network Engineering</span>
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">{{ post.data.title }}</h3>
+                            <p class="text-gray-400 text-sm line-clamp-3 mb-6">{{ post.data.excerpt or post.data.description }}</p>
+                        </div>
+                        <span class="text-blue-400 font-bold flex items-center text-sm">
+                            Read Full Article <i class="fa-solid fa-arrow-right-long ml-2 transition-transform group-hover:translate-x-2"></i>
+                        </span>
+                    </div>
                 </a>
             {%- endif -%}
         {%- endfor -%}
     </div>
+    <div class="text-center mt-12">
+        <a href="/blog" class="btngray inline-flex items-center">
+            Explore All Posts <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
+        </a>
+    </div>
 </section>
 <!-- Contact Section -->
-<section id="contact" class="py-16">
-    <div class="glass-card max-w-3xl mx-auto p-8 md:p-12 rounded-lg">
-        <h2 class="text-3xl font-bold text-center section-title">Get In Touch</h2>
-        <p class="text-center text-gray-400 mb-8">I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision.</p>
-        <form action="https://formspree.io/f/mnnzgdak" method="POST">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <input type="text" name="name" autocomplete="name" placeholder="Your Name" required class="w-full p-3 rounded bg-gray-900 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <input type="email" name="email" autocomplete="email" placeholder="Your Email" required class="w-full p-3 rounded bg-gray-900 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            </div>
-            <textarea name="message" placeholder="Your Message" rows="5" required class="w-full p-3 rounded bg-gray-900 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-6"></textarea>
-            <div class="text-center">
-                <button type="submit" class="btn">Send Message</button>
-            </div>
-        </form>
+<section id="contact" class="py-24">
+    <div class="glass-card max-w-4xl mx-auto p-12 rounded-3xl relative overflow-hidden">
+        <!-- Subtle Background Glow -->
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl"></div>
+        
+        <div class="relative z-10">
+            <h2 class="section-header">Let's Connect</h2>
+            <p class="text-center text-gray-400 max-w-xl mx-auto mb-12">
+                Have a challenging project or looking to build a high-performance network? I'm always open to discussing new opportunities.
+            </p>
+            <form action="https://formspree.io/f/mnnzgdak" method="POST" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="name" class="text-sm font-bold text-gray-400 ml-1">Full Name</label>
+                        <input type="text" id="name" name="name" autocomplete="name" placeholder="John Doe" required 
+                               class="w-full p-4 rounded-xl bg-brand-dark/50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="email" class="text-sm font-bold text-gray-400 ml-1">Email Address</label>
+                        <input type="email" id="email" name="email" autocomplete="email" placeholder="john@example.com" required 
+                               class="w-full p-4 rounded-xl bg-brand-dark/50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all">
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label for="message" class="text-sm font-bold text-gray-400 ml-1">Your Message</label>
+                    <textarea id="message" name="message" placeholder="Tell me about your project..." rows="6" required 
+                              class="w-full p-4 rounded-xl bg-brand-dark/50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all"></textarea>
+                </div>
+                <div class="text-center pt-4">
+                    <button type="submit" class="btn px-12 py-4 text-lg">Send Message</button>
+                    <p class="text-xs text-gray-500 mt-4">Powered by Formspree</p>
+                </div>
+            </form>
+        </div>
     </div>
 </section>
