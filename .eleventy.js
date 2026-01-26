@@ -67,17 +67,17 @@ module.exports = function(eleventyConfig) {
 
   // Shortcode for creating a callout box
   // This is a "paired shortcode" which means it has a start and end tag.
-  eleventyConfig.addPairedShortcode("callout", function(content, title) {
-      return `<div class="bg-slate-800 border-l-4 border-blue-500 text-blue-200 p-4" role="alert">
-                  <p class="font-bold">${title}</p>
-                  <p>${content}</p>
+  eleventyConfig.addPairedShortcode("callout", function (content, title) {
+    return `<div class="callout-box" role="alert">
+                  <div class="callout-title">${title}</div>
+                  <div>${content}</div>
               </div>`;
   });
 
   // Shortcode for creating a console output
   // This is a "paired shortcode" which means it has a start and end tag.
-  eleventyConfig.addPairedShortcode("command", function(content, user, host, output,) {
-      return `<pre class="command-line language-bash" data-user="${ user }" data-host="${ host }" data-output="${ output }">
+  eleventyConfig.addPairedShortcode("command", function (content, user, host, output,) {
+    return `<pre class="command-line language-bash" data-user="${user}" data-host="${host}" data-output="${output}">
                   <code class="language-bash">${content}</code>
               </pre>`;
   });
