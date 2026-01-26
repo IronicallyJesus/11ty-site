@@ -22,6 +22,7 @@ RUN npm prune --omit=dev
 # This stage creates a lean, production-ready image.
 FROM node:18-alpine AS production
 WORKDIR /app
+ENV DATA_DIR=/app/src/_data
 
 # The node:18-alpine image comes with a non-root 'node' user (UID/GID 1000)
 # which we will use. We only need su-exec to drop privileges in the entrypoint.
@@ -38,7 +39,7 @@ COPY --from=builder --chown=node:node /app/_site ./_site
 # Copy the data directory. The server writes view counts here.
 # This directory should be mounted as a volume
 # to persist the view count data across container restarts.
-COPY --from=builder --chown=node:node /app/src/_data ./_data
+COPY --from=builder --chown=node:node /app/src/_data ./src/_data
 COPY --chown=node:node healthcheck.js .
 
 # Copy and set up the entrypoint script
