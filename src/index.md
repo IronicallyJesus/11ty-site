@@ -65,11 +65,11 @@ image: "/assets/images/jesus.webp"
                     <p class="text-xl font-bold text-white mb-2">{{ skill.name }}</p>
                     <div class="flex flex-wrap gap-2">
                         {% set keywords = skill.keywords.split(',') %}
-                        {% for keyword in keywords %}
+                        {%- for keyword in keywords -%}
                         <span class="text-xs font-semibold px-2 py-1 rounded bg-blue-500/10 text-blue-300 border border-blue-500/20">
                             {{ keyword.trim() }}
                         </span>
-                        {% endfor %}
+                        {%- endfor -%}
                     </div>
                 </div>
                 {%- endfor -%}
@@ -95,7 +95,7 @@ image: "/assets/images/jesus.webp"
     </div>
 </section>
 
-<!-- Experience Item -->
+<!-- Work Experience Section -->
 <section id="experience" class="py-24">
     <h2 class="section-header">Professional Journey</h2>
     <div class="max-w-4xl mx-auto">
@@ -126,6 +126,12 @@ image: "/assets/images/jesus.webp"
             {%- endif -%}
             {%- endfor -%}
 
+        </div>
+
+        <div class="text-center mt-16">
+            <a href="/experience" class="btngray inline-flex items-center">
+                View Full Professional History <i class="fa-solid fa-arrow-right-long ml-2"></i>
+            </a>
         </div>
     </div>
 </section>
