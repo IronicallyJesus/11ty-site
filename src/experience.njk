@@ -1,39 +1,38 @@
 ---
 title: "Professional Experience"
 layout: "layout.njk"
-eleventyExcludeFromCollections: true
 ---
 
 <div class="max-w-4xl mx-auto py-12">
     <div class="mb-16 text-center">
         <h1 class="page-title mb-6">Professional Journey</h1>
-        <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+        <p class="text-lg article-text max-w-2xl mx-auto">
             A comprehensive history of my career in network engineering, technical support, and the early roles that shaped my work ethic.
         </p>
     </div>
 
-    <div class="relative space-y-12 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-blue-500/0 before:via-blue-500/50 before:to-blue-500/0">
+    <div class="relative space-y-12 before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-accent-primary/0 before:via-accent-primary/50 before:to-accent-primary/0">
         
         {%- for role in roles -%}
         <!-- Experience Item -->
-        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+        <div class="relative flex items-center justify-between lg:justify-normal lg:odd:flex-row-reverse group">
             <!-- Icon -->
-            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-blue-500/50 bg-brand-dark text-blue-400 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-all duration-300 group-hover:bg-blue-500 group-hover:text-white">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-accent-primary/50 card-icon-bg shadow shrink-0 lg:order-1 lg:group-odd:-translate-x-1/2 lg:group-even:translate-x-1/2 transition-all duration-300">
                 <i class="fa-solid {% if role.featured %}fa-briefcase{% else %}fa-history{% endif %}"></i>
             </div>
             <!-- Card -->
-            <div class="w-[calc(100%-4rem)] md:w-[45%] card p-6 hover:border-blue-500/30 transition-all border border-transparent">
+            <div class="w-[calc(100%-4rem)] lg:w-[45%] card p-6 hover:border-accent-primary/30 transition-all border border-transparent ml-6 lg:ml-0">
                 <div class="mb-2">
-                    <div class="font-bold text-white text-xl leading-tight">{{ role.title }}</div>
-                    <time class="font-mono text-sm text-blue-400 block mt-1">{{ role.time }}</time>
+                    <div class="font-bold logo-text text-xl leading-tight">{{ role.title }}</div>
+                    <time class="font-mono text-sm accent-primary block mt-1">{{ role.time }}</time>
                 </div>
                 {%- if role.company -%}
-                <div class="text-blue-300 font-semibold mb-4 flex items-center">
+                <div class="accent-secondary font-semibold mb-4 flex items-center">
                     <i class="fa-solid fa-building text-xs mr-2 opacity-70"></i> {{ role.company }}
                 </div>
                 {%- endif -%}
                 {%- if role.description -%}
-                <div class="text-gray-400 text-base leading-relaxed whitespace-pre-line">{{ role.description }}</div>
+                <div class="article-text text-base leading-relaxed whitespace-pre-line">{{ role.description }}</div>
                 {%- endif -%}
             </div>
         </div>
@@ -42,8 +41,8 @@ eleventyExcludeFromCollections: true
     </div>
 
     <div class="mt-24 p-8 glass-card rounded-3xl text-center">
-        <h2 class="text-2xl font-bold text-white mb-4">Want to see my full resume?</h2>
-        <p class="text-gray-400 mb-8">You can download a PDF version of my resume for your records.</p>
+        <h2 class="text-2xl font-bold logo-text mb-4">Want to see my full resume?</h2>
+        <p class="article-text mb-8">You can download a PDF version of my resume for your records.</p>
         <a href="/resume" class="btn">Download Resume (PDF)</a>
     </div>
 </div>
