@@ -119,6 +119,16 @@
             </div>
         </footer>
         <script src="/js/main.js"></script>
+        <!-- Mermaid for technical diagrams -->
+        <script type="module">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+            mermaid.initialize({ 
+                startOnLoad: true,
+                theme: document.body.classList.contains('light-theme') ? 'default' : 'dark',
+                securityLevel: 'loose',
+                fontFamily: 'IBM Plex Sans, sans-serif'
+            });
+        </script>
         {% if page.url == "/" %}
         <script>
             document.addEventListener('DOMContentLoaded', () => {
