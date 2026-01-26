@@ -13,3 +13,4 @@ npm-debug.log*
 yarn-debug.log*
 
 src/css/style.css
+test-results/.last-run.json
