@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Simple Markdown Editor CSS/JS could go here, sticking to textarea for now -->
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen">
+    <nav class="bg-gray-800 border-b border-gray-700 px-6 py-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold">Admin Dashboard</h1>
+        <button id="logoutBtn" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-sm transition">Logout</button>
+    </nav>
+
+    <main class="container mx-auto px-6 py-8">
+
+        <!-- Stats Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-lg font-semibold mb-4 text-blue-400">Top Viewed Posts</h2>
+                <div id="viewsList" class="space-y-2 text-sm text-gray-300 max-h-60 overflow-y-auto">
+                    Loading...
+                </div>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-lg font-semibold mb-4 text-pink-400">Top Liked Posts</h2>
+                <div id="likesList" class="space-y-2 text-sm text-gray-300 max-h-60 overflow-y-auto">
+                    Loading...
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Post Section -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-semibold mb-6">Create New Post</h2>
+            <form id="postForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Title</label>
+                        <input type="text" name="title"
+                            class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 focus:outline-none focus:border-blue-500"
+                            required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Date</label>
+                        <input type="date" name="date"
+                            class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">Description</label>
+                    <textarea name="description" rows="2"
+                        class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2"></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Tags (comma separated)</label>
+                        <input type="text" name="tags" placeholder="blog, tech, tutorial"
+                            class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Image URL</label>
+                        <input type="text" name="image" placeholder="/assets/images/..."
+                            class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">Content (Markdown)</label>
+                    <textarea name="content" rows="15"
+                        class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 font-mono"
+                        required></textarea>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <button type="submit"
+                        class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded transition">Publish
+                        Post</button>
+                    <span id="formStatus" class="text-sm"></span>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Check Auth on Load
+        fetch('/api/check-auth').then(r => r.json()).then(data => {
+            if (!data.isAuthenticated) window.location.href = '/admin/login.html';
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            await fetch('/api/logout', { method: 'POST' });
+            window.location.reload();
+        });
+
+        // Load Stats
+        async function loadStats() {
+            const [viewsRes, likesRes] = await Promise.all([
+                fetch('/api/views'),
+                fetch('/api/likes')
+            ]);
+
+            const views = await viewsRes.json();
+            const likes = await likesRes.json();
+
+            renderList('viewsList', views);
+            renderList('likesList', likes);
+        }
+
+        function renderList(elementId, data) {
+            const container = document.getElementById(elementId);
+            const sorted = Object.entries(data)
+                .sort(([, a], [, b]) => b - a)
+                .slice(0, 10);
+
+            if (sorted.length === 0) {
+                container.innerHTML = '<div class="text-gray-500">No data yet</div>';
+                return;
+            }
+
+            container.innerHTML = sorted.map(([slug, count]) => `
+                <div class="flex justify-between hover:bg-gray-700 p-2 rounded transition">
+                    <span class="truncate pr-4">${slug}</span>
+                    <span class="font-mono font-bold">${count}</span>
+                </div>
+            `).join('');
+        }
+
+        loadStats();
+
+        // Handle Post Creation
+        document.getElementById('postForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const status = document.getElementById('formStatus');
+            btn.disabled = true;
+            status.textContent = 'Publishing...';
+            status.className = 'text-yellow-400 text-sm';
+
+            const formData = new FormData(e.target);
+            const payload = {
+                title: formData.get('title'),
+                date: formData.get('date'),
+                description: formData.get('description'),
+                tags: formData.get('tags').split(',').map(t => t.trim()).filter(Boolean),
+                image: formData.get('image'),
+                content: formData.get('content')
+            };
+
+            try {
+                const res = await fetch('/api/admin/posts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    status.textContent = `Success! Created at ${data.path}`;
+                    status.className = 'text-green-500 text-sm';
+                    e.target.reset();
+                    // Optional: Reset date to today
+                } else {
+                    const data = await res.json();
+                    throw new Error(data.error || 'Failed to create post');
+                }
+            } catch (err) {
+                status.textContent = `Error: ${err.message}`;
+                status.className = 'text-red-500 text-sm';
+            } finally {
+                btn.disabled = false;
+            }
+        });
+
+        // Set default date to today
+        document.querySelector('input[name="date"]').valueAsDate = new Date();
+    </script>
+</body>
+
+</html>
