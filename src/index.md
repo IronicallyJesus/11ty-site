@@ -110,13 +110,15 @@ image: "/assets/images/jesus.webp"
                     <i class="fa-solid fa-briefcase"></i>
                 </div>
                 <!-- Card -->
-                <div class="w-[calc(100%-4rem)] md:w-[45%] card p-6">
-                    <div class="flex items-center justify-between space-x-2 mb-1">
-                        <div class="font-bold text-white text-lg">{{ role.title }}</div>
-                        <time class="font-mono text-sm text-blue-400">{{ role.time }}</time>
+                <div class="w-[calc(100%-4rem)] md:w-[45%] card p-6 hover:border-blue-500/30 transition-all border border-transparent">
+                    <div class="mb-2">
+                        <div class="font-bold text-white text-lg leading-tight">{{ role.title }}</div>
+                        <time class="font-mono text-sm text-blue-400 block mt-1">{{ role.time }}</time>
                     </div>
                     {%- if role.company -%}
-                    <div class="text-blue-300 font-medium mb-3">@ {{ role.company }}</div>
+                    <div class="text-blue-300 font-medium mb-3 flex items-center">
+                        <i class="fa-solid fa-building text-xs mr-2 opacity-70"></i> {{ role.company }}
+                    </div>
                     {%- endif -%}
                     {%- if role.description -%}
                     <div class="text-gray-400 text-sm leading-relaxed">{{ role.description }}</div>

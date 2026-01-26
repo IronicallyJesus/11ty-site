@@ -23,9 +23,9 @@ eleventyExcludeFromCollections: true
             </div>
             <!-- Card -->
             <div class="w-[calc(100%-4rem)] md:w-[45%] card p-6 hover:border-blue-500/30 transition-all border border-transparent">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
-                    <div class="font-bold text-white text-xl">{{ role.title }}</div>
-                    <time class="font-mono text-sm text-blue-400 mt-1 sm:mt-0">{{ role.time }}</time>
+                <div class="mb-2">
+                    <div class="font-bold text-white text-xl leading-tight">{{ role.title }}</div>
+                    <time class="font-mono text-sm text-blue-400 block mt-1">{{ role.time }}</time>
                 </div>
                 {%- if role.company -%}
                 <div class="text-blue-300 font-semibold mb-4 flex items-center">
