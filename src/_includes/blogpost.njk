@@ -3,35 +3,36 @@ layout: "layout.njk"
 ---
 <article>
     {% if tags and 'blog' in tags %}
-    <div>
-        <a href="/blog">
-        <i class="fa-solid fa-arrow-left mr-2" aria-hidden="true"></i>
-        Back to all posts
-        </a>
-    </div>
+    <nav class="flex items-center space-x-2 text-sm meta-info mb-8" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-accent-primary transition-colors">Home</a>
+        <i class="fa-solid fa-chevron-right text-[10px] opacity-50"></i>
+        <a href="/blog" class="hover:text-accent-primary transition-colors">Blog</a>
+        <i class="fa-solid fa-chevron-right text-[10px] opacity-50"></i>
+        <span class="accent-primary font-medium truncate max-w-[200px] md:max-w-none">{{ title }}</span>
+    </nav>
     {% endif %}
     <h1>{{ title }}</h1>
-    <div class="post-meta flex flex-col items-start md:flex-row md:items-center text-gray-400 text-lg">
+    <div class="post-meta flex flex-col items-start md:flex-row md:items-center meta-info text-lg">
         <!--- Date Section -->
         <div class="flex items-center mb-1">
             <i class="fa-solid fa-fw fa-calendar mr-2" aria-hidden="true"></i>
             <span>Published on {{ page.date | readableDate }}</span>
         </div>
         <!--- Reading Time Section -->
-        <span class="hidden md:inline mx-2 text-gray-600">•</span>
+        <span class="hidden md:inline mx-2 separator opacity-40">•</span>
         <div class="flex items-center mb-1">
             <i class="fa-solid fa-fw fa-clock mr-2" aria-hidden="true"></i>
             <span>{{ content | readingTime }}</span>
         </div>
         <!--- Views Section -->
-        <span class="hidden md:inline mx-2 text-gray-600">•</span>
+        <span class="hidden md:inline mx-2 separator opacity-40">•</span>
         <div class="flex items-center mb-1">
             <i class="fa-solid fa-fw fa-eye mr-2" aria-hidden="true"></i>
             <span class="view-count" data-view-count data-slug="{{ page.fileSlug }}">Loading views</span>
         </div>
         <!--- Comments Section -->
         <!---
-        <span class="hidden md:inline mx-2 text-gray-600">•</span>
+        <span class="hidden md:inline mx-2 separator opacity-40">•</span>
         <div class="flex items-center mb-1">
             <i class="fa-solid fa-fw fa-comments mr-2" aria-hidden="true"></i>
             <a href="#disqus_thread">Comments</a>
