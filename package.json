@@ -9,12 +9,14 @@
     "watch:css": "tailwindcss -i ./src/css/input.css -o ./_site/css/style.css --watch",
     "dev:api": "node --watch server.js",
     "build": "npm run build:css && eleventy",
-    "build:css": "tailwindcss -i ./src/css/input.css -o ./_site/css/style.css --minify"
+    "build:css": "tailwindcss -i ./src/css/input.css -o ./_site/css/style.css --minify",
+    "test": "playwright test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@playwright/test": "^1.58.0",
     "@quasibit/eleventy-plugin-sitemap": "^2.2.0",
     "async-mutex": "^0.5.0",
     "cors": "^2.8.5",
