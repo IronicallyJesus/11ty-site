@@ -1,27 +1,32 @@
 [
-    { 
-        "name": "JNCIA - DevOps", 
+    {
+        "name": "JNCIA - DevOps",
         "earned": "July 2025",
-        "expires": "July 2028"
+        "expires": "July 2028",
+        "verification_url": "https://www.credly.com/badges/20126faf-c4a8-4d16-a718-65a854b3c8ec"
     },
-    { 
-        "name": "JNCIS - Service Provider", 
+    {
+        "name": "JNCIS - Service Provider",
         "earned": "June 2025",
-        "expires": "June 2028"
+        "expires": "June 2028",
+        "verification_url": "https://www.credly.com/badges/cd337fdc-1940-4756-8ed9-68b2bcf28cfd"
     },
     {
         "name": "JNCIS - Enterprise",
         "earned": "March 2025",
-        "expires": "March 2028"
+        "expires": "March 2028",
+        "verification_url": "https://www.credly.com/badges/fc3aa90c-2757-4cb0-8d48-795b86a915a4"
     },
     {
         "name": "JNCIA - Junos",
         "earned": "May 2023",
-        "expires": "July 2028"
+        "expires": "July 2028",
+        "verification_url": "https://www.credly.com/badges/6a3d2170-89db-4baa-a8ae-b8ea46199f5f"
     },
     {
         "name": "CCNA",
         "earned": "April 2023",
-        "expires": "August 2026"
+        "expires": "August 2026",
+        "verification_url": "https://www.credly.com/badges/2f32c062-0378-46ec-938c-bc3cafb6f937"
     }
 ]
