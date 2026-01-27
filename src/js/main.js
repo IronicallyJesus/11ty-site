@@ -177,3 +177,7 @@ if (themeToggle) {
     });
 }
 
+// Initialize icon based on current body class (set by inline script)
+const isLightInitialized = document.body.classList.contains('light-theme');
+applyTheme(isLightInitialized);
+
