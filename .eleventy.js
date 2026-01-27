@@ -19,12 +19,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPlugin(syntaxHighlight);
 
-  const sitemap = require("@quasibit/eleventy-plugin-sitemap");
-  eleventyConfig.addPlugin(sitemap, {
-    sitemap: {
-      hostname: "https://jesus.twk95.com",
-    },
-  });
+
 
   eleventyConfig.addPlugin(feedPlugin, {
     type: "atom", // or "rss", "json"
