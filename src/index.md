@@ -86,7 +86,7 @@ image: "/assets/images/jesus.webp"
                     <i class="fa-solid fa-certificate text-yellow-500 text-xl shrink-0" aria-hidden="true"></i>
                     <div>
                         <h4 class="font-bold card-heading text-lg leading-tight flex items-center gap-2">
-                            {{ certification.name }}
+                            {{- certification.name -}}
                             {% if certification.verification_url %}
                             <a href="{{ certification.verification_url }}" target="_blank" rel="noopener noreferrer" class="accent-secondary hover:text-blue-600 transition-colors" title="Verify Certification">
                                 <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
