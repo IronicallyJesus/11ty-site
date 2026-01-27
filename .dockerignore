@@ -1,17 +1,25 @@
-# .dockerignore
-.gitea/*
-
-.git
-.gitignore
-
-Dockerfile
-
+# Build artifacts
+_site
 node_modules
 npm-debug.log*
+src/_data/views.json
+src/_data/likes.json
+src/css/style.css
 
-_site
-
+# Git / CI / Dev tooling
+.git
+.gitignore
+.gitea
 .vscode
 
-*.md
+# Docker config
+Dockerfile
+.dockerignore
+
+# Project files not needed in the image
+README.md
+screenshot.png
+
+# Secrets
 .env
+*.env
