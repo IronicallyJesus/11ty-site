@@ -192,20 +192,24 @@ if (window.location.pathname === '/' || window.location.pathname === '/index.htm
 
     const observerCallback = (entries) => {
         entries.forEach(entry => {
+            const id = entry.target.id;
+            let selector = `.nav-link[href="/#${id}"]`;
+            if (id === 'experience') selector = `.nav-link[href="/experience"]`;
+            if (id === 'blog') selector = `.nav-link[href="/blog"]`;
+
             if (entry.isIntersecting) {
-                const id = entry.target.id;
-                // Remove active class from all nav links
+                // When a section is intersecting, remove active class from all links
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.remove('active');
                 });
-
-                // Add active class to corresponding link
-                let selector = `.nav-link[href="/#${id}"]`;
-                if (id === 'experience') selector = `.nav-link[href="/experience"]`;
-                if (id === 'blog') selector = `.nav-link[href="/blog"]`;
-
+                // And add it to the correct one
                 document.querySelectorAll(selector).forEach(activeLink => {
                     activeLink.classList.add('active');
+                });
+            } else {
+                // When a section is not intersecting, just remove its active class.
+                document.querySelectorAll(selector).forEach(activeLink => {
+                    activeLink.classList.remove('active');
                 });
             }
         });
