@@ -56,7 +56,8 @@
         <link rel="preload" as="image" href="{{ image }}">
         {% endif %}
     </head>
-    <body class="antialiased selection:bg-accent-primary selection:text-white">
+    <body class="antialiased selection:bg-accent-primary selection:text-white"
+          data-page-slug="{% if page.url == '/' %}homepage{% else %}{{ page.fileSlug }}{% endif %}">
         <script>
             // Immediately invoked function to set the theme
             (function() {
@@ -142,6 +143,7 @@
             </div>
         </footer>
         <script src="/js/main.js"></script>
+        <script src="/js/view-counter.js"></script>
         <!-- Mermaid for technical diagrams -->
         <script type="module">
             import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
@@ -152,30 +154,5 @@
                 fontFamily: 'IBM Plex Sans, sans-serif'
             });
         </script>
-        {% if page.url == "/" %}
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                // Define a unique slug for the home page
-                const slug = 'homepage';
-                
-                // Use a flag in localStorage to prevent incrementing on every refresh
-                const viewed = localStorage.getItem(`viewed-${slug}`);
-
-                if (!viewed) {
-                    // We only need to send the update, not get the result
-                    fetch(`/api/views/${slug}`, { method: 'POST' })
-                        .then(response => {
-                            if (response.ok) {
-                                // Mark as viewed in this session if the update was successful
-                                localStorage.setItem(`viewed-${slug}`, 'true');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error updating home page view count:', error);
-                        });
-                }
-            });
-        </script>
-        {% endif %}
     </body>
 </html>
