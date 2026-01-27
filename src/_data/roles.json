@@ -5,7 +5,7 @@
         "location": "Remote",
         "time": "September 2025 - Present",
         "featured": true,
-        "description": "Recently promoted to Engineer II, taking on greater responsibilities in network design and service deployment. Continuing to lead initiatives that improve service activation processes and customer satisfaction."
+        "description": "Spearheading advanced network design and service deployment for enterprise clients. Leading strategic initiatives to optimize service activation workflows and elevate customer satisfaction through technical excellence."
     },
     {
         "title": "Commercial Network Engineer I",
@@ -13,14 +13,14 @@
         "location": "Remote",
         "time": "June 2024 - August 2025",
         "featured": true,
-        "description": "Expertly activated new DIA, EPL, and Cellular Backhaul Ethernet services through design, deployment, and testing. Proactively identified and resolved network constraints to facilitate multi-gigabit services. Led a company initiative to deploy new CPE for Active Ethernet services."
+        "description": "Orchestrated the end-to-end design, deployment, and validation of DIA, EPL, and Cellular Backhaul services. Proactively resolved network constraints to enable multi-gigabit delivery and led a company-wide initiative for Active Ethernet CPE deployment."
     },
     {
         "title": "Service Activation Technician III",
         "company": "Cable One",
         "location": "Remote",
         "featured": true,
-        "description": "Led the activation of complex Ethernet services, ensuring high standards of quality and performance. Automated CPE configuration processes to enhance efficiency and reduce activation times.",
+        "description": "Directed the activation of mission-critical Ethernet and Cellular Backhaul services while maintaining rigorous performance standards. Developed automation scripts for CPE configuration, significantly accelerating deployment timelines.",
         "time": "April 2023 - June 2024"
     },
     {
@@ -28,7 +28,7 @@
         "company": "Cable One",
         "location": "Hybrid Remote",
         "featured": false,
-        "description": "Managed the activation of PON, HFC, and SIP services, focusing on efficiency and reliability. Played a key role in troubleshooting and resolving service issues to maintain high customer satisfaction.",
+        "description": "Led the Activation team and collaborated across departments to streamline Active Ethernet deployments and MACD workflows. Standardized technical documentation for activation protocols to ensure operational consistency.",
         "time": "July 2020 - April 2023"
     },
     {
@@ -36,6 +36,7 @@
         "company": "Hargray",
         "location": "Pritchardville, SC",
         "featured": false,
+        "description": "Managed the activation and lifecycle (MACD) of PON, HFC, and SIP services with a focus on reliability. Played a key role in troubleshooting complex service issues to ensure customer success.",
         "time": "May 2017 - July 2020"
     },
     {
@@ -43,6 +44,7 @@
         "company": "Hargray",
         "location": "Hilton Head, SC",
         "featured": false,
+        "description": "Provided comprehensive technical support for internal staff, managing end-to-end employee onboarding and hardware/software lifecycles. Efficiently resolved service tickets to maintain enterprise productivity.",
         "time": "February 2016 - May 2017"
     },
     {
@@ -50,6 +52,7 @@
         "company": "Hargray",
         "location": "Bluffton, SC",
         "featured": false,
+        "description": "Delivered remote technical support for residential triple-play services, resolving complex connectivity issues while educating users on system functionality.",
         "time": "May 2014 - February 2016"
     },
     {
