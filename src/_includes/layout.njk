@@ -111,10 +111,10 @@
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden px-6 py-8 space-y-6">
                 <a href="/#skills" class="block text-xl font-medium nav-link" data-text="Skills">Skills</a>
-                <a href="/experience" class="block text-xl font-medium nav-link" data-text="Experience">Experience</a>
-                <a href="/blog" class="block text-xl font-medium nav-link" data-text="Blog">Blog</a>
+                <a href="/experience" class="block text-xl font-medium nav-link {% if '/experience/' in page.url %}active{% endif %}" data-text="Experience">Experience</a>
+                <a href="/blog" class="block text-xl font-medium nav-link {% if '/blog/' in page.url %}active{% endif %}" data-text="Blog">Blog</a>
                 <a href="/#contact" class="block text-xl font-medium nav-link" data-text="Contact">Contact</a>
-                <a href="/about" class="block text-xl font-medium nav-link" data-text="About">About</a>
+                <a href="/about" class="block text-xl font-medium nav-link {% if '/about/' in page.url %}active{% endif %}" data-text="About">About</a>
                 <div class="pt-4">
                     <a href="/resume" class="btn w-full block">View Resume</a>
                 </div>

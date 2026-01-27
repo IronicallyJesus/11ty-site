@@ -181,3 +181,44 @@ if (themeToggle) {
 const isLightInitialized = document.body.classList.contains('light-theme');
 applyTheme(isLightInitialized);
 
+
+// --- Intersection Observer for Active Nav State on Homepage ---
+if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -60% 0px', // Trigger when section is near top/center
+        threshold: 0
+    };
+
+    const observerCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                // Remove active class from all nav links
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                // Add active class to corresponding link
+                let selector = `.nav-link[href="/#${id}"]`;
+                if (id === 'experience') selector = `.nav-link[href="/experience"]`;
+                if (id === 'blog') selector = `.nav-link[href="/blog"]`;
+
+                document.querySelectorAll(selector).forEach(activeLink => {
+                    activeLink.classList.add('active');
+                });
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const sections = document.querySelectorAll('section[id]'); // Assuming sections have IDs like 'skills', 'contact'
+
+    // Specifically target skills and contact if they are not generic sections
+    const specificSections = ['experience', 'blog', 'skills', 'contact'];
+    specificSections.forEach(id => {
+        const section = document.getElementById(id);
+        if (section) observer.observe(section);
+    });
+}
+
