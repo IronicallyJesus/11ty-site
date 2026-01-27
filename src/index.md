@@ -13,7 +13,6 @@ image: "/assets/images/jesus.webp"
         <img src="/assets/images/hero-bg.png" alt="" class="w-full h-full object-cover opacity-60">
         <div class="absolute inset-0 hero-overlay"></div>
     </div>
-    
     <div class="relative z-10 max-w-4xl mx-auto">
         <span class="inline-block py-1 px-3 mb-6 text-xs font-bold tracking-widest status-pill uppercase border rounded-full">
             Available for Projects
@@ -31,7 +30,6 @@ image: "/assets/images/jesus.webp"
         </div>
     </div>
 </section>
-
 <!-- Services Section -->
 <!--
 <section id="services" class="py-16">
@@ -49,7 +47,6 @@ image: "/assets/images/jesus.webp"
     </div>
 </section>
 -->
-
 <!-- Skills & Certifications Section -->
 <section id="skills" class="py-24">
     <h2 class="section-header">Skills & Certifications</h2>
@@ -101,23 +98,18 @@ image: "/assets/images/jesus.webp"
         </div>
     </div>
 </section>
-
 <!-- Work Experience Section -->
 <section id="experience" class="py-24">
     <h2 class="section-header">Professional Journey</h2>
     <div class="max-w-4xl mx-auto">
         <div class="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-accent-primary before:to-transparent">
-            
             {% from "components/experience-card.njk" import experienceCard %}
-            
             {%- for role in roles -%}
             {%- if role.featured -%}
             {{ experienceCard(role) }}
             {%- endif -%}
             {%- endfor -%}
-
         </div>
-
         <div class="text-center mt-16">
             <a href="/experience" class="btnalt inline-flex items-center">
                 View Full Professional History <i class="fa-solid fa-arrow-right-long ml-2"></i>
@@ -180,7 +172,6 @@ image: "/assets/images/jesus.webp"
         <!-- Subtle Background Glow -->
         <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
         <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl"></div>
-        
         <div class="relative z-10">
             <h2 class="section-header">Let's Connect</h2>
             <p class="text-center article-text max-w-xl mx-auto mb-12">
