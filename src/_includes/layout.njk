@@ -57,6 +57,24 @@
         {% endif %}
     </head>
     <body class="antialiased selection:bg-accent-primary selection:text-white">
+        <script>
+            // Immediately invoked function to set the theme
+            (function() {
+                try {
+                    const savedTheme = localStorage.getItem('theme');
+                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    const isLight = savedTheme === 'light' || (!savedTheme && !prefersDark); // Default to Dark
+                    
+                    if (isLight) {
+                        document.body.classList.add('light-theme');
+                    } else {
+                        document.body.classList.remove('light-theme');
+                    }
+                } catch (e) {
+                    console.error('Theme initialization failed:', e);
+                }
+            })();
+        </script>
         {% if '/blog/' in page.url %}
         <div id="scroll-progress-container" class="fixed top-0 left-0 w-full h-1 z-[100] bg-transparent">
             <div id="scroll-progress-bar" class="h-full bg-accent-primary transition-all duration-150 ease-out" style="width: 0%;"></div>
