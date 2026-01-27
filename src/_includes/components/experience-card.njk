@@ -11,10 +11,19 @@
             <time class="font-mono text-sm accent-primary block mt-1">{{ role.time }}</time>
         </div>
         {%- if role.company -%}
-        <div class="accent-secondary font-semibold mb-4 flex items-center">
-            <i class="fa-solid fa-building text-xs mr-2 opacity-70"></i> {{ role.company }}
+        <div class="accent-secondary font-semibold flex items-center flex-wrap gap-x-4">
+            <span class="flex items-center">
+                <i class="fa-solid fa-building text-xs mr-2 opacity-70"></i> {{ role.company }}
+            </span>
         </div>
         {%- endif -%}
+        <div class="accent-secondary font-semibold mb-2 flex items-center flex-wrap gap-x-4">
+            {%- if role.location -%}
+            <span class="flex items-center opacity-80 text-sm font-medium">
+                <i class="fa-solid fa-location-dot text-xs mr-2 opacity-70"></i> {{ role.location }}
+            </span>
+            {%- endif -%}
+        </div>
         {%- if role.description -%}
         <div class="article-text text-base leading-relaxed whitespace-pre-line">{{ role.description }}</div>
         {%- endif -%}
