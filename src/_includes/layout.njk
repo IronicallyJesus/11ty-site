@@ -47,7 +47,7 @@
         <link rel="preload" href="/assets/fontawesome/css/all.min.css" as="style">
         <link rel="stylesheet" href="/css/style.css?v={{ buildTime }}">
         <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
-        {% if '/blog/' in page.url %}
+        {% if '/blog/' in page.url and page.url != '/blog/' %}
         <link rel="stylesheet" href="/css/prism.css">
         {% endif %}
         <link rel="canonical" href="{{ site.url }}{{ page.url }}">
@@ -75,7 +75,7 @@
                 }
             })();
         </script>
-        {% if '/blog/' in page.url %}
+        {% if '/blog/' in page.url and page.url != '/blog/' %}
         <div id="scroll-progress-container" class="fixed top-0 left-0 w-full h-1 z-[100] bg-transparent">
             <div id="scroll-progress-bar" class="h-full bg-accent-primary transition-all duration-150 ease-out" style="width: 0%;"></div>
         </div>
