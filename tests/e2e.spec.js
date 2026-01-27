@@ -2,7 +2,8 @@ const { test, expect } = require('@playwright/test');
 
 test.describe('Website E2E Tests', () => {
     test.beforeEach(async ({ page }) => {
-        await page.goto('http://localhost:8080');
+        // Assuming baseURL is set to 'http://localhost:8080' in playwright.config.js
+        await page.goto('/');
     });
 
     test('Homepage has correct title and hero section', async ({ page }) => {
@@ -29,20 +30,18 @@ test.describe('Website E2E Tests', () => {
     test('Dark mode toggle works', async ({ page }) => {
         // Click theme toggle
         const toggle = page.locator('#theme-toggle');
-
-        // Check initial state (should be dark by default or based on system, but we force checking the class)
-        // The script sets 'light-theme' class on body if light.
-
         const body = page.locator('body');
-        const isLightInitially = await body.getAttribute('class').then(c => c.includes('light-theme'));
 
+        // Ensure we start in a known state (assuming default is dark/no class)
+        // If the site persists state, you might need to clear localStorage in beforeEach
+        await expect(body).not.toHaveClass(/light-theme/);
+
+        // Perform toggle
         await toggle.click();
-
-        // Expect change
-        if (isLightInitially) {
-            await expect(body).not.toHaveClass(/light-theme/);
-        } else {
-            await expect(body).toHaveClass(/light-theme/);
-        }
+        await expect(body).toHaveClass(/light-theme/);
+        
+        // Toggle back
+        await toggle.click();
+        await expect(body).not.toHaveClass(/light-theme/);
     });
 });
