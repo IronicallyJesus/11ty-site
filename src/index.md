@@ -142,7 +142,21 @@ image: "/assets/images/jesus.webp"
                     {% endif %}
                     <div class="flex-1 flex flex-col justify-between pt-4">
                         <div>
-                            <span class="text-xs font-bold accent-primary uppercase tracking-widest mb-2 block">Network Engineering</span>
+                            <!-- Tags -->
+                            <!--
+                            <div class="flex flex-nowrap overflow-hidden whitespace-nowrap items-center">
+                                {% set first = true %}
+                                {%- for tag in post.data.tags -%}
+                                    {%- if tag != 'blog' -%}
+                                        {%- if not first -%}
+                                            <span class="text-xs accent-primary px-1">·</span>
+                                        {%- endif -%}
+                                        <span class="text-xs font-bold accent-primary uppercase tracking-widest">{{ tag }}</span>
+                                        {%- set first = false -%}
+                                    {%- endif -%}
+                                {%- endfor -%}
+                            </div>
+                            -->
                             <h3 class="text-xl font-bold card-heading mb-2 group-hover:accent-primary transition-colors">{{ post.data.title }}</h3>
                             <p class="article-text text-sm line-clamp-3 mb-6">{{ post.data.excerpt or post.data.description }}</p>
                         </div>
