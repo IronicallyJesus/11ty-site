@@ -13,29 +13,10 @@ layout: "layout.njk"
 
     <div class="relative space-y-12 before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-accent-primary before:to-transparent">
         
+        {% from "components/experience-card.njk" import experienceCard %}
+        
         {%- for role in roles -%}
-        <!-- Experience Item -->
-        <div class="relative flex items-center justify-between lg:justify-normal lg:odd:flex-row-reverse group">
-            <!-- Icon -->
-            <div class="flex items-center justify-center w-10 h-10 rounded-full border border-accent-primary/50 card-icon-bg shadow shrink-0 lg:order-1 lg:group-odd:-translate-x-1/2 lg:group-even:translate-x-1/2 transition-all duration-300">
-                <i class="fa-solid {% if role.featured %}fa-briefcase{% else %}fa-history{% endif %}"></i>
-            </div>
-            <!-- Card -->
-            <div class="w-[calc(100%-4rem)] lg:w-[45%] card p-6 hover:border-accent-primary/30 transition-all border border-transparent ml-6 lg:ml-0">
-                <div class="mb-2">
-                    <div class="font-bold logo-text text-xl leading-tight">{{ role.title }}</div>
-                    <time class="font-mono text-sm accent-primary block mt-1">{{ role.time }}</time>
-                </div>
-                {%- if role.company -%}
-                <div class="accent-secondary font-semibold mb-4 flex items-center">
-                    <i class="fa-solid fa-building text-xs mr-2 opacity-70"></i> {{ role.company }}
-                </div>
-                {%- endif -%}
-                {%- if role.description -%}
-                <div class="article-text text-base leading-relaxed whitespace-pre-line">{{ role.description }}</div>
-                {%- endif -%}
-            </div>
-        </div>
+        {{ experienceCard(role) }}
         {%- endfor -%}
 
     </div>
