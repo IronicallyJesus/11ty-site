@@ -1,24 +1,19 @@
 # Dockerfile with multi-stage for faster and smaller builds.
 
-# STAGE 1: Dependencies
-# This stage installs all dependencies (dev and prod) from package-lock.json
-# It's used as a base for both development and builder stages to leverage caching.
-FROM node:20-alpine AS deps
+# STAGE 1: Builder
+# This stage builds the Eleventy site for production.
+FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 # Use `npm ci` for faster, more reliable builds from package-lock.json
 RUN npm ci
-
-# STAGE 2: Builder
-# This stage builds the Eleventy site for production.
-FROM deps AS builder
 COPY . .
 # Build the site. Requires a "build": "eleventy" script in package.json
 RUN npm run build
 # After building, remove development dependencies to keep the final image small.
 RUN npm prune --omit=dev
 
-# STAGE 3: Production
+# STAGE 2: Production
 # This stage creates a lean, production-ready image.
 FROM node:18-alpine AS production
 WORKDIR /app
