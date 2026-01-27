@@ -3,7 +3,7 @@
 # STAGE 1: Dependencies
 # This stage installs all dependencies (dev and prod) from package-lock.json
 # It's used as a base for both development and builder stages to leverage caching.
-FROM node:18-alpine AS deps
+FROM node:20-alpine AS deps
 WORKDIR /app
 COPY package*.json ./
 # Use `npm ci` for faster, more reliable builds from package-lock.json
