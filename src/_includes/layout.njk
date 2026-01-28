@@ -55,8 +55,8 @@
         {% if page.url !== "/"  and image %}
         <link rel="preload" as="image" href="{{ image }}">
         {% endif %}
-        <script src="/js/main.js" defer></script>
-        <script src="/js/view-counter.js" defer></script>
+        <script src="/js/global.js" defer></script>
+        <script src="/js/stats-loader.js" defer></script>
     </head>
     <body class="antialiased selection:bg-accent-primary selection:text-white"
           data-page-slug="{% if page.url == '/' %}homepage{% else %}{{ page.fileSlug }}{% endif %}">
