@@ -1,17 +1,10 @@
 ---
-title: "Professional Experience"
-layout: "layout.njk"
+title: "Professional Journey"
+description: "A comprehensive history of my career in network engineering, technical support, and the early roles that shaped my work ethic."
+layout: "layouts/page.njk"
 ---
 
-<div class="max-w-4xl mx-auto py-12">
-    <div class="mb-16 text-center">
-        <h1 class="page-title mb-6">Professional Journey</h1>
-        <p class="text-lg article-text max-w-2xl mx-auto">
-            A comprehensive history of my career in network engineering, technical support, and the early roles that shaped my work ethic.
-        </p>
-    </div>
-
-    <div class="relative space-y-12 before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-accent-primary before:to-transparent">
+<div class="relative space-y-12 before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-accent-primary before:to-transparent">
         
         {% from "components/experience-card.njk" import experienceCard %}
         
@@ -21,9 +14,5 @@ layout: "layout.njk"
 
     </div>
 
-    <div class="mt-24 p-8 glass-card rounded-3xl text-center">
-        <h2 class="text-2xl font-bold logo-text mb-4">Want to see my full resume?</h2>
-        <p class="article-text mb-8">You can download a PDF version of my resume for your records.</p>
-        <a href="/resume" class="btn">Download Resume (PDF)</a>
-    </div>
-</div>
+    {% include "components/resume-cta.njk" %}
+

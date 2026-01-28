@@ -1,7 +1,9 @@
 ---
 title: "Network Engineer Resume"
 date: "2025-09-20"
-layout: "article.njk"
+description: "My professional resume detailing my experience, certifications, and skills in network engineering."
+layout: "layouts/page.njk"
+prose: true
 sitemapPriority: 0.8
 sitemapChangefreq: "monthly"
 ---

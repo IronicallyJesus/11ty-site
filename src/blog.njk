@@ -1,20 +1,9 @@
 ---
 title: "Blog"
-layout: "layout.njk"
+layout: "layouts/base.njk"
 ---
 
-<div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
-    <h1 class="page-title">Insights & Articles</h1>
-    <div class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
-        <div class="relative w-full sm:w-64">
-            <input type="text" id="search-input" placeholder="Search articles..." class="w-full pl-10 pr-4 py-2 theme-input rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all text-sm" aria-label="Search articles">
-            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 muted-text text-xs"></i>
-        </div>
-        <a href="/feed.xml" class="btn flex items-center whitespace-nowrap" aria-label="Subscribe to RSS Feed">
-            <i class="fa-solid fa-rss mr-2"></i>Subscribe via RSS
-        </a>
-    </div>
-</div>
+{% include "components/blog-header.njk" %}
 
 <div class="space-y-8">
 {%- for post in collections.blog | reverse -%}
