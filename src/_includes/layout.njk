@@ -55,6 +55,8 @@
         {% if page.url !== "/"  and image %}
         <link rel="preload" as="image" href="{{ image }}">
         {% endif %}
+        <script src="/js/main.js" defer></script>
+        <script src="/js/view-counter.js" defer></script>
     </head>
     <body class="antialiased selection:bg-accent-primary selection:text-white"
           data-page-slug="{% if page.url == '/' %}homepage{% else %}{{ page.fileSlug }}{% endif %}">
@@ -142,8 +144,6 @@
                 <p>&copy; {% year %} {{ site.author.name }}. All Rights Reserved.</p>
             </div>
         </footer>
-        <script src="/js/main.js"></script>
-        <script src="/js/view-counter.js"></script>
         <!-- Mermaid for technical diagrams -->
         <script type="module">
             import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
