@@ -83,46 +83,7 @@
             <div id="scroll-progress-bar" class="h-full bg-accent-primary transition-all duration-150 ease-out" style="width: 0%;"></div>
         </div>
         {% endif %}
-        <!-- Header & Nav -->
-        <header class="fixed w-full top-0 z-50 glass-card">
-            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="/" class="text-3xl font-extrabold tracking-tight logo-text group">
-                    {{ site.author.shortname }}<span class="accent-primary group-hover:animate-pulse">.</span>
-                </a>
-                
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="/#skills" class="text-sm font-medium nav-link" data-text="Skills">Skills</a>
-                    <a href="/experience" class="text-sm font-medium nav-link {% if '/experience/' in page.url %}active{% endif %}" data-text="Experience">Experience</a>
-                    <a href="/blog" class="text-sm font-medium nav-link {% if '/blog/' in page.url %}active{% endif %}" data-text="Blog">Blog</a>
-                    <a href="/#contact" class="text-sm font-medium nav-link" data-text="Contact">Contact</a>
-                    <a href="/about" class="text-sm font-medium nav-link {% if '/about/' in page.url %}active{% endif %}" data-text="About">About</a>
-                    <a href="/resume" class="btn text-sm py-2 px-6">Resume</a>
-                </div>
-
-                <div class="flex items-center space-x-4">
-                    <button id="theme-toggle" class="text-gray-400 hover:text-accent-primary p-2 rounded-lg transition-colors" aria-label="Toggle theme">
-                        <i id="theme-toggle-icon" class="fa-solid fa-moon text-xl"></i>
-                    </button>
-                    <div class="md:hidden">
-                        <button id="mobile-menu-button" class="logo-text p-2 rounded-lg hover:bg-white/10 transition-colors" aria-label="Toggle mobile menu">
-                            <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-            </nav>
-
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden px-6 py-8 space-y-6">
-                <a href="/#skills" class="block text-xl font-medium nav-link" data-text="Skills">Skills</a>
-                <a href="/experience" class="block text-xl font-medium nav-link {% if '/experience/' in page.url %}active{% endif %}" data-text="Experience">Experience</a>
-                <a href="/blog" class="block text-xl font-medium nav-link {% if '/blog/' in page.url %}active{% endif %}" data-text="Blog">Blog</a>
-                <a href="/#contact" class="block text-xl font-medium nav-link" data-text="Contact">Contact</a>
-                <a href="/about" class="block text-xl font-medium nav-link {% if '/about/' in page.url %}active{% endif %}" data-text="About">About</a>
-                <div class="pt-4">
-                    <a href="/resume" class="btn w-full block">View Resume</a>
-                </div>
-            </div>
-        </header>
+        {% include "partials/header.njk" %}
         <main class="main-content container mx-auto px-6 md:px-10 lg:px-20 pt-32 pb-12">
             {{ content | safe }}
         </main>
@@ -131,19 +92,7 @@
             <i class="fa-solid fa-arrow-up"></i>
         </button>
 
-        <!-- Footer -->
-        <footer style="background-color: var(--footer-bg); color: var(--footer-text);" class="py-12 transition-colors">
-            <div class="container mx-auto px-6 text-center">
-                <div class="flex justify-center space-x-6 mb-8">
-                    <a href="{{ site.author.linkedinUrl }}" target="_blank" class="hover:text-accent-primary transition-colors" aria-label="LinkedIn profile of {{ site.author.name }}"><i class="fa-brands fa-linkedin fa-2xl" aria-hidden="true"></i></a>
-                    <a href="mailto:{{ site.author.email }}" class="hover:text-accent-primary transition-colors" aria-label="Email {{ site.author.name }}"><i class="fa-solid fa-envelope fa-2xl" aria-hidden="true"></i></a>
-                    <a href="{{ site.author.githubUrl }}" target="_blank" class="hover:text-accent-primary transition-colors" aria-label="GitHub profile of {{ site.author.name }}"><i class="fa-brands fa-github fa-2xl" aria-hidden="true"></i></a>
-                    <a href="{{ site.source }}" target="_blank" class="hover:text-accent-primary transition-colors" aria-label="Website source code"><i class="fa-solid fa-code fa-2xl" aria-hidden="true"></i></a>
-                    <a href="/feed.xml" class="hover:text-accent-primary transition-colors" aria-label="RSS Feed"><i class="fa-solid fa-rss fa-2xl" aria-hidden="true"></i></a>
-                </div>
-                <p>&copy; {% year %} {{ site.author.name }}. All Rights Reserved.</p>
-            </div>
-        </footer>
+        {% include "partials/footer.njk" %}
         <!-- Mermaid for technical diagrams -->
         <script type="module">
             import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';

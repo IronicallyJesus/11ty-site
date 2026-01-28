@@ -1,7 +1,9 @@
 ---
 title: "About Jesus"
+description: "A brief look into my background, my journey into tech, and what drives me today."
 date: "2025-09-30"
-layout: "article.njk"
+layout: "layouts/page.njk"
+prose: true
 sitemapPriority: 0.8
 sitemapChangefreq: "yearly"
 image: "/assets/images/jesus.webp"
