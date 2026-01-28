@@ -1,3 +1,19 @@
+/**
+ * Global helper to handle fetch requests, parse JSON, and handle errors (e.g., 429 Too Many Requests).
+ */
+window.fetchApiData = async (url, options = {}) => {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+        let errorMessage = `Server responded with status ${response.status}`;
+        if (response.status === 429) {
+            const errorText = await response.text();
+            errorMessage = errorText || 'Too many requests. Please try again later.';
+        }
+        throw new Error(errorMessage);
+    }
+    return response.json();
+};
+
 // --- Element Selectors ---
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
