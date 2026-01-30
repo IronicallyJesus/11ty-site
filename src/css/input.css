@@ -562,7 +562,8 @@ article li {
     transition: color 0.3s ease;
 }
 
-.logo-text:hover {
+a.logo-text:hover,
+button.logo-text:hover {
     color: var(--accent-primary) !important;
     text-decoration: none !important;
 }
