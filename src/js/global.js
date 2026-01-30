@@ -70,29 +70,40 @@ function jumpToTarget(targetId) {
 // 1. Handle clicks on section links (e.g., /#about)
 document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        const isHomePage = window.location.pathname === '/';
-        const targetId = this.getAttribute('href').substring(2);
+        const isHomePage = window.location.pathname === '/' || window.location.pathname === '/index.html';
+        const targetId = this.getAttribute('href').split('#')[1];
 
+        // Check if we are on the homepage and the link is an anchor on the current page
         if (isHomePage) {
             e.preventDefault();
-            // For on-page clicks, we still want a smooth scroll
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                const headerOffset = header ? header.offsetHeight : 0;
-                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - headerOffset;
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }
-        // If not on the homepage, let the browser navigate.
-        // The 'load' event listener below will handle the final positioning.
 
-        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-            mobileMenu.classList.add('hidden');
-            header.classList.remove('menu-open');
+            // 1. Close mobile menu FIRST if it's open
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                header.classList.remove('menu-open');
+            }
+
+            // 2. Wait for the next animation frame so the layout/header height updates
+            requestAnimationFrame(() => {
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const headerOffset = header ? header.offsetHeight : 0;
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        } else {
+            // If not on homepage, the browser will navigate to /#id
+            // the 'load' event listener below will handle the jump with correct offset
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                header.classList.remove('menu-open');
+            }
         }
     });
 });
