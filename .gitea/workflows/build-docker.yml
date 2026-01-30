@@ -44,3 +44,14 @@ jobs:
           push: true
           platforms: linux/amd64
           tags: ${{ steps.prep.outputs.tags }}
+
+      - name: Deploy to Remote Host
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /opt/11ty-site # Update this to your app's directory on the remote host
+            docker compose pull
+            docker compose up -d
