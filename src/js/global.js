@@ -170,11 +170,6 @@ const applyTheme = (isLight) => {
             themeIcon.classList.add('fa-sun');
         }
     }
-    // Re-initialize mermaid if it exists
-    if (window.mermaid) {
-        window.mermaid.initialize({ theme: isLight ? 'default' : 'dark' });
-        window.mermaid.contentLoaded();
-    }
 };
 
 const setInitialTheme = () => {
@@ -190,6 +185,11 @@ if (themeToggle) {
         const nextIsLight = !isCurrentlyLight;
         localStorage.setItem('theme', nextIsLight ? 'light' : 'dark');
         applyTheme(nextIsLight);
+
+        // Dispatch custom event for other scripts to react
+        window.dispatchEvent(new CustomEvent('theme-changed', {
+            detail: { isLight: nextIsLight }
+        }));
     });
 }
 
