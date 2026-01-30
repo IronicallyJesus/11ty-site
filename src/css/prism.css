@@ -117,7 +117,8 @@ pre[class*=language-] {
 /* Plugins */
 .command-line-prompt {
     border-right: 1px solid var(--prism-comment);
-    display: block;
+    <<<<<<< HEAD=======color: var(--prism-comment);
+    >>>>>>>5974238 (feat: Implement theme-aware Prism.js syntax highlighting by introducing CSS variables for colors and updating Prism styles to use them.) display: block;
     float: left;
     font-size: 100%;
     letter-spacing: -1px;
@@ -135,6 +136,22 @@ pre[class*=language-] {
     content: ' ';
     display: block;
     padding-right: .8em;
+}
+
+.command-line-prompt>span[data-user]:before {
+    content: "[" attr(data-user) "@" attr(data-host) "] $";
+}
+
+.command-line-prompt>span[data-user=root]:before {
+    content: "[" attr(data-user) "@" attr(data-host) "] #";
+}
+
+.command-line-prompt>span[data-prompt]:before {
+    content: attr(data-prompt);
+}
+
+.command-line-prompt>span[data-continuation-prompt]:before {
+    content: attr(data-continuation-prompt);
 }
 
 .command-line span.token.output {
