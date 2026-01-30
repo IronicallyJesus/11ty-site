@@ -52,6 +52,6 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /opt/11ty-site # Update this to your app's directory on the remote host
+            cd /opt/stacks/web-stack/11ty
             docker compose pull
             docker compose up -d
