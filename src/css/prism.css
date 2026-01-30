@@ -26,6 +26,7 @@ pre[class*=language-] {
     margin: .5em 0;
     overflow: auto;
     border-radius: 0.5rem;
+    border: 1px solid var(--prism-border);
 }
 
 :not(pre)>code[class*=language-],
@@ -117,8 +118,8 @@ pre[class*=language-] {
 /* Plugins */
 .command-line-prompt {
     border-right: 1px solid var(--prism-comment);
-    <<<<<<< HEAD=======color: var(--prism-comment);
-    >>>>>>>5974238 (feat: Implement theme-aware Prism.js syntax highlighting by introducing CSS variables for colors and updating Prism styles to use them.) display: block;
+    color: var(--prism-comment);
+    display: block;
     float: left;
     font-size: 100%;
     letter-spacing: -1px;

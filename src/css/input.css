@@ -98,6 +98,7 @@ body {
     --prism-char: #4ade80;
     --prism-operator: #94a3b8;
     --prism-attr-value: #4ade80;
+    --prism-border: rgba(255, 255, 255, 0.1);
 }
 
 .light-theme {
@@ -141,7 +142,7 @@ body {
     --btnalt-text: #1e293b;
 
     /* Prism.css Tokens - Light (Custom Modern) */
-    --prism-bg: #f1f5f9;
+    --prism-bg: #e2e8f0;
     --prism-text: #1e293b;
     --prism-comment: #64748b;
     --prism-punctuation: #94a3b8;
@@ -155,6 +156,7 @@ body {
     --prism-char: #16a34a;
     --prism-operator: #64748b;
     --prism-attr-value: #16a34a;
+    --prism-border: rgba(0, 0, 0, 0.1);
 }
 
 body {
