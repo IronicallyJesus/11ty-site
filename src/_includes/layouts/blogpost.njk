@@ -45,9 +45,54 @@ layout: "layouts/base.njk"
             <span class="like-count" data-like-count data-slug="{{ page.fileSlug }}">No likes</span>
         </div>
     </div>
-    <br/>
+    <br />
     {{ content | safe }}
 </article>
 <script src="/js/likes-handler.js" defer></script>
 <script src="/js/prism.js" defer></script>
 <div id="bottom"></div>
+<!-- Mermaid for technical diagrams -->
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+    // Expose mermaid to window so global.js or other scripts can access it
+    window.mermaid = mermaid;
+
+    // Function to initialize and render mermaid
+    const renderMermaid = (isLight) => {
+        mermaid.initialize({
+            startOnLoad: false, // We'll handle rendering manually
+            theme: isLight ? 'default' : 'dark',
+            securityLevel: 'loose',
+            fontFamily: 'IBM Plex Sans, sans-serif'
+        });
+
+        // For each mermaid element, restore original code if it exists, otherwise store it
+        document.querySelectorAll('.mermaid').forEach((el, i) => {
+            // Save the original code if we haven't yet
+            if (!el.getAttribute('data-original-code')) {
+                el.setAttribute('data-original-code', el.textContent.trim());
+            }
+
+            // Reset the element for re-rendering
+            const originalCode = el.getAttribute('data-original-code');
+            el.removeAttribute('data-processed');
+            el.innerHTML = originalCode;
+            // Mermaid needs a unique ID for each element if we're re-rendering
+            el.id = `mermaid-diagram-${i}`;
+        });
+
+        mermaid.run({
+            nodes: document.querySelectorAll('.mermaid')
+        });
+    };
+
+    // Initial render
+    const isInitialLight = document.body.classList.contains('light-theme');
+    renderMermaid(isInitialLight);
+
+    // Listen for theme changes
+    window.addEventListener('theme-changed', (e) => {
+        renderMermaid(e.detail.isLight);
+    });
+</script>
