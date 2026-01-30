@@ -177,11 +177,14 @@ a {
     transition: all 0.2s ease-in-out;
 }
 
-a:hover {
-    text-decoration: underline;
+@media (hover: hover) {
+    a:hover {
+        text-decoration: underline;
+    }
 }
 
 @media (hover: hover) {
+
     .card a:hover,
     a:hover .card,
     .group:hover a,
@@ -193,9 +196,12 @@ a:hover {
     }
 }
 
-/* Ensure blocks wrapping cards don't underline */
-a.block:hover {
-    text-decoration: none !important;
+@media (hover: hover) {
+
+    /* Ensure blocks wrapping cards don't underline */
+    a.block:hover {
+        text-decoration: none !important;
+    }
 }
 
 .nav-link {
@@ -361,6 +367,7 @@ a.block:hover {
 }
 
 @media (hover: hover) {
+
     .btn:hover,
     .btnalt:hover {
         transform: scale(1.05);
@@ -569,6 +576,7 @@ button.logo-text {
 }
 
 @media (hover: hover) {
+
     a.logo-text:hover,
     button.logo-text:hover {
         color: var(--accent-primary) !important;
