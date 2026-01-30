@@ -181,14 +181,16 @@ a:hover {
     text-decoration: underline;
 }
 
-.card a:hover,
-a:hover .card,
-.group:hover a,
-a.card:hover,
-.btn:hover,
-.btnalt:hover {
-    text-decoration: none !important;
-    font-weight: 700;
+@media (hover: hover) {
+    .card a:hover,
+    a:hover .card,
+    .group:hover a,
+    a.card:hover,
+    .btn:hover,
+    .btnalt:hover {
+        text-decoration: none !important;
+        font-weight: 700;
+    }
 }
 
 /* Ensure blocks wrapping cards don't underline */
@@ -224,9 +226,10 @@ a.block:hover {
     font-weight: 700;
 }
 
-.nav-link:hover {
-    font-weight: 700 !important;
-    text-decoration: none !important;
+@media (hover: hover) {
+    .nav-link:hover {
+        text-decoration: none !important;
+    }
 }
 
 
@@ -276,10 +279,12 @@ a.block:hover {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
-    border-color: rgba(56, 189, 248, 0.4);
+@media (hover: hover) {
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        border-color: rgba(56, 189, 248, 0.4);
+    }
 }
 
 .tag {
@@ -307,10 +312,12 @@ a.block:hover {
     border: 1px solid rgba(56, 189, 248, 0.2);
 }
 
-.tag-link:hover {
-    background-color: #38bdf8;
-    color: #0f172a;
-    transform: scale(1.05);
+@media (hover: hover) {
+    .tag-link:hover {
+        background-color: #38bdf8;
+        color: #0f172a;
+        transform: scale(1.05);
+    }
 }
 
 .glass-card {
@@ -334,9 +341,11 @@ a.block:hover {
     box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
 }
 
-.btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+@media (hover: hover) {
+    .btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    }
 }
 
 .btnalt {
@@ -351,10 +360,12 @@ a.block:hover {
     box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
 }
 
-.btn:hover,
-.btnalt:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+@media (hover: hover) {
+    .btn:hover,
+    .btnalt:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    }
 }
 
 
@@ -539,21 +550,30 @@ article li {
     }
 }
 
-.nav-link:hover,
 .nav-link.active {
     color: var(--accent-primary) !important;
     font-weight: 700 !important;
 }
 
-.logo-text {
+@media (hover: hover) {
+    .nav-link:hover {
+        color: var(--accent-primary) !important;
+        font-weight: 700 !important;
+    }
+}
+
+a.logo-text,
+button.logo-text {
     color: var(--logo-color);
     transition: color 0.3s ease;
 }
 
-a.logo-text:hover,
-button.logo-text:hover {
-    color: var(--accent-primary) !important;
-    text-decoration: none !important;
+@media (hover: hover) {
+    a.logo-text:hover,
+    button.logo-text:hover {
+        color: var(--accent-primary) !important;
+        text-decoration: none !important;
+    }
 }
 
 #scroll-to-top {
@@ -595,8 +615,10 @@ button.logo-text:hover {
     transition: color 0.2s ease;
 }
 
-.group:hover .card-heading {
-    color: var(--hover-color) !important;
+@media (hover: hover) {
+    .group:hover .card-heading {
+        color: var(--hover-color) !important;
+    }
 }
 
 .hero-overlay {
@@ -661,9 +683,11 @@ button.logo-text:hover {
     transition: all 0.3s ease;
 }
 
-.group:hover .card-icon-bg {
-    background-color: var(--accent-primary) !important;
-    color: #ffffff !important;
+@media (hover: hover) {
+    .group:hover .card-icon-bg {
+        background-color: var(--accent-primary) !important;
+        color: #ffffff !important;
+    }
 }
 
 .hidden {
@@ -685,21 +709,24 @@ button.logo-text:hover {
 .like-icon {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.like-icon:hover {
-    color: var(--accent-primary) !important;
-    transform: scale(1.1);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .like-icon.liked {
     color: #ef4444 !important;
 }
 
-.like-icon.liked:hover {
-    color: #f87171 !important;
+@media (hover: hover) {
+    .like-icon:hover {
+        color: var(--accent-primary) !important;
+        transform: scale(1.1);
+    }
+
+    .like-icon.liked:hover {
+        color: #f87171 !important;
+    }
 }
 
 .like-icon:active {
-    transform: scale(0.95);
+    transform: scale(0.9);
 }
