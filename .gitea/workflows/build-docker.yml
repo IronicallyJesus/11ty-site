@@ -52,6 +52,6 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /opt/stacks/web-stack/11ty
-            docker compose pull
-            docker compose up -d
+            cd /opt/stacks/web-stack
+            docker compose pull 11ty-page
+            docker compose up -d --no-deps 11ty-page
