@@ -185,9 +185,10 @@ a:hover {
 a:hover .card,
 .group:hover a,
 a.card:hover,
-a.btnalt:hover,
-a.btn:hover {
+.btn:hover,
+.btnalt:hover {
     text-decoration: none !important;
+    font-weight: 700;
 }
 
 /* Ensure blocks wrapping cards don't underline */
@@ -202,6 +203,8 @@ a.block:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    color: var(--nav-link) !important;
+    transition: all 0.2s ease;
 }
 
 /* On mobile, when .block is used, we want it to stay block */
@@ -226,23 +229,22 @@ a.block:hover {
     text-decoration: none !important;
 }
 
-.btn:hover,
-.btnalt:hover {
-    font-weight: 700 !important;
-    text-decoration: none !important;
-}
 
 .main-content {
     flex: 1;
 }
 
-.section-header {
-    font-size: 2.25rem;
+.section-header,
+.page-title {
     font-weight: 800;
     background: linear-gradient(to right, #38bdf8, #818cf8);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.section-header {
+    font-size: 2.25rem;
     margin-bottom: 3rem;
     position: relative;
     display: block;
@@ -262,11 +264,6 @@ a.block:hover {
 
 .page-title {
     font-size: 2.5rem;
-    font-weight: 800;
-    background: linear-gradient(to right, #38bdf8, #818cf8);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .card {
@@ -354,6 +351,7 @@ a.block:hover {
     box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
 }
 
+.btn:hover,
 .btnalt:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
@@ -450,17 +448,20 @@ article pre code {
     padding: 0;
 }
 
-article blockquote {
+article blockquote,
+.callout-box {
     background-color: var(--callout-bg);
-    border-left: 5px solid var(--accent-primary) !important;
     padding: 1.5rem;
     border-radius: 0.75rem;
     color: var(--article-text) !important;
     margin: 2rem 0;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    font-style: italic;
     border: 1px solid var(--border-color);
-    border-left-width: 5px;
+    border-left: 5px solid var(--accent-primary) !important;
+}
+
+article blockquote {
+    font-style: italic;
 }
 
 article table {
@@ -538,11 +539,6 @@ article li {
     }
 }
 
-.nav-link {
-    color: var(--nav-link) !important;
-    transition: all 0.2s ease;
-}
-
 .nav-link:hover,
 .nav-link.active {
     color: var(--accent-primary) !important;
@@ -607,17 +603,6 @@ button.logo-text:hover {
     background: linear-gradient(to bottom, var(--hero-overlay-from), var(--hero-overlay-via), var(--hero-overlay-to));
 }
 
-.callout-box {
-    background-color: var(--callout-bg);
-    border-left: 5px solid var(--accent-primary) !important;
-    padding: 1.5rem;
-    border-radius: 0.75rem;
-    color: var(--article-text) !important;
-    margin: 2rem 0;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color);
-    border-left-width: 5px;
-}
 
 .callout-title {
     color: var(--heading-color) !important;
