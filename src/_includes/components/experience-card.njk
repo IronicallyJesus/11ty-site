@@ -1,8 +1,9 @@
-{% macro experienceCard(role) %}
-<div class="relative flex items-center justify-between lg:justify-normal lg:odd:flex-row-reverse group">
+{% macro experienceCard(role, index) %}
+<div
+    class="relative flex items-center justify-between lg:justify-normal {{ 'lg:flex-row-reverse' if index % 2 != 0 }} group">
     <!-- Icon -->
     <div
-        class="flex items-center justify-center w-10 h-10 rounded-full border border-accent-primary/50 card-icon-bg shadow shrink-0 lg:order-1 lg:group-odd:-translate-x-1/2 lg:group-even:translate-x-1/2 transition-all duration-300">
+        class="flex items-center justify-center w-10 h-10 rounded-full border border-accent-primary/50 card-icon-bg shadow shrink-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:z-10 transition-all duration-300">
         <i class="fa-solid fa-briefcase"></i>
     </div>
     <!-- Card -->
