@@ -184,7 +184,8 @@ a {
 }
 
 /* Global Active State for Links (Touch Feedback) */
-a:active, button:active {
+a:active,
+button:active {
     opacity: 0.7;
 }
 
@@ -291,7 +292,7 @@ a:active, button:active {
 }
 
 /* Mobile Scroll-Driven Active State */
-.card.mobile-active {
+.card.active {
     border-color: var(--accent-primary);
     transform: scale(1.02);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
@@ -709,6 +710,11 @@ button.logo-text {
         background-color: var(--accent-primary) !important;
         color: #ffffff !important;
     }
+}
+
+.card-icon-bg.active {
+    background-color: var(--accent-primary) !important;
+    color: #ffffff !important;
 }
 
 .hidden {

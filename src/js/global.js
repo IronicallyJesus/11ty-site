@@ -250,29 +250,31 @@ if (window.location.pathname === '/' || window.location.pathname === '/index.htm
     });
 }
 
-// --- Mobile Scroll-Driven Card Highlighting ---
-// Only run if we are on a touch device or small screen
-if (window.matchMedia('(max-width: 768px)').matches) {
-    const cardObserverOptions = {
-        root: null,
-        // Trigger when the element is in the middle 20% of the screen
-        rootMargin: '-40% 0px -40% 0px',
-        threshold: 0
-    };
+// --- Scroll-Driven Card Highlighting ---
+const cardObserverOptions = {
+    root: null,
+    // Trigger when the element is in the middle 10% of the screen
+    rootMargin: '-45% 0px -45% 0px',
+    threshold: 0
+};
 
-    const cardObserverCallback = (entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('mobile-active');
-            } else {
-                entry.target.classList.remove('mobile-active');
-            }
-        });
-    };
+const cardObserverCallback = (entries) => {
+    entries.forEach(entry => {
+        const card = entry.target;
+        // Check for a sibling icon (common in experience cards)
+        const icon = card.parentElement ? card.parentElement.querySelector('.card-icon-bg') : null;
 
-    const cardObserver = new IntersectionObserver(cardObserverCallback, cardObserverOptions);
-    // Target specific cards on the homepage: skills, experience (if any), blog posts, service cards
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => cardObserver.observe(card));
-}
+        if (entry.isIntersecting) {
+            card.classList.add('active');
+            if (icon) icon.classList.add('active');
+        } else {
+            card.classList.remove('active');
+            if (icon) icon.classList.remove('active');
+        }
+    });
+};
 
+const cardObserver = new IntersectionObserver(cardObserverCallback, cardObserverOptions);
+// Target specific cards on the homepage: skills, experience (if any), blog posts, service cards
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => cardObserver.observe(card));
