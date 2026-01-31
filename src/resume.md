@@ -25,6 +25,6 @@ sitemapChangefreq: "monthly"
 
 <div class="text-center mt-8">
     <a href="/resume/jesus.pdf" target="_blank" download="Jesus_E_Otero_Lagunes_Resume.pdf" class="btn">
-        <i class="fas fa-download mr-2" aria-hidden="true"></i>Download Resume
+        <i class="fas fa-download mr-2" aria-hidden="true"></i>Download PDF
     </a>
 </div>
