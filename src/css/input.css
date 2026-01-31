@@ -708,12 +708,10 @@ button.logo-text {
     transition: all 0.3s ease;
 }
 
-@media (hover: hover) {
-    .group:hover .card-icon-bg {
-        background-color: var(--accent-primary) !important;
-        color: #ffffff !important;
-        box-shadow: 0 0 15px 2px rgba(96, 165, 250, 0.4);
-    }
+.card:active .card-icon-bg {
+    background-color: var(--accent-primary) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 15px 2px rgba(96, 165, 250, 0.4);
 }
 
 .card-icon-bg.active {
