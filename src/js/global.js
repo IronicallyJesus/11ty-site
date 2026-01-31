@@ -220,21 +220,20 @@ if (window.location.pathname === '/' || window.location.pathname === '/index.htm
     const observerCallback = (entries) => {
         entries.forEach(entry => {
             const id = entry.target.id;
+            // Only update nav links if we are NOT on mobile (mobile uses simplified menu)
+            // or if needed, but the original logic was for desktop primarily.
             let selector = `.nav-link[href="/#${id}"]`;
             if (id === 'experience') selector = `.nav-link[href="/experience"]`;
             if (id === 'blog') selector = `.nav-link[href="/blog"]`;
 
             if (entry.isIntersecting) {
-                // When a section is intersecting, remove active class from all links
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.remove('active');
                 });
-                // And add it to the correct one
                 document.querySelectorAll(selector).forEach(activeLink => {
                     activeLink.classList.add('active');
                 });
             } else {
-                // When a section is not intersecting, just remove its active class.
                 document.querySelectorAll(selector).forEach(activeLink => {
                     activeLink.classList.remove('active');
                 });
@@ -243,13 +242,37 @@ if (window.location.pathname === '/' || window.location.pathname === '/index.htm
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const sections = document.querySelectorAll('section[id]'); // Assuming sections have IDs like 'skills', 'contact'
-
-    // Specifically target skills and contact if they are not generic sections
+    const sections = document.querySelectorAll('section[id]');
     const specificSections = ['experience', 'blog', 'skills', 'contact'];
     specificSections.forEach(id => {
         const section = document.getElementById(id);
         if (section) observer.observe(section);
     });
+}
+
+// --- Mobile Scroll-Driven Card Highlighting ---
+// Only run if we are on a touch device or small screen
+if (window.matchMedia('(max-width: 768px)').matches) {
+    const cardObserverOptions = {
+        root: null,
+        // Trigger when the element is in the middle 20% of the screen
+        rootMargin: '-40% 0px -40% 0px',
+        threshold: 0
+    };
+
+    const cardObserverCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('mobile-active');
+            } else {
+                entry.target.classList.remove('mobile-active');
+            }
+        });
+    };
+
+    const cardObserver = new IntersectionObserver(cardObserverCallback, cardObserverOptions);
+    // Target specific cards on the homepage: skills, experience (if any), blog posts, service cards
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => cardObserver.observe(card));
 }
 
