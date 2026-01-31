@@ -104,10 +104,8 @@ image: "/assets/images/jesus.webp"
     <div class="max-w-4xl mx-auto">
         <div class="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px lg:before:mx-auto lg:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-accent-primary before:to-transparent">
             {% from "components/experience-card.njk" import experienceCard %}
-            {%- for role in roles -%}
-            {%- if role.featured -%}
-            {{ experienceCard(role) }}
-            {%- endif -%}
+            {%- for role in roles | selectattr("featured") -%}
+            {{ experienceCard(role, loop.index) }}
             {%- endfor -%}
         </div>
         <div class="text-center mt-16">
