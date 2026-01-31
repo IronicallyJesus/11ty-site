@@ -1,11 +1,13 @@
 {% macro experienceCard(role) %}
 <div class="relative flex items-center justify-between lg:justify-normal lg:odd:flex-row-reverse group">
     <!-- Icon -->
-    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-accent-primary/50 card-icon-bg shadow shrink-0 lg:order-1 lg:group-odd:-translate-x-1/2 lg:group-even:translate-x-1/2 transition-all duration-300">
-        <i class="fa-solid {% if role.featured %}fa-briefcase{% else %}fa-history{% endif %}"></i>
+    <div
+        class="flex items-center justify-center w-10 h-10 rounded-full border border-accent-primary/50 card-icon-bg shadow shrink-0 lg:order-1 lg:group-odd:-translate-x-1/2 lg:group-even:translate-x-1/2 transition-all duration-300">
+        <i class="fa-solid fa-briefcase"></i>
     </div>
     <!-- Card -->
-    <div class="w-[calc(100%-4rem)] lg:w-[45%] card p-6 hover:border-accent-primary/30 transition-all border border-transparent ml-6 lg:ml-0">
+    <div
+        class="w-[calc(100%-4rem)] lg:w-[45%] card p-6 hover:border-accent-primary/30 transition-all border border-transparent ml-6 lg:ml-0">
         <div class="mb-2">
             <div class="font-bold logo-text text-xl leading-tight">{{ role.title }}</div>
             <time class="font-mono text-sm accent-primary block mt-1">{{ role.time }}</time>
