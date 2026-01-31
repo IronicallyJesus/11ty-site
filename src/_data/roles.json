@@ -5,7 +5,8 @@
         "location": "Remote",
         "time": "September 2025 - Present",
         "featured": true,
-        "description": "Spearheading advanced network design and service deployment for enterprise clients. Leading strategic initiatives to optimize service activation workflows and elevate customer satisfaction through technical excellence."
+        "description": "Demonstrated technical agility by rapidly adapting to diverse network hardware across the Sparklight brand portfolio, supporting multi-vendor nationwide infrastructure.",
+        "timeline_tidbit": "Full Sparklight rebrand."
     },
     {
         "title": "Commercial Network Engineer I",
@@ -29,11 +30,12 @@
         "location": "Hybrid Remote",
         "featured": false,
         "description": "Led the Activation team and collaborated across departments to streamline Active Ethernet deployments and MACD workflows. Standardized technical documentation for activation protocols to ensure operational consistency.",
-        "time": "July 2020 - April 2023"
+        "time": "July 2020 - April 2023",
+        "timeline_tidbit": "Hargray Communications acquired by Cable One."
     },
     {
         "title": "Service Activation Technician I",
-        "company": "Hargray",
+        "company": "Hargray Communications",
         "location": "Pritchardville, SC",
         "featured": false,
         "description": "Managed the activation and lifecycle (MACD) of PON, HFC, and SIP services with a focus on reliability. Played a key role in troubleshooting complex service issues to ensure customer success.",
@@ -41,7 +43,7 @@
     },
     {
         "title": "IT - Helpdesk Technician",
-        "company": "Hargray",
+        "company": "Hargray Communications",
         "location": "Hilton Head, SC",
         "featured": false,
         "description": "Provided comprehensive technical support for internal staff, managing end-to-end employee onboarding and hardware/software lifecycles. Efficiently resolved service tickets to maintain enterprise productivity.",
@@ -49,10 +51,18 @@
     },
     {
         "title": "TAC Support Technician",
-        "company": "Hargray",
+        "company": "Hargray Communications",
         "location": "Bluffton, SC",
         "featured": false,
         "description": "Delivered remote technical support for residential triple-play services, resolving complex connectivity issues while educating users on system functionality.",
-        "time": "May 2014 - February 2016"
+        "time": "May 2014 - February 2016",
+        "timeline_tidbit": "New job!"
+    },
+    {
+        "title": "Delivery Driver",
+        "company": "Pizza Hut",
+        "location": "Garden City, GA",
+        "featured": false,
+        "time": "January 2014 - May 2014"
     }
 ]
