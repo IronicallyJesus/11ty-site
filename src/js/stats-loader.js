@@ -3,15 +3,25 @@
  */
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Automatically track the current page view
-    const currentPageSlug = document.body.dataset.pageSlug;
-    if (currentPageSlug) {
-        const viewedKey = `viewed-${currentPageSlug}`;
-        if (!localStorage.getItem(viewedKey)) {
-            fetchApiData(`/api/views/${currentPageSlug}`, { method: 'POST' })
-                .then(() => localStorage.setItem(viewedKey, 'true'))
-                .catch(err => console.error(`Error tracking view:`, err));
+    const trackView = () => {
+        const currentPageSlug = document.body.dataset.pageSlug;
+        if (currentPageSlug && localStorage.getItem('privacy-consent')) {
+            const viewedKey = `viewed-${currentPageSlug}`;
+            if (!localStorage.getItem(viewedKey)) {
+                fetchApiData(`/api/views/${currentPageSlug}`, { method: 'POST' })
+                    .then(() => localStorage.setItem(viewedKey, 'true'))
+                    .catch(err => console.error(`Error tracking view:`, err));
+            }
         }
-    }
+    };
+
+    // Initial attempt
+    trackView();
+
+    // Listen for consent acceptance
+    window.addEventListener('consent-accepted', () => {
+        trackView();
+    });
 
     // 2. Initialize all Stats (Views and Likes) found on the page
     const statsElements = document.querySelectorAll('[data-view-count], [data-like-count]');

@@ -22,6 +22,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Click Handler
     likeIcon.addEventListener('click', async () => {
         if (isRequestInProgress) return;
+
+        // Check for privacy consent
+        if (!localStorage.getItem('privacy-consent')) {
+            const banner = document.getElementById('cookie-consent-banner');
+            if (banner) {
+                banner.classList.remove('translate-y-full');
+                // Pulse effect to draw attention
+                banner.classList.add('scale-105');
+                setTimeout(() => banner.classList.remove('scale-105'), 1000);
+            }
+            return;
+        }
+
         isRequestInProgress = true;
 
         likeIcon.classList.remove('hint-animation');
