@@ -52,12 +52,8 @@ layout: "layouts/base.njk"
 <script src="/js/prism.js" defer></script>
 <div id="bottom"></div>
 <!-- Mermaid for technical diagrams -->
+<script src="/js/mermaid.min.js" defer></script>
 <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-
-    // Expose mermaid to window so global.js or other scripts can access it
-    window.mermaid = mermaid;
-
     // Function to initialize and render mermaid
     const renderMermaid = (isLight) => {
         mermaid.initialize({
