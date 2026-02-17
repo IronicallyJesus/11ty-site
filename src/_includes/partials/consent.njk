@@ -1,0 +1,41 @@
+<div id="cookie-consent-banner"
+    class="fixed bottom-0 left-0 w-full z-[100] p-4 translate-y-full transition-transform duration-500 ease-in-out">
+    <div
+        class="max-w-4xl mx-auto bg-slate-900/90 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex-1 text-center md:text-left">
+            <h3 class="text-white font-bold text-lg mb-2">Privacy & Cookies</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+                I use minimal local storage to remember your theme and track aggregated views. No third-party tracking.
+                Read the <a href="/privacy" class="text-accent-primary hover:underline font-medium">Privacy Policy</a>
+                to learn more.
+            </p>
+        </div>
+        <div class="flex gap-4">
+            <button id="accept-consent"
+                class="bg-accent-primary hover:bg-accent-primary/80 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 shadow-lg shadow-accent-primary/20">
+                Accept
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const banner = document.getElementById('cookie-consent-banner');
+        const acceptBtn = document.getElementById('accept-consent');
+
+        if (!localStorage.getItem('privacy-consent')) {
+            // Show banner with a small delay
+            setTimeout(() => {
+                banner.classList.remove('translate-y-full');
+            }, 1000);
+        }
+
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('privacy-consent', 'true');
+            banner.classList.add('translate-y-full');
+            // Dispatch a custom event to notify other scripts (like stats-loader)
+            window.dispatchEvent(new Event('consent-accepted'));
+        });
+    });
+</script>
