@@ -20,7 +20,6 @@ image: "/assets/images/jesus.webp"
         <h1 class="text-5xl md:text-7xl font-extrabold logo-text mb-6 tracking-tight">
             Architecting <span id="hero-adjective" class="hero-title-grad transition-all duration-500">Resilient</span> Networks
         </h1>
-        <!-- <p id="typewriter" style="font-family: 'Red Hat Mono', monospace;" class="text-xl md:text-3xl accent-secondary font-medium mb-8 h-10"></p> -->
         <p class="text-lg md:text-xl article-text max-w-2xl mx-auto mb-10 leading-relaxed">
             10+ years of experience in troubleshooting, designing, and deploying robust network solutions for enterprise environments.
         </p>
