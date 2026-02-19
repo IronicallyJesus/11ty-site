@@ -18,7 +18,6 @@ window.fetchApiData = async (url, options = {}) => {
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 const header = document.querySelector('header');
-const typewriterElement = document.getElementById('typewriter');
 
 // --- Mobile Menu Toggle ---
 if (mobileMenuButton && mobileMenu && header) {
@@ -26,23 +25,6 @@ if (mobileMenuButton && mobileMenu && header) {
         mobileMenu.classList.toggle('hidden');
         header.classList.toggle('menu-open');
     });
-}
-
-// --- Typewriter Effect ---
-if (typewriterElement) {
-    const text = "Specializing in ISP Environments";
-    let index = 0;
-
-    function type() {
-        const currentText = text.substring(0, index);
-        typewriterElement.textContent = currentText;
-        if (index < text.length) {
-            index++;
-            setTimeout(type, 100);
-        }
-    }
-    // Start typing effect after a short delay
-    setTimeout(type, 500);
 }
 
 // --- Reusable Scroll Function ---
