@@ -1,32 +1,32 @@
 [
-    { 
-        "name": "Network Design & Architecture", 
-        "icon": "fa-network-wired",
-        "description": "Custom network designs for scalability and performance, including LAN/WAN, VLAN/VPN, and Metro Ethernet solutions."
+    {
+        "name": "Architecture & Engineering",
+        "icon": "fa-bezier-curve",
+        "description": "Designing high-performance, scalable network architectures including LAN/WAN, SD-WAN, and Metro Ethernet solutions tailored for enterprise demand."
     },
-    { 
-        "name": "Service Activation & Provisioning", 
-        "icon": "fa-plug",
-        "description": "Expert activation for DIA, EPL, and CBH Ethernet services. End-to-end project management from design to deployment."
+    {
+        "name": "Deployment & Provisioning",
+        "icon": "fa-truck-ramp-box",
+        "description": "Streamlining end-to-end service activation for DIA, EPL, and CBH Ethernet services, ensuring seamless integration from initial design to final hand-off."
     },
-    { 
-        "name": "Troubleshooting & Root Cause Analysis", 
-        "icon": "fa-tools",
-        "description": "Proactive identification and resolution of network constraints and issues to ensure optimal performance and reliability."
+    {
+        "name": "Diagnostics & Optimization",
+        "icon": "fa-microchip",
+        "description": "Utilizing advanced analytics and root cause analysis to eliminate bottlenecks, enhance throughput, and maintain mission-critical reliability."
     },
-    { 
-        "name": "Automation & Scripting", 
-        "icon": "fa-code",
-        "description": "Developing automation solutions using Python, Ansible, and Jinja to streamline network operations and reduce manual errors."
+    {
+        "name": "Automation & Programmability",
+        "icon": "fa-terminal",
+        "description": "Leveraging Python, Ansible, and Jinja2 to automate repetitive tasks, implement Infrastructure as Code (IaC), and minimize operational overhead."
     },
-    { 
-        "name": "Homelabbing & Self-Hosting", 
-        "icon": "fa-server",
-        "description": "Consultation on server hardware, web hosting, hypervisors (like Proxmox/ESXi), Docker, and storage arrays (NAS/SAN)."
+    {
+        "name": "Infrastructure & Hosting",
+        "icon": "fa-cubes",
+        "description": "Professional consultation on hypervisor environments (Proxmox/ESXi), container orchestration (Docker/LXC), and high-availability storage arrays."
     },
-    { 
-        "name": "Technical Training", 
-        "icon": "fa-chalkboard-teacher",
-        "description": "Providing cross-departmental training on network technologies, protocols, and best practices."
+    {
+        "name": "Strategy & Knowledge",
+        "icon": "fa-lightbulb",
+        "description": "Providing strategic technical guidance and cross-functional training to align network capabilities with organizational business objectives."
     }
 ]
