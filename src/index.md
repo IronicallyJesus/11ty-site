@@ -13,12 +13,12 @@ image: "/assets/images/jesus.webp"
         <img src="/assets/images/hero-bg.png" alt="" class="w-full h-full object-cover opacity-60">
         <div class="absolute inset-0 hero-overlay"></div>
     </div>
-    <div class="relative z-10 max-w-4xl mx-auto">
+    <div class="relative z-10 mx-auto">
         <span class="inline-block py-1 px-3 mb-6 text-xs font-bold tracking-widest status-pill uppercase border rounded-full">
             Available for Projects
         </span>
         <h1 class="text-5xl md:text-7xl font-extrabold logo-text mb-6 tracking-tight">
-            Architecting <span class="hero-title-grad">Resilient</span> Networks
+            Architecting <span id="hero-adjective" class="hero-title-grad transition-all duration-500">Resilient</span> Networks
         </h1>
         <!-- <p id="typewriter" style="font-family: 'Red Hat Mono', monospace;" class="text-xl md:text-3xl accent-secondary font-medium mb-8 h-10"></p> -->
         <p class="text-lg md:text-xl article-text max-w-2xl mx-auto mb-10 leading-relaxed">

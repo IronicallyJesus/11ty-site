@@ -665,6 +665,15 @@ button.logo-text {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    display: inline-block;
+    vertical-align: bottom;
+    white-space: nowrap;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hero-adjective-fade {
+    opacity: 0;
+    transform: translateY(10px);
 }
 
 .theme-input {

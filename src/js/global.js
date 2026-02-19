@@ -260,3 +260,74 @@ const cardObserver = new IntersectionObserver(cardObserverCallback, cardObserver
 // Target specific cards on the homepage: skills, experience (if any), blog posts, service cards
 const cards = document.querySelectorAll('.card');
 cards.forEach(card => cardObserver.observe(card));
+
+// --- Hero Adjective Scrolling ---
+const adjectiveElement = document.getElementById('hero-adjective');
+if (adjectiveElement) {
+    const adjectives = ["Resilient", "Reliable", "Robust", "Scalable", "Efficient", "Secure"];
+    let adjectiveIndex = 0;
+
+    // Calculate max width to prevent layout shift
+    const measureAdjectives = () => {
+        const span = document.createElement('span');
+        span.style.visibility = 'hidden';
+        span.style.position = 'absolute';
+        span.style.whiteSpace = 'nowrap';
+        // Inherit styles from the actual element
+        span.className = adjectiveElement.className;
+
+        // Append to parent to inherit font styles correctly
+        if (adjectiveElement.parentElement) {
+            adjectiveElement.parentElement.appendChild(span);
+        } else {
+            document.body.appendChild(span);
+        }
+
+        let maxWidth = 0;
+        adjectives.forEach(adj => {
+            span.textContent = adj;
+            maxWidth = Math.max(maxWidth, span.offsetWidth);
+        });
+
+        if (adjectiveElement.parentElement) {
+            adjectiveElement.parentElement.removeChild(span);
+        } else {
+            document.body.removeChild(span);
+        }
+
+        // Set fixed width + small buffer
+        adjectiveElement.style.width = `${maxWidth + 4}px`;
+        adjectiveElement.style.textAlign = 'center';
+        adjectiveElement.style.display = 'inline-block';
+        adjectiveElement.style.whiteSpace = 'nowrap';
+    };
+
+
+    // Calculate on load and on transition end to be safe
+    if (document.fonts) {
+        document.fonts.ready.then(measureAdjectives);
+    } else {
+        measureAdjectives();
+    }
+
+    window.addEventListener('load', measureAdjectives);
+    window.addEventListener('resize', measureAdjectives);
+
+
+    function rotateAdjective() {
+        // Start fade out
+        adjectiveElement.classList.add('hero-adjective-fade');
+
+        setTimeout(() => {
+            // Update text after fade out
+            adjectiveIndex = (adjectiveIndex + 1) % adjectives.length;
+            adjectiveElement.textContent = adjectives[adjectiveIndex];
+
+            // Fade back in
+            adjectiveElement.classList.remove('hero-adjective-fade');
+        }, 500); // Should match CSS transition duration
+    }
+
+    // Initialize rotation interval
+    setInterval(rotateAdjective, 3000);
+}
