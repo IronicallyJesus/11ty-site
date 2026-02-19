@@ -264,7 +264,7 @@ cards.forEach(card => cardObserver.observe(card));
 // --- Hero Adjective Scrolling ---
 const adjectiveElement = document.getElementById('hero-adjective');
 if (adjectiveElement) {
-    const adjectives = ["Resilient", "Reliable", "Robust", "Scalable", "Efficient", "Secure"];
+    const adjectives = ["Resilient", "Scalable", "Reliable", "Optimized", "Secure", "Efficient", "Advanced"];
     let adjectiveIndex = 0;
 
     // Calculate max width to prevent layout shift
@@ -312,7 +312,6 @@ if (adjectiveElement) {
 
     window.addEventListener('load', measureAdjectives);
     window.addEventListener('resize', measureAdjectives);
-
 
     function rotateAdjective() {
         // Start fade out
