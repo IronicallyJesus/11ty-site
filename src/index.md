@@ -30,22 +30,22 @@ image: "/assets/images/jesus.webp"
     </div>
 </section>
 <!-- Services Section -->
-<!--
-<section id="services" class="py-16">
-    <h2 class="text-3xl font-bold text-center section-title">Consultation Services</h2>
+{# <section id="services" class="py-24">
+    <h2 class="section-header">Consultation Services</h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {%- for service in services -%}
-        <div class="card">
-            <div class="flex md:flex-row items-center mb-2">
-                <i class="fa-solid {{ service.icon }} icon"></i>
-                <h3 class="text-xl font-bold text-white">{{ service.name }}</h3>
+        <div class="card p-8 border-t-2 border-t-transparent hover:border-t-accent-primary transition-all duration-300">
+            <div class="flex items-center mb-6">
+                <div class="w-12 h-12 rounded-xl card-icon-bg flex items-center justify-center mr-4">
+                    <i class="fa-solid {{ service.icon }} text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold logo-text">{{ service.name }}</h3>
             </div>
-            <p class="text-gray-400">{{ service.description }}</p>
+            <p class="article-text text-sm leading-relaxed">{{ service.description }}</p>
         </div>
         {%- endfor -%}
     </div>
-</section>
--->
+</section> #}
 <!-- Skills & Certifications Section -->
 <section id="skills" class="py-24">
     <h2 class="section-header">Skills & Certifications</h2>
