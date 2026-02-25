@@ -1,0 +1,67 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Release: Tag and Push",
+      "dependsOn": [
+        "Git: Create Tag",
+        "Git: Push Tag"
+      ],
+      "dependsOrder": "sequence",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "detail": "Creates a git tag and pushes it"
+    },
+    {
+      "label": "Git: Create Tag",
+      "type": "shell",
+      "command": "git",
+      "args": [
+        "tag",
+        "v${input:version}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Git: Push Tag",
+      "type": "shell",
+      "command": "git",
+      "args": [
+        "push",
+        "origin",
+        "v${input:version}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Docker: Build and Push Production Image",
+      "type": "shell",
+      "command": "docker",
+      "args": [
+        "buildx",
+        "build",
+        "--platform",
+        "linux/amd64,linux/arm64",
+        "-t",
+        "git.twk95.com/twk95/11ty-site:v${input:version}",
+        "-t",
+        "git.twk95.com/twk95/11ty-site:latest",
+        "--push",
+        "."
+      ],
+      "problemMatcher": [],
+      "detail": "Build a production image and push it"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "version",
+      "type": "promptString",
+      "description": "Enter the version for the tag and image (e.g., 1.0.0)",
+      "default": "1.3.0"
+    }
+  ]
+}

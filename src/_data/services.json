@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Architecture & Engineering",
+        "icon": "fa-bezier-curve",
+        "description": "Designing high-performance, scalable network architectures including LAN/WAN, SD-WAN, and Metro Ethernet solutions tailored for enterprise demand."
+    },
+    {
+        "name": "Deployment & Provisioning",
+        "icon": "fa-truck-ramp-box",
+        "description": "Streamlining end-to-end service activation for DIA, EPL, and CBH Ethernet services, ensuring seamless integration from initial design to final hand-off."
+    },
+    {
+        "name": "Diagnostics & Optimization",
+        "icon": "fa-microchip",
+        "description": "Utilizing advanced analytics and root cause analysis to eliminate bottlenecks, enhance throughput, and maintain mission-critical reliability."
+    },
+    {
+        "name": "Automation & Programmability",
+        "icon": "fa-terminal",
+        "description": "Leveraging Python, Ansible, and Jinja2 to automate repetitive tasks, implement Infrastructure as Code (IaC), and minimize operational overhead."
+    },
+    {
+        "name": "Infrastructure & Hosting",
+        "icon": "fa-cubes",
+        "description": "Professional consultation on hypervisor environments (Proxmox/ESXi), container orchestration (Docker/LXC), and high-availability storage arrays."
+    },
+    {
+        "name": "Strategy & Knowledge",
+        "icon": "fa-lightbulb",
+        "description": "Providing strategic technical guidance and cross-functional training to align network capabilities with organizational business objectives."
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Core Networking & Architecture",
+        "keywords": "LAN/WAN Design, IP Addressing, VLANs, VPNs, Metro Ethernet, FTTX, Fixed Wireless"
+    },
+    {
+        "name": "Routing & Switching Protocols",
+        "keywords": "BGP, OSPF, IS-IS, MPLS, STP & RSTP, G.8032 (ERPS), 802.1ad (Q-in-Q), LACP"
+    },
+    {
+        "name": "Vendor Platforms & OS",
+        "keywords": "Juniper (Junos), Cisco (IOS/XE/NX-OS), Ciena (SAOS 6/8/10), Nokia (SR OS), Adtran, Calix, Accedian, OPNSense"
+    },
+    {
+        "name": "Systems & Automation",
+        "keywords": "Linux, LXC, Docker, Python, Ansible, Jinja, Bash, Git, APIs, Vibe Coding"
+    },
+    {
+        "name": "Network Services & Tools",
+        "keywords": "DHCP, DNS, FTP, SIP/VOIP, Wireshark, Incognito, Microsoft Visio"
+    }
+]

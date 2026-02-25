@@ -1,0 +1,27 @@
+---
+title: "404 - Page Not Found"
+layout: "layouts/base.njk"
+permalink: 404.html
+eleventyExcludeFromCollections: true
+---
+
+<div class="text-center py-18">
+    <h1 style="font-family: 'Red Hat Mono', monospace;" class="text-8xl font-bold accent-primary mb-2">404</h1>
+    <h2 class="text-3xl font-semibold heading-color mb-6">Route Not Found</h2>
+    <p class="text-lg article-text max-w-xl mx-auto mb-8">
+        The requested resource could not be located on our network. Your packet was dropped and an ICMP reply sent.
+    </p>
+    <div style="font-family: 'Red Hat Mono', monospace;" class="card rounded-lg p-6 max-w-md mx-auto mb-10 text-left text-sm">
+        <p class="accent-primary mb-2-">&gt; traceroute current.page</p>
+        <div class="space-y-1 article-text">
+            <p>1 <span class="heading-color font-bold">gateway.local</span> (192.168.1.1) 1.234 ms</p>
+            <p>2 <span class="heading-color font-bold">core.router.isp</span> (10.0.0.1) 5.678 ms</p>
+            <p>3 * * * Request timed out.</p>
+        </div>
+        <p class="text-red-500 mt-4 font-bold">&gt; Error: Destination host unreachable.</p>
+    </div>
+    <a href="/" class="btn">
+    <i class="fas fa-home mr-2" aria-hidden="true"></i>
+    Default Route
+    </a>
+</div>

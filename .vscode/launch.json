@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Eleventy",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "start"
+      ],
+      "console": "integratedTerminal",
+      "serverReadyAction": {
+        "pattern": "Web Server running at (http://localhost:[0-9]+)",
+        "uriFormat": "%s",
+        "action": "openExternally"
+      }
+    }
+  ]
+}
