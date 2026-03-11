@@ -253,7 +253,7 @@ image: "/assets/images/jesus.webp"
     </div>
     <div class="text-center mt-12">
         <a href="/blog" class="btnalt inline-flex items-center">
-            Explore All Posts <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
+            Explore All Posts <i class="fa-solid fa-arrow-right-long ml-2"></i>
         </a>
     </div>
 </section>
