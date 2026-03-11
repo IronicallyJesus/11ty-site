@@ -728,6 +728,12 @@ button.logo-text {
     color: #ffffff !important;
 }
 
+.card-icon-static {
+    background-color: var(--card-icon-bg) !important;
+    color: var(--card-icon-text) !important;
+    transition: all 0.3s ease;
+}
+
 .hidden {
     display: none;
 }
