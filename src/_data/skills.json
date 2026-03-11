@@ -1,22 +1,32 @@
 [
     {
         "name": "Core Networking & Architecture",
+        "icon": "fa-network-wired",
         "keywords": "LAN/WAN Design, IP Addressing, VLANs, VPNs, Metro Ethernet, FTTX, Fixed Wireless"
     },
     {
         "name": "Routing & Switching Protocols",
+        "icon": "fa-route",
         "keywords": "BGP, OSPF, IS-IS, MPLS, STP & RSTP, G.8032 (ERPS), 802.1ad (Q-in-Q), LACP"
     },
     {
         "name": "Vendor Platforms & OS",
+        "icon": "fa-server",
         "keywords": "Juniper (Junos), Cisco (IOS/XE/NX-OS), Ciena (SAOS 6/8/10), Nokia (SR OS), Adtran, Calix, Accedian, OPNSense"
     },
     {
         "name": "Systems & Automation",
-        "keywords": "Linux, LXC, Docker, Python, Ansible, Jinja, Bash, Git, APIs, Vibe Coding"
+        "icon": "fa-microchip",
+        "keywords": "Linux, LXC, Docker, Python, Ansible, Jinja, Bash, Git, APIs"
+    },
+    {
+        "name": "Agentic AI & Vibe Coding",
+        "icon": "fa-robot",
+        "keywords": "AI Agents, Large Language Models (LLMs), Prompt Engineering, Automated Reasoning, Model Integration"
     },
     {
         "name": "Network Services & Tools",
+        "icon": "fa-screwdriver-wrench",
         "keywords": "DHCP, DNS, FTP, SIP/VOIP, Wireshark, Incognito, Microsoft Visio"
     }
 ]

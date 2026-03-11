@@ -243,8 +243,9 @@ const cardObserverOptions = {
 const cardObserverCallback = (entries) => {
     entries.forEach(entry => {
         const card = entry.target;
-        // Check for a sibling icon (common in experience cards)
-        const icon = card.parentElement ? card.parentElement.querySelector('.card-icon-bg') : null;
+        // Search inside the card first, otherwise check for a sibling icon within a parent 'group'
+        const icon = card.querySelector('.card-icon-bg') ||
+            (card.closest('.group') ? card.closest('.group').querySelector(':scope > .card-icon-bg') : null);
 
         if (entry.isIntersecting) {
             card.classList.add('active');

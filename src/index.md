@@ -51,52 +51,146 @@ image: "/assets/images/jesus.webp"
     <h2 class="section-header">Skills & Certifications</h2>
     <div class="grid md:grid-cols-2 gap-12">
         <!-- Technical Skills -->
-        <div class="space-y-6">
+        <div class="flex flex-col space-y-6 h-full">
             <h3 class="text-2xl font-bold logo-text flex items-center">
                 <i class="fa-solid fa-code-merge accent-primary mr-3"></i> Technical Mastery
             </h3>
-            <div class="grid grid-cols-1 gap-4">
+            <div class="grid grid-cols-1 gap-6">
                 {%- for skill in skills -%}
-                <div class="card p-6 border-l-4 border-l-accent-primary">
-                    <p class="text-xl font-bold logo-text mb-2">{{ skill.name }}</p>
-                    <div class="flex flex-wrap gap-2">
-                        {% set keywords = skill.keywords.split(',') %}
-                        {%- for keyword in keywords -%}
-                        <span class="text-xs font-semibold px-2 py-1 rounded skill-badge">
-                            {{ keyword.trim() }}
-                        </span>
-                        {%- endfor -%}
+                <div class="skill-card card group flex flex-col h-full border-t-4 border-t-accent-primary shadow-lg" {% if loop.index > 3 %}style="display: none;"{% endif %}>
+                    <!-- Header Segment -->
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-xl card-icon-static flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-sm">
+                            <i class="fa-solid {{- ' ' + skill.icon if skill.icon else ' fa-code' }} text-xl text-blue-400"></i>
+                        </div>
+                        <h4 class="font-bold card-heading text-lg leading-tight uppercase tracking-wide">
+                            {{- skill.name -}}
+                        </h4>
+                    </div>
+                    <!-- Footer Segment (Keywords) -->
+                    <div class="mt-auto">
+                        <div class="flex flex-wrap gap-2">
+                            {%- set keywords = skill.keywords.split(',') -%}
+                            {%- for keyword in keywords -%}
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full border border-accent-secondary/30 bg-accent-secondary/5 text-accent-secondary uppercase tracking-wider">
+                                {{- keyword.trim() -}}
+                            </span>
+                            {%- endfor -%}
+                        </div>
                     </div>
                 </div>
                 {%- endfor -%}
+            </div>
+            <div class="mt-6 flex justify-center md:hidden">
+                <button id="show-skills-btn" class="btnalt px-12" onclick="toggleSkills()">Show All Skills</button>
             </div>
         </div>
         <!-- Certifications -->
-        <div class="space-y-6">
+        <div class="flex flex-col space-y-6 h-full">
             <h3 class="text-2xl font-bold logo-text flex items-center">
                 <i class="fa-solid fa-award text-yellow-500 mr-3"></i> Professional Credentials
             </h3>
-            <div class="card space-y-6">
+            <div class="grid gap-6">
                 {%- for certification in certifications -%}
-                <div class="flex items-center space-x-4">
-                    <i class="fa-solid fa-certificate text-yellow-500 text-xl shrink-0" aria-hidden="true"></i>
-                    <div>
-                        <h4 class="font-bold card-heading text-lg leading-tight flex items-center gap-2">
-                            {{- certification.name -}}
-                            {% if certification.verification_url %}
-                            <a href="{{ certification.verification_url }}" target="_blank" rel="noopener noreferrer" class="accent-secondary hover:text-blue-600 transition-colors" title="Verify Certification">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                            </a>
-                            {% endif %}
-                        </h4>
-                        <p class="accent-secondary text-sm font-medium mt-0.5">Expires: {{ certification.expires }}</p>
+                <div class="cert-card card group flex flex-col h-full border-t-4 border-t-accent-primary shadow-lg" {% if loop.index > 3 %}style="display: none;"{% endif %}>
+                    <!-- Header Segment: Icon, Name & Link -->
+                    <div class="flex items-center justify-between gap-4 mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl card-icon-static flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-sm">
+                                <i class="fa-solid fa-certificate text-xl text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold card-heading text-lg leading-tight uppercase tracking-wide">
+                                    {{- certification.name -}}
+                                </h4>
+                                <p class="text-xs font-bold accent-primary opacity-80 uppercase tracking-widest mt-1">
+                                    {{- certification.issuer -}}
+                                </p>
+                            </div>
+                        </div>
+                        {%- if certification.verification_url -%}
+                        <a href="{{- certification.verification_url -}}" target="_blank" rel="noopener noreferrer" 
+                           class="w-10 h-10 rounded-full flex items-center justify-center border border-border-color hover:border-accent-primary hover:bg-accent-primary/10 transition-all text-muted-text hover:text-accent-primary shrink-0 shadow-sm"
+                           title="Verify Certification">
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                        {%- endif -%}
+                    </div>
+                    <!-- Footer Segment: Condensed Dates & Tags -->
+                    <div class="mt-auto pt-4 border-t border-border-color/30 flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex items-center gap-6">
+                            <div class="flex flex-col">
+                                <span class="text-[10px] uppercase tracking-tighter muted-text font-bold">Earned</span>
+                                <span class="text-sm font-medium article-text whitespace-nowrap">{{- certification.earned -}}</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-[10px] uppercase tracking-tighter muted-text font-bold">Expires</span>
+                                <span class="text-sm font-medium article-text whitespace-nowrap">{{- certification.expires -}}</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            {%- for tag in certification.tags -%}
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full border border-accent-secondary/30 bg-accent-secondary/5 text-accent-secondary uppercase tracking-wider">
+                                {{- tag -}}
+                            </span>
+                            {%- endfor -%}
+                        </div>
                     </div>
                 </div>
                 {%- endfor -%}
             </div>
+            <div class="mt-6 flex justify-center md:hidden">
+                <button id="show-certs-btn" class="btnalt px-12" onclick="toggleCerts()">Show All Certifications</button>
+            </div>
         </div>
     </div>
+    <div class="mt-8 hidden md:flex justify-center">
+        <button id="show-all-btn" class="btnalt px-12" onclick="toggleAll()">Show All</button>
+    </div>
 </section>
+
+<script>
+    let skillsExpanded = false;
+    let certsExpanded = false;
+
+    function toggleSkills() {
+        skillsExpanded = !skillsExpanded;
+        document.querySelectorAll('.skill-card').forEach((el, index) => {
+            if (index >= 3) {
+                el.style.display = skillsExpanded ? '' : 'none';
+            }
+        });
+        document.getElementById('show-skills-btn').innerText = skillsExpanded ? 'Show Less Skills' : 'Show All Skills';
+        updateDesktopButton();
+    }
+
+    function toggleCerts() {
+        certsExpanded = !certsExpanded;
+        document.querySelectorAll('.cert-card').forEach((el, index) => {
+            if (index >= 3) {
+                el.style.display = certsExpanded ? '' : 'none';
+            }
+        });
+        document.getElementById('show-certs-btn').innerText = certsExpanded ? 'Show Less Certifications' : 'Show All Certifications';
+        updateDesktopButton();
+    }
+
+    function toggleAll() {
+        let expanding = !(skillsExpanded && certsExpanded);
+        
+        if (expanding !== skillsExpanded) toggleSkills();
+        if (expanding !== certsExpanded) toggleCerts();
+    }
+
+    function updateDesktopButton() {
+        const btn = document.getElementById('show-all-btn');
+        if (skillsExpanded && certsExpanded) {
+            btn.innerText = 'Show Less';
+        } else {
+            btn.innerText = 'Show All';
+        }
+    }
+</script>
 <!-- Work Experience Section -->
 <section id="experience" class="py-24">
     <h2 class="section-header">Professional Journey</h2>
