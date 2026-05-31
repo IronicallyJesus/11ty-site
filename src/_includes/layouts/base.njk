@@ -1,5 +1,4 @@
 <!doctype html>
-<!-- HTML5 -->
 <html lang="en">
 
 <head>
@@ -13,37 +12,37 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
     <meta name="description" content="{{ description }}">
-    <!-- Open Graph Meta Tags -->
+    <!-- Open Graph -->
     <meta property="og:title" content="{{ title }}">
     <meta property="og:description" content="{{ description }}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta property="og:image" content="{{ site.url }}{{ image }}">
-    <!-- Twitter Card Meta Tags -->
+    <!-- Twitter Card -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="{{ title }}">
     <meta property="twitter:description" content="{{ description }}">
     <meta property="twitter:image" content="{{ site.url }}{{ image }}">
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Structured Data -->
     {% if date %}
     <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "BlogPosting",
-                "headline": "{{ title }}",
-                "description": "{{ description }}",
-                "image": "{{ site.url }}{{ image }}",
-                "author": {
-                    "@type": "Person",
-                    "name": "{{ site.author.name }}"
-                },
-                "datePublished": "{{ date | htmlDateString }}",
-                "mainEntityOfPage": {
-                    "@type": "WebPage",
-                    "@id": "{{ site.url }}{{ page.url }}"
-                    }
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "{{ title }}",
+            "description": "{{ description }}",
+            "image": "{{ site.url }}{{ image }}",
+            "author": {
+                "@type": "Person",
+                "name": "{{ site.author.name }}"
+            },
+            "datePublished": "{{ date | htmlDateString }}",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "{{ site.url }}{{ page.url }}"
             }
-        </script>
+        }
+    </script>
     {% endif %}
     <link rel="preload" href="/assets/fontawesome/css/all.min.css" as="style">
     <link rel="stylesheet" href="/css/style.css?v={{ buildTime }}">
@@ -60,40 +59,32 @@
     <script src="/js/stats-loader.js" defer></script>
 </head>
 
-<body class="antialiased selection:bg-accent-primary selection:text-white"
-    data-page-slug="{% if page.url == '/' %}homepage{% else %}{{ page.fileSlug }}{% endif %}">
+<body>
     <script>
-        // Immediately invoked function to set the theme
         (function () {
             try {
-                const savedTheme = localStorage.getItem('theme');
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                const isLight = savedTheme === 'light' || (!savedTheme && !prefersDark); // Default to Dark
-
-                if (isLight) {
+                var saved = localStorage.getItem('theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (saved === 'light' || (!saved && !prefersDark)) {
                     document.body.classList.add('light-theme');
-                } else {
-                    document.body.classList.remove('light-theme');
                 }
-            } catch (e) {
-                console.error('Theme initialization failed:', e);
-            }
+            } catch (e) {}
         })();
     </script>
+
     {% if '/blog/' in page.url and page.url != '/blog/' %}
-    <div id="scroll-progress-container" class="fixed top-0 left-0 w-full h-1 z-[100] bg-transparent">
-        <div id="scroll-progress-bar" class="h-full bg-accent-primary transition-all duration-150 ease-out"
-            style="width: 0%;"></div>
+    <div id="scroll-progress-container">
+        <div id="scroll-progress-bar" style="width: 0%;"></div>
     </div>
     {% endif %}
+
     {% include "partials/header.njk" %}
-    <main class="main-content container mx-auto px-6 md:px-10 lg:px-20 pt-32 pb-12">
+
+    <main class="main-content">
         {{ content | safe }}
     </main>
-    <!-- Scroll to Top Button -->
-    <button id="scroll-to-top"
-        class="fixed bottom-8 right-8 z-[60] w-12 h-12 rounded-full shadow-lg backdrop-blur-sm opacity-0 translate-y-12 transition-all duration-300 pointer-events-none flex items-center justify-center border border-white/10"
-        aria-label="Scroll to top">
+
+    <button id="scroll-to-top" aria-label="Scroll to top">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 

@@ -1,15 +1,26 @@
 ---
-title: "Blog"
-layout: "layouts/base.njk"
-description: "Networking, homelab projects, Docker, Juniper, certifications, and technology experiments."
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+permalink: /blog/tag/{{ tag | slugify }}/
+layout: layouts/base.njk
+description: "Blog posts tagged with '{{ tag }}'"
 image: "/assets/images/jesus.webp"
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "Tag: {{ tag }}"
 ---
 
 {% include "components/blog-header.njk" %}
 
+<p class="muted" style="margin-bottom: 1.5rem;">
+  <a href="/blog">← All posts</a>
+</p>
+
 <div class="space-y-6">
 {%- for post in collections.blog | reverse -%}
-  {%- if not post.data.draft %}
+  {%- if post.data.tags and tag in post.data.tags and not post.data.draft -%}
     <div class="panel panel-rack">
       <h3 style="margin-bottom: 0.25rem;">
         <a href="{{ post.url }}">{{ post.data.title }}</a>
@@ -22,9 +33,9 @@ image: "/assets/images/jesus.webp"
       {% endif %}
       {% if post.data.tags %}
         <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
-          {%- for tag in post.data.tags -%}
-            {%- if tag != 'blog' -%}
-              <a href="/blog/tag/{{ tag | slugify }}" class="tag">{{ tag }}</a>
+          {%- for t in post.data.tags -%}
+            {%- if t != 'blog' -%}
+              <a href="/blog/tag/{{ t | slugify }}" class="tag">{{ t }}</a>
             {%- endif -%}
           {%- endfor -%}
         </div>
@@ -33,5 +44,3 @@ image: "/assets/images/jesus.webp"
   {%- endif -%}
 {%- endfor -%}
 </div>
-
-<script src="/js/blog-search.js" defer></script>
