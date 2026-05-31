@@ -3,7 +3,7 @@ code[class*=language-],
 pre[class*=language-] {
     color: var(--prism-text);
     background: none;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-family: 'Red Hat Mono', Consolas, Monaco, monospace;
     font-size: 1em;
     text-align: left;
     white-space: pre;
@@ -191,11 +191,10 @@ div.code-toolbar>.toolbar>.toolbar-item>span {
     color: var(--prism-text);
     font-size: .8em;
     padding: 0.25rem 0.75rem;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: .5rem;
-    backdrop-filter: blur(4px);
     transition: all 0.2s ease;
 }
 
@@ -205,7 +204,7 @@ div.code-toolbar>.toolbar>.toolbar-item>button:focus,
 div.code-toolbar>.toolbar>.toolbar-item>button:hover,
 div.code-toolbar>.toolbar>.toolbar-item>span:focus,
 div.code-toolbar>.toolbar>.toolbar-item>span:hover {
-    color: var(--accent-primary);
+    color: var(--accent);
     text-decoration: none;
-    border-color: var(--accent-primary);
+    border-color: var(--accent);
 }
