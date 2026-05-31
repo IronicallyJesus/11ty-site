@@ -21,6 +21,17 @@ module.exports = function (eleventyConfig) {
 
 
 
+  // Tag-based collections — collect posts for each tag (excluding 'blog')
+  eleventyConfig.addCollection("tagList", function(collectionApi) {
+    const tags = new Set();
+    collectionApi.getFilteredByTag("blog").forEach(item => {
+      if (item.data.tags) {
+        item.data.tags.filter(t => t !== 'blog').forEach(t => tags.add(t));
+      }
+    });
+    return [...tags].sort();
+  });
+
   eleventyConfig.addPlugin(feedPlugin, {
     type: "atom", // or "rss", "json"
     outputPath: "/feed.xml",

@@ -1,0 +1,115 @@
+---
+title: "Projects & Homelab"
+layout: "layouts/page.njk"
+description: "A showcase of my homelab infrastructure, open-source tools, and side projects I've built."
+image: "/assets/images/jesus.webp"
+sitemapPriority: 0.8
+sitemapChangefreq: "monthly"
+prose: true
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+
+  <div class="card p-6">
+    <div class="flex items-center gap-3 mb-4">
+      <i class="fa-solid fa-globe text-2xl text-accent-primary"></i>
+      <h3 class="text-xl font-bold heading-color">11ty Portfolio</h3>
+    </div>
+    <p class="article-text mb-4">This very website! Built with <strong>Eleventy</strong> (11ty), Tailwind CSS, and hosted on Docker with CI/CD. Features a blog, view/like tracking API, dark/light/system theme, and full SEO metadata.</p>
+    <div class="flex flex-wrap gap-2">
+      <a href="https://git.twk95.com/twk95/11ty-site" class="inline-block text-xs font-medium py-1 px-2.5 rounded-full border border-accent-primary/30 text-accent-primary hover:bg-accent-primary/10 transition-colors" target="_blank" rel="noopener">Source</a>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">Eleventy</span>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">Tailwind CSS</span>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">Docker</span>
+    </div>
+  </div>
+
+  <div class="card p-6">
+    <div class="flex items-center gap-3 mb-4">
+      <i class="fa-solid fa-chart-line text-2xl text-accent-primary"></i>
+      <h3 class="text-xl font-bold heading-color">11ty Stats Tracker</h3>
+    </div>
+    <p class="article-text mb-4">A Python-based analytics tracker + Chart.js dashboard for monitoring page views and engagement across the portfolio. Runs on a systemd timer and stores historical data for trend analysis.</p>
+    <div class="flex flex-wrap gap-2">
+      <a href="https://git.twk95.com/twk95/11ty-stats-tracker" class="inline-block text-xs font-medium py-1 px-2.5 rounded-full border border-accent-primary/30 text-accent-primary hover:bg-accent-primary/10 transition-colors" target="_blank" rel="noopener">Source</a>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">Python</span>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">Chart.js</span>
+    </div>
+  </div>
+
+  <div class="card p-6">
+    <div class="flex items-center gap-3 mb-4">
+      <i class="fa-solid fa-pen-fancy text-2xl text-accent-primary"></i>
+      <h3 class="text-xl font-bold heading-color">ElevenTCMS</h3>
+    </div>
+    <p class="article-text mb-4">A browser-based CMS built specifically for Eleventy sites. Features live preview (Nunjucks), media management, Git commit/push, Stripe payments, and full self-hosted Docker deployment.</p>
+    <div class="flex flex-wrap gap-2">
+      <a href="https://git.twk95.com/twk95/eleventcms" class="inline-block text-xs font-medium py-1 px-2.5 rounded-full border border-accent-primary/30 text-accent-primary hover:bg-accent-primary/10 transition-colors" target="_blank" rel="noopener">Source</a>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">React</span>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">Node.js</span>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">MariaDB</span>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">Stripe</span>
+    </div>
+  </div>
+
+  <div class="card p-6">
+    <div class="flex items-center gap-3 mb-4">
+      <i class="fa-solid fa-network-wired text-2xl text-accent-primary"></i>
+      <h3 class="text-xl font-bold heading-color">CPE Watch</h3>
+    </div>
+    <p class="article-text mb-4">ISP customer premises equipment health monitor. Polls SNMP for DOCSIS cable modem & GPON ONT metrics (signal levels, errors, uptime), alerts via email on degradation, and provides a real-time dashboard.</p>
+    <div class="flex flex-wrap gap-2">
+      <a href="https://git.twk95.com/twk95/cpe-watch" class="inline-block text-xs font-medium py-1 px-2.5 rounded-full border border-accent-primary/30 text-accent-primary hover:bg-accent-primary/10 transition-colors" target="_blank" rel="noopener">Source</a>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">FastAPI</span>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">React</span>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">SNMP</span>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">Docker</span>
+    </div>
+  </div>
+
+  <div class="card p-6">
+    <div class="flex items-center gap-3 mb-4">
+      <i class="fa-solid fa-power-off text-2xl text-accent-primary"></i>
+      <h3 class="text-xl font-bold heading-color">OPNsense WOL Dashboard</h3>
+    </div>
+    <p class="article-text mb-4">A simple Express.js dashboard for sending Wake-on-LAN magic packets to devices on the home network. Integrated with OPNsense for one-click host wake-up.</p>
+    <div class="flex flex-wrap gap-2">
+      <a href="https://git.twk95.com/twk95/opnsense-wol" class="inline-block text-xs font-medium py-1 px-2.5 rounded-full border border-accent-primary/30 text-accent-primary hover:bg-accent-primary/10 transition-colors" target="_blank" rel="noopener">Source</a>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">Express.js</span>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">WOL</span>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">OPNsense</span>
+    </div>
+  </div>
+
+  <div class="card p-6">
+    <div class="flex items-center gap-3 mb-4">
+      <i class="fa-solid fa-robot text-2xl text-accent-primary"></i>
+      <h3 class="text-xl font-bold heading-color">Hermes Paper Trader</h3>
+    </div>
+    <p class="article-text mb-4">A fully-automated robo-advisor running on a cron schedule. Manages a $5K portfolio using a dividend-focused, tax-aware strategy with periodic rebalancing. Tracks SCHD, VOO, JNJ, KO.</p>
+    <div class="flex flex-wrap gap-2">
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">Python</span>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">Automation</span>
+      <span class="inline-block text-xs font-medium py-1 px-2.5 rounded-full bg-accent-primary/10 text-accent-primary">Cron</span>
+    </div>
+  </div>
+
+</div>
+
+### Infrastructure
+
+<p class="article-text mb-6">
+All services run on a Proxmox-based homelab behind <strong>OPNsense</strong> with nginx-proxy-manager handling reverse proxy and SSL termination oauth2-proxy for authentication. Docker nodes use Dockge for container management. The stack spans:
+</p>
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+  <div class="flex items-center gap-2 text-sm"><i class="fa-solid fa-check text-accent-primary"></i> OPNsense Firewall</div>
+  <div class="flex items-center gap-2 text-sm"><i class="fa-solid fa-check text-accent-primary"></i> Gitea (Git)</div>
+  <div class="flex items-center gap-2 text-sm"><i class="fa-solid fa-check text-accent-primary"></i> Unraid NAS</div>
+  <div class="flex items-center gap-2 text-sm"><i class="fa-solid fa-check text-accent-primary"></i> Plex Media</div>
+  <div class="flex items-center gap-2 text-sm"><i class="fa-solid fa-check text-accent-primary"></i> Homepage Dashboard</div>
+  <div class="flex items-center gap-2 text-sm"><i class="fa-solid fa-check text-accent-primary"></i> Speedtest Tracker</div>
+  <div class="flex items-center gap-2 text-sm"><i class="fa-solid fa-check text-accent-primary"></i> CML (Cisco Modeling Labs)</div>
+  <div class="flex items-center gap-2 text-sm"><i class="fa-solid fa-check text-accent-primary"></i> Klipper (3D Printing)</div>
+  <div class="flex items-center gap-2 text-sm"><i class="fa-solid fa-check text-accent-primary"></i> Duplicati Backups</div>
+</div>

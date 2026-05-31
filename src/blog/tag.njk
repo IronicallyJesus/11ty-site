@@ -1,16 +1,25 @@
 ---
-title: "Blog"
-layout: "layouts/base.njk"
-description: "My blog where I write about networking, homelab projects, Docker, Juniper, certifications, and technology experiments."
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+permalink: /blog/tag/{{ tag | slugify }}/
+layout: layouts/base.njk
+description: "Blog posts tagged with '{{ tag }}'"
 image: "/assets/images/jesus.webp"
+eleventyComputed:
+  title: "Tag: {{ tag }}"
 ---
 
 {% include "components/blog-header.njk" %}
 
+<p class="mb-8 meta-info">
+  <a href="/blog" class="hover:text-accent-primary transition-colors">← All posts</a>
+</p>
+
 <div class="space-y-8">
 {%- for post in collections.blog | reverse -%}
-  {%- set draft = post.data.draft %}
-  {%- if not draft  %}
+  {%- if post.data.tags and tag in post.data.tags and not post.data.draft -%}
     <div class="card group">
       <h2 class="text-2xl font-bold mb-1">
         <a href="{{ post.url }}" class="card-heading hover:text-accent-primary transition-colors">{{ post.data.title }}</a>
@@ -30,9 +39,9 @@ image: "/assets/images/jesus.webp"
       {% endif %}
       {% if post.data.tags %}
         <div class="flex flex-wrap gap-2">
-          {%- for tag in post.data.tags -%}
-            {%- if tag != 'blog' -%}
-              <a href="/blog/tag/{{ tag | slugify }}" class="inline-block text-xs font-medium py-1 px-2.5 rounded-full border border-accent-primary/30 text-accent-primary hover:bg-accent-primary/10 transition-colors">{{ tag }}</a>
+          {%- for t in post.data.tags -%}
+            {%- if t != 'blog' -%}
+              <a href="/blog/tag/{{ t | slugify }}" class="inline-block text-xs font-medium py-1 px-2.5 rounded-full border border-accent-primary/30 text-accent-primary hover:bg-accent-primary/10 transition-colors">{{ t }}</a>
             {%- endif -%}
           {%- endfor -%}
         </div>
@@ -41,4 +50,3 @@ image: "/assets/images/jesus.webp"
   {%- endif -%}
 {%- endfor -%}
 </div>
-<script src="/js/blog-search.js" defer></script>

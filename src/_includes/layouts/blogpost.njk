@@ -47,6 +47,18 @@ layout: "layouts/base.njk"
     </div>
     <br />
     {{ content | safe }}
+    {% if tags %}
+    <div class="mt-12 pt-6 border-t border-white/10">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-sm font-semibold meta-info mr-1">Tags:</span>
+        {%- for tag in tags -%}
+          {%- if tag != 'blog' -%}
+            <a href="/blog/tag/{{ tag | slugify }}" class="inline-block text-xs font-medium py-1 px-2.5 rounded-full border border-accent-primary/30 text-accent-primary hover:bg-accent-primary/10 transition-colors">{{ tag }}</a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+    {% endif %}
 </article>
 <script src="/js/likes-handler.js" defer></script>
 <script src="/js/prism.js" defer></script>

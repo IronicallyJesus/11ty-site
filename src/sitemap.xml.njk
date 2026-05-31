@@ -7,7 +7,7 @@ eleventyExcludeFromCollections: true
   {%- for page in collections.all %}
     {%- set draft = page.data.draft %}
     {%- if not draft  %}
-      {%- set priority = page.data.priority if page.data.priority else "0.5" %}
+      {%- set priority = page.data.sitemapPriority if page.data.sitemapPriority else (page.data.priority if page.data.priority else "0.5") %}
       <url>
         <loc>{{ site.url }}{{ page.url | url }}</loc>
         <lastmod>{{ page.date | htmlDateString }}</lastmod>
