@@ -181,6 +181,8 @@ a {
     color: var(--accent);
     text-decoration: none;
     transition: color 0.15s ease;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 a:hover {
     color: var(--accent-hover);
