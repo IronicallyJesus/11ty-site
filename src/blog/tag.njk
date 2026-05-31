@@ -7,6 +7,7 @@ permalink: /blog/tag/{{ tag | slugify }}/
 layout: layouts/base.njk
 description: "Blog posts tagged with '{{ tag }}'"
 image: "/assets/images/jesus.webp"
+eleventyExcludeFromCollections: true
 eleventyComputed:
   title: "Tag: {{ tag }}"
 ---
