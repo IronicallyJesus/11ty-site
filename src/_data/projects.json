@@ -1,0 +1,44 @@
+[
+  {
+    "name": "11ty Portfolio",
+    "icon": "fa-globe",
+    "description": "This very website! Built with <strong>Eleventy</strong> (11ty), Tailwind CSS, and hosted on Docker with CI/CD. Features a blog, view/like tracking API, dark/light/system theme, and full SEO metadata.",
+    "link": "https://git.twk95.com/twk95/11ty-site",
+    "tags": ["Eleventy", "Tailwind CSS", "Docker"]
+  },
+  {
+    "name": "11ty Stats Tracker",
+    "icon": "fa-chart-line",
+    "description": "A Python-based analytics tracker + Chart.js dashboard for monitoring page views and engagement across the portfolio. Runs on a systemd timer and stores historical data for trend analysis.",
+    "link": "https://git.twk95.com/twk95/11ty-stats-tracker",
+    "tags": ["Python", "Chart.js"]
+  },
+  {
+    "name": "ElevenTCMS",
+    "icon": "fa-pen-fancy",
+    "description": "A browser-based CMS built specifically for Eleventy sites. Features live preview (Nunjucks), media management, Git commit/push, Stripe payments, and full self-hosted Docker deployment.",
+    "link": "https://git.twk95.com/twk95/eleventcms",
+    "tags": ["React", "Node.js", "MariaDB", "Stripe"]
+  },
+  {
+    "name": "CPE Watch",
+    "icon": "fa-network-wired",
+    "description": "ISP customer premises equipment health monitor. Polls SNMP for DOCSIS cable modem & GPON ONT metrics (signal levels, errors, uptime), alerts via email on degradation, and provides a real-time dashboard.",
+    "link": "https://git.twk95.com/twk95/cpe-watch",
+    "tags": ["FastAPI", "React", "SNMP", "Docker"]
+  },
+  {
+    "name": "OPNsense WOL Dashboard",
+    "icon": "fa-power-off",
+    "description": "A simple Express.js dashboard for sending Wake-on-LAN magic packets to devices on the home network. Integrated with OPNsense for one-click host wake-up.",
+    "link": "https://git.twk95.com/twk95/opnsense-wol",
+    "tags": ["Express.js", "WOL", "OPNsense"]
+  },
+  {
+    "name": "Hermes Paper Trader",
+    "icon": "fa-robot",
+    "description": "A fully-automated robo-advisor running on a cron schedule. Manages a $10K portfolio per account using a dividend-focused, tax-aware strategy with periodic rebalancing. Tracks SCHD, VOO, JNJ, KO.",
+    "link": "",
+    "tags": ["Python", "Automation", "Cron"]
+  }
+]
