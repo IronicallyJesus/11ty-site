@@ -42,6 +42,19 @@ module.exports = function (eleventyConfig) {
 
 
   // Add a filter for readable dates using Luxon
+
+  // Build tag list collection for tag archive pages
+  eleventyConfig.addCollection("tagList", function(collectionApi) {
+    const tags = new Set();
+    for (const item of collectionApi.getAll()) {
+      if (item.data.tags) {
+        for (const tag of item.data.tags) {
+          if (tag !== "blog") tags.add(tag);
+        }
+      }
+    }
+    return [...tags].sort();
+  });
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     if (!dateObj) return "";
     // When Eleventy parses a date like "2025-08-25", it creates a Date object

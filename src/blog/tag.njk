@@ -18,7 +18,7 @@ eleventyComputed:
   <a href="/blog">← All posts</a>
 </p>
 
-<div class="space-y-6">
+<div style="display: flex; flex-direction: column; gap: 1.5rem;">
 {%- for post in collections.blog | reverse -%}
   {%- if post.data.tags and tag in post.data.tags and not post.data.draft -%}
     <div class="panel panel-rack">

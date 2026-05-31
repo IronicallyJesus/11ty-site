@@ -35,7 +35,7 @@ image: "/assets/images/jesus.webp"
                 {%- for cert in certifications -%}
                 <tr>
                     <td>{{ cert.name }}</td>
-                    <td><span class="muted">{{ cert.organization }}</span></td>
+                    <td><span class="muted">{{ cert.issuer }}</span></td>
                     <td><span class="status"><span class="status-dot online"></span>Active</span></td>
                 </tr>
                 {%- endfor -%}
@@ -46,7 +46,7 @@ image: "/assets/images/jesus.webp"
 
 <section id="blog" style="margin-bottom: 3rem;">
     <h2 class="section-heading">// Latest Posts</h2>
-    <div class="space-y-4">
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
     {%- for post in collections.blog | reverse -%}
         {%- if not post.data.draft and loop.index <= 3 %}
         <div class="panel panel-rack">
@@ -70,7 +70,7 @@ image: "/assets/images/jesus.webp"
 
 <section id="projects" style="margin-bottom: 3rem;">
     <h2 class="section-heading">// Featured Projects</h2>
-    <div class="space-y-4">
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
     {%- set count = 0 %}
     {%- for project in projects -%}
     {%- if count < 3 %}
