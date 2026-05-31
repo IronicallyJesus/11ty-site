@@ -5,23 +5,23 @@ permalink: 404.html
 eleventyExcludeFromCollections: true
 ---
 
-<div class="text-center py-18">
-    <h1 style="font-family: 'Red Hat Mono', monospace;" class="text-8xl font-bold accent-primary mb-2">404</h1>
-    <h2 class="text-3xl font-semibold heading-color mb-6">Route Not Found</h2>
-    <p class="text-lg article-text max-w-xl mx-auto mb-8">
+<div style="text-align: center; padding: 4rem 0 3rem;">
+    <h1 style="font-family: var(--font-mono); font-size: 6rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">404</h1>
+    <h2 style="font-size: var(--font-size-2xl); font-weight: 600; margin-bottom: 1.5rem;">Route Not Found</h2>
+    <p class="muted" style="font-size: 1.1rem; max-width: 500px; margin: 0 auto 2rem; line-height: 1.6;">
         The requested resource could not be located on our network. Your packet was dropped and an ICMP reply sent.
     </p>
-    <div style="font-family: 'Red Hat Mono', monospace;" class="card rounded-lg p-6 max-w-md mx-auto mb-10 text-left text-sm">
-        <p class="accent-primary mb-2-">&gt; traceroute current.page</p>
-        <div class="space-y-1 article-text">
-            <p>1 <span class="heading-color font-bold">gateway.local</span> (192.168.1.1) 1.234 ms</p>
-            <p>2 <span class="heading-color font-bold">core.router.isp</span> (10.0.0.1) 5.678 ms</p>
-            <p>3 * * * Request timed out.</p>
+    <div class="panel" style="font-family: var(--font-mono); max-width: 420px; margin: 0 auto 2.5rem; text-align: left; font-size: 0.8125rem; padding: 1.25rem;">
+        <div style="color: var(--accent); margin-bottom: 0.75rem;">&gt; traceroute current.page</div>
+        <div style="line-height: 1.8; color: var(--text-secondary);">
+            <div>1 <span style="color: var(--text-primary); font-weight: 600;">gateway.local</span> (192.168.1.1) 1.234 ms</div>
+            <div>2 <span style="color: var(--text-primary); font-weight: 600;">core.router.isp</span> (10.0.0.1) 5.678 ms</div>
+            <div>3 * * * Request timed out.</div>
         </div>
-        <p class="text-red-500 mt-4 font-bold">&gt; Error: Destination host unreachable.</p>
+        <div style="color: var(--red); margin-top: 1rem; font-weight: 600;">&gt; Error: Destination host unreachable.</div>
     </div>
     <a href="/" class="btn">
-    <i class="fas fa-home mr-2" aria-hidden="true"></i>
-    Default Route
+        <i class="fa-solid fa-house" style="margin-right: 0.5rem;"></i>
+        Default Route
     </a>
 </div>

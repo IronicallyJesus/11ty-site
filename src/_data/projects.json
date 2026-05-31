@@ -1,0 +1,44 @@
+[
+    {
+        "name": "11ty-site",
+        "icon": "fa-globe",
+        "description": "This website — Eleventy 3 portfolio/blog with Tailwind, dark/light theme, and stats tracker.",
+        "link": "https://github.com/IronicallyJesus/11ty-site",
+        "tags": ["Eleventy", "Tailwind", "JavaScript", "Nunjucks"]
+    },
+    {
+        "name": "OPNsense WOL",
+        "icon": "fa-power-off",
+        "description": "Wake-on-LAN dashboard for OPNsense firewalls. Web UI to wake devices across VLANs.",
+        "link": "https://github.com/IronicallyJesus/opnsense-wol",
+        "tags": ["Express.js", "WOL", "OPNsense", "Networking"]
+    },
+    {
+        "name": "CPE Watch",
+        "icon": "fa-eye",
+        "description": "ISP CPE health monitor — SNMP polling, FastAPI backend, React dashboard, email alerts.",
+        "link": "https://git.twk95.com/twk95/cpe-watch",
+        "tags": ["FastAPI", "React", "SNMP", "Docker"]
+    },
+    {
+        "name": "11ty Stats Tracker",
+        "icon": "fa-chart-line",
+        "description": "Self-hosted analytics for 11ty-site — Python tracker with Chart.js dashboard.",
+        "link": "https://git.twk95.com/twk95/11ty-stats-tracker",
+        "tags": ["Python", "Chart.js", "Analytics"]
+    },
+    {
+        "name": "ElevenCMS",
+        "icon": "fa-pen-to-square",
+        "description": "React CMS for Eleventy sites with MariaDB, Stripe payments, Resend email, and Git integration.",
+        "link": "https://git.twk95.com/twk95/eleventcms",
+        "tags": ["React", "MariaDB", "Stripe", "Resend"]
+    },
+    {
+        "name": "Paper Trader",
+        "icon": "fa-coins",
+        "description": "Automated paper trading robo-advisor with dividend-focused strategy and $10k simulation.",
+        "link": null,
+        "tags": ["Python", "Finance", "Automation"]
+    }
+]
