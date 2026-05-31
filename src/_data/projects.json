@@ -28,7 +28,7 @@
         "tags": ["Python", "Chart.js", "Analytics"]
     },
     {
-        "name": "ElevenCMS",
+        "name": "ElevenTCMS",
         "icon": "fa-pen-to-square",
         "description": "React CMS for Eleventy sites with MariaDB, Stripe payments, Resend email, and Git integration.",
         "link": "https://git.twk95.com/twk95/eleventcms",
