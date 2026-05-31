@@ -3,91 +3,62 @@ layout: "layouts/base.njk"
 ---
 <article>
     {% if tags and 'blog' in tags %}
-    <nav class="flex items-center space-x-2 text-sm meta-info mb-8" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-accent-primary transition-colors">Home</a>
-        <i class="fa-solid fa-chevron-right text-[10px] opacity-50"></i>
-        <a href="/blog" class="hover:text-accent-primary transition-colors">Blog</a>
-        <i class="fa-solid fa-chevron-right text-[10px] opacity-50"></i>
-        <span class="accent-primary font-medium truncate max-w-[200px] md:max-w-none">{{ title }}</span>
+    <nav class="mb-6" style="font-size: 0.8125rem; color: var(--text-secondary);">
+        <a href="/">Home</a> <span style="margin: 0 0.35rem;">/</span>
+        <a href="/blog">Blog</a> <span style="margin: 0 0.35rem;">/</span>
+        <span style="color: var(--accent);">{{ title }}</span>
     </nav>
     {% endif %}
+
     <h1>{{ title }}</h1>
-    <div class="post-meta flex flex-col items-start md:flex-row md:items-center meta-info text-lg">
-        <!--- Date Section -->
-        <div class="flex items-center mb-1">
-            <i class="fa-solid fa-fw fa-calendar mr-2" aria-hidden="true"></i>
-            <span>Published on {{ page.date | readableDate }}</span>
-        </div>
-        <!--- Reading Time Section -->
-        <span class="hidden md:inline mx-2 separator opacity-40">•</span>
-        <div class="flex items-center mb-1">
-            <i class="fa-solid fa-fw fa-clock mr-2" aria-hidden="true"></i>
-            <span>{{ content | readingTime }}</span>
-        </div>
-        <!--- Views Section -->
-        <span class="hidden md:inline mx-2 separator opacity-40">•</span>
-        <div class="flex items-center mb-1">
-            <i class="fa-solid fa-fw fa-eye mr-2" aria-hidden="true"></i>
-            <span class="view-count" data-view-count data-slug="{{ page.fileSlug }}">Loading views</span>
-        </div>
-        <!--- Comments Section -->
-        <!---
-        <span class="hidden md:inline mx-2 separator opacity-40">•</span>
-        <div class="flex items-center mb-1">
-            <i class="fa-solid fa-fw fa-comments mr-2" aria-hidden="true"></i>
-            <a href="#disqus_thread">Comments</a>
-        </div>
-         -->
-        <!--- Likes Section -->
-        <span class="hidden md:inline mx-2 text-gray-600">•</span>
-        <div class="flex items-center mb-1 like-icon" data-like-button data-slug="{{ page.fileSlug }}">
-            <i class="fa-solid fa-fw fa-heart mr-2" aria-hidden="true"></i>
-            <span class="like-count" data-like-count data-slug="{{ page.fileSlug }}">No likes</span>
-        </div>
+
+    <div class="muted" style="font-family: var(--font-mono); font-size: 0.8125rem; margin-bottom: 0.75rem;">
+        {{ page.date | readableDate }} &middot; {{ content | readingTime }}
+        &middot; <span class="like-btn" data-like-button data-slug="{{ page.fileSlug }}">
+            <i class="fa-solid fa-heart"></i>
+            <span class="like-count" data-like-count data-slug="{{ page.fileSlug }}">0</span>
+        </span>
     </div>
-    <br />
+
+    {% if tags %}
+    <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.5rem;">
+        {%- for tag in tags -%}
+            {%- if tag != 'blog' -%}
+                <a href="/blog/tag/{{ tag | slugify }}" class="tag tag-accent">{{ tag }}</a>
+            {%- endif -%}
+        {%- endfor -%}
+    </div>
+    {% endif %}
+
     {{ content | safe }}
 </article>
+
 <script src="/js/likes-handler.js" defer></script>
 <script src="/js/prism.js" defer></script>
+
 <div id="bottom"></div>
-<!-- Mermaid for technical diagrams -->
+
 <script src="/js/mermaid.min.js" defer></script>
 <script type="module">
-    // Function to initialize and render mermaid
     const renderMermaid = (isLight) => {
         mermaid.initialize({
-            startOnLoad: false, // We'll handle rendering manually
+            startOnLoad: false,
             theme: isLight ? 'default' : 'dark',
             securityLevel: 'loose',
             fontFamily: 'IBM Plex Sans, sans-serif'
         });
-
-        // For each mermaid element, restore original code if it exists, otherwise store it
         document.querySelectorAll('.mermaid').forEach((el, i) => {
-            // Save the original code if we haven't yet
             if (!el.getAttribute('data-original-code')) {
                 el.setAttribute('data-original-code', el.textContent.trim());
             }
-
-            // Reset the element for re-rendering
-            const originalCode = el.getAttribute('data-original-code');
             el.removeAttribute('data-processed');
-            el.innerHTML = originalCode;
-            // Mermaid needs a unique ID for each element if we're re-rendering
-            el.id = `mermaid-diagram-${i}`;
+            el.innerHTML = el.getAttribute('data-original-code');
+            el.id = 'mermaid-diagram-' + i;
         });
-
-        mermaid.run({
-            nodes: document.querySelectorAll('.mermaid')
-        });
+        mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
     };
-
-    // Initial render
     const isInitialLight = document.body.classList.contains('light-theme');
     renderMermaid(isInitialLight);
-
-    // Listen for theme changes
     window.addEventListener('theme-changed', (e) => {
         renderMermaid(e.detail.isLight);
     });

@@ -1,0 +1,139 @@
+---
+title: "Lab"
+layout: "layouts/page.njk"
+description: "Homelab infrastructure — what's running, how it's connected, and what it powers."
+image: "/assets/images/jesus.webp"
+---
+
+<div class="panel" style="margin-bottom: 2rem;">
+    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+        <span class="status"><span class="status-dot online"></span>Homelab Online</span>
+        <span class="muted" style="font-family: var(--font-mono); font-size: 0.75rem;">Proxmox · OPNsense · Docker</span>
+    </div>
+</div>
+
+<h2 class="section-heading">// Network</h2>
+
+<div class="panel" style="margin-bottom: 1.5rem;">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Device</th>
+                <th>Role</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>OPNsense</td>
+                <td><span class="muted">Firewall / Router</span></td>
+                <td><span class="status"><span class="status-dot online"></span>Active</span></td>
+            </tr>
+            <tr>
+                <td>nginx-proxy-manager</td>
+                <td><span class="muted">Reverse Proxy / SSL</span></td>
+                <td><span class="status"><span class="status-dot online"></span>Active</span></td>
+            </tr>
+            <tr>
+                <td>oauth2-proxy</td>
+                <td><span class="muted">Authentication</span></td>
+                <td><span class="status"><span class="status-dot online"></span>Active</span></td>
+            </tr>
+            <tr>
+                <td>WAS-110 (8311)</td>
+                <td><span class="muted">SFP+ ONT</span></td>
+                <td><span class="status"><span class="status-dot online"></span>Active</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 class="section-heading">// Services</h2>
+
+<div class="panel" style="margin-bottom: 1.5rem;">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>URL</th>
+                <th>Access</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Portfolio</td>
+                <td><span class="muted" style="font-family: var(--font-mono); font-size: 0.75rem;">jesus.twk95.com</span></td>
+                <td><span class="tag">Public</span></td>
+            </tr>
+            <tr>
+                <td>Gitea</td>
+                <td><span class="muted" style="font-family: var(--font-mono); font-size: 0.75rem;">git.twk95.com</span></td>
+                <td><span class="tag">Public</span></td>
+            </tr>
+            <tr>
+                <td>Analytics</td>
+                <td><span class="muted" style="font-family: var(--font-mono); font-size: 0.75rem;">11tystats.twk95.net</span></td>
+                <td><span class="tag">Public</span></td>
+            </tr>
+            <tr>
+                <td>Homepage Dashboard</td>
+                <td><span class="muted" style="font-family: var(--font-mono); font-size: 0.75rem;">dash.twk95.com</span></td>
+                <td><span class="tag tag-accent">OAuth</span></td>
+            </tr>
+            <tr>
+                <td>WOL Tool</td>
+                <td><span class="muted" style="font-family: var(--font-mono); font-size: 0.75rem;">wol.twk95.com</span></td>
+                <td><span class="tag tag-accent">OAuth</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 class="section-heading">// Stack</h2>
+
+<div class="panel">
+    <div class="kv">
+        <span class="kv-label">Hypervisor</span>
+        <span class="kv-value">Proxmox VE</span>
+    </div>
+    <div class="kv">
+        <span class="kv-label">Containers</span>
+        <span class="kv-value">Docker + Dockge</span>
+    </div>
+    <div class="kv">
+        <span class="kv-label">Firewall</span>
+        <span class="kv-value">OPNsense (10.13.30.0/24)</span>
+    </div>
+    <div class="kv">
+        <span class="kv-label">Reverse Proxy</span>
+        <span class="kv-value">nginx-proxy-manager @ 10.13.30.2</span>
+    </div>
+    <div class="kv">
+        <span class="kv-label">CI/CD</span>
+        <span class="kv-value">Gitea Actions (Docker builds)</span>
+    </div>
+    <div class="kv">
+        <span class="kv-label">Backup</span>
+        <span class="kv-value">Duplicati</span>
+    </div>
+    <div class="kv">
+        <span class="kv-label">Monitoring</span>
+        <span class="kv-value">Speedtest Tracker, Homepage widgets</span>
+    </div>
+    <div class="kv">
+        <span class="kv-label">Lab</span>
+        <span class="kv-value">Cisco Modeling Labs 2.9+</span>
+    </div>
+    <div class="kv">
+        <span class="kv-label">NAS</span>
+        <span class="kv-value">Unraid (Plex, media stack)</span>
+    </div>
+    <div class="kv">
+        <span class="kv-label">3D Printing</span>
+        <span class="kv-value">Klipper (Mainsail)</span>
+    </div>
+    <div class="kv">
+        <span class="kv-label">DNS</span>
+        <span class="kv-value">Cloudflare</span>
+    </div>
+</div>
