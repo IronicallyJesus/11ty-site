@@ -29,7 +29,7 @@ image: "/assets/images/jesus.webp"
 
 <p>I'm a husband, a nerd, an ex-gifted student, an engineer, and an immigrant. I came into the United States from Mexico at 5 years old, but even before then I loved taking things apart and finding out how they worked. In my teenage years, technology only boosted that tremendously. After high school though, without a clear path to pursue higher education I quickly joined the workforce.</p>
 
-<p>I taught myself networking from the ground up — starting in tech support, moving through NOC roles, and eventually into engineering. Today I hold Juniper certifications and design switching infrastructure at an ISP. The same curiosity that had me dismantling electronics as a kid now drives me to build homelab environments, automate network operations, and share what I learn.</p>
+<p>I taught myself networking from the ground up — starting in tech support and eventually into engineering. Today I hold Juniper certifications and design switching infrastructure at an ISP. The same curiosity that had me dismantling electronics as a kid now drives me to build homelab environments, automate network operations, and share what I learn.</p>
 
 <p>This site is where I document that journey — the labs, the configs, the mistakes, and the solutions.</p>
 
