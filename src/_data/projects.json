@@ -2,9 +2,9 @@
     {
         "name": "11ty-site",
         "icon": "fa-globe",
-        "description": "This website — Eleventy 3 portfolio/blog with Tailwind, dark/light theme, and stats tracker.",
+        "description": "This website — Eleventy 3 portfolio/blog with CSS custom properties design system, dark/light/system theme toggle, and self-hosted analytics.",
         "link": "https://git.twk95.com/twk95/11ty-site",
-        "tags": ["Eleventy", "Tailwind", "JavaScript", "Nunjucks"]
+        "tags": ["Eleventy", "CSS", "JavaScript", "Nunjucks"]
     },
     {
         "name": "OPNsense WOL",
