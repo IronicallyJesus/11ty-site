@@ -3,14 +3,14 @@
         "name": "11ty-site",
         "icon": "fa-globe",
         "description": "This website — Eleventy 3 portfolio/blog with Tailwind, dark/light theme, and stats tracker.",
-        "link": "https://github.com/IronicallyJesus/11ty-site",
+        "link": "https://git.twk95.com/twk95/11ty-site",
         "tags": ["Eleventy", "Tailwind", "JavaScript", "Nunjucks"]
     },
     {
         "name": "OPNsense WOL",
         "icon": "fa-power-off",
         "description": "Wake-on-LAN dashboard for OPNsense firewalls. Web UI to wake devices across VLANs.",
-        "link": "https://github.com/IronicallyJesus/opnsense-wol",
+        "link": "https://git.twk95.com/twk95/opnsense-wol",
         "tags": ["Express.js", "WOL", "OPNsense", "Networking"]
     },
     {
