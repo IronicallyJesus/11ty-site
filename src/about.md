@@ -14,7 +14,7 @@ image: "/assets/images/jesus.webp"
         <h3>{{ site.author.name }}</h3>
         <div class="kv" style="margin-top: 0.5rem;">
             <span class="kv-label">Role</span>
-            <span class="kv-value">Industrial Switching Engineer II, Sparklight</span>
+            <span class="kv-value">Industrial Switching Engineer II, <span class="sparklight-word"><span class="slash">/</span>Sparklight</span></span>
         </div>
         <div class="kv">
             <span class="kv-label">Focus</span>

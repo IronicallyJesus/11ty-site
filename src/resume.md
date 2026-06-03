@@ -17,4 +17,9 @@ image: "/assets/images/jesus.webp"
             </div>
         </object>
     </div>
+    <div style="text-align: center; margin-top: 1rem;">
+        <a href="/resume/jesus.pdf" class="btn btn-ghost" download>
+            <i class="fa-solid fa-download" style="margin-right: 0.5rem;"></i>Download PDF
+        </a>
+    </div>
 </div>
