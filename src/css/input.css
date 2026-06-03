@@ -434,6 +434,9 @@ th {
     border-bottom: 1px solid var(--border);
     font-size: 1rem;
 }
+.data-table tr:last-child td {
+    border-bottom: none;
+}
 
 /* Key-value pair (CLI output style) */
 .kv {

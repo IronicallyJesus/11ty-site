@@ -91,7 +91,7 @@ function statusLabel(status) {
     case 'expired':
       return 'Expired';
     case 'expiring_soon':
-      return 'Expiring Soon';
+      return 'Expiring';
     default:
       return 'Active';
   }
