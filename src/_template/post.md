@@ -7,6 +7,7 @@ tags: ["blog", "", "", ""]
 description: 
 excerpt: 
 draft: true
+eleventyExcludeFromCollections: true
 image: "/assets/images/jesus.webp"
 ---
 
