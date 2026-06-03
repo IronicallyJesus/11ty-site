@@ -5,7 +5,7 @@ layout: "layouts/page.njk"
 image: "/assets/images/jesus.webp"
 ---
 
-<div style="display: flex; flex-direction: column; gap: 2rem; max-width: 720px;">
+<div style="display: flex; flex-direction: column; gap: 2rem; max-width: 800px;">
 
 <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
     <img src="{{ image }}" width="140" height="140" alt="{{ site.author.name }}"
@@ -41,10 +41,10 @@ image: "/assets/images/jesus.webp"
 {%- for role in roles -%}
 <div style="margin-bottom: 2rem; position: relative;">
     <div style="position: absolute; left: -1.75rem; top: 0.35rem; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg-primary);"></div>
-    <div class="muted" style="font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.25rem;">{{ role.time }}</div>
+    <div class="muted" style="font-family: var(--font-mono); font-size: 0.8125rem; margin-bottom: 0.25rem;">{{ role.time }}</div>
     <h4 style="margin: 0 0 0.15rem 0;">{{ role.title }}</h4>
-    <div class="muted" style="font-size: 0.85rem; margin-bottom: 0.5rem;">{{ role.company | brand | safe }}{% if role.location %} &middot; {{ role.location }}{% endif %}</div>
-    <p style="font-size: 0.9rem; color: var(--text-secondary);">{{ role.description | brand | safe }}</p>
+    <div class="muted" style="font-size: 0.9375rem; margin-bottom: 0.5rem;">{{ role.company | brand | safe }}{% if role.location %} &middot; {{ role.location }}{% endif %}</div>
+    <p style="font-size: 1rem; color: var(--text-secondary);">{{ role.description | brand | safe }}</p>
     {%- if role.timeline_tidbit -%}
     <span class="tag tag-accent" style="margin-top: 0.5rem;">{{ role.timeline_tidbit | brand | safe }}</span>
     {%- endif -%}

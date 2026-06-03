@@ -7,10 +7,10 @@ image: "/assets/images/jesus.webp"
 
 <section style="padding: 2rem 0 3rem; border-bottom: 1px solid var(--border); margin-bottom: 3rem;">
     <span class="tag tag-accent" style="margin-bottom: 1rem;">Industrial Switching Engineer II · Sparklight</span>
-    <h1 style="font-size: 3rem; margin-top: 0.75rem; margin-bottom: 0.5rem; line-height: 1.1;">
+    <h1 style="font-size: 3.25rem; margin-top: 0.75rem; margin-bottom: 0.5rem; line-height: 1.1;">
         Networks don't care<br>about your excuses.
     </h1>
-    <p class="muted" style="font-size: 1.1rem; max-width: 600px; line-height: 1.6;">
+    <p class="muted" style="font-size: 1.2rem; max-width: 700px; line-height: 1.6;">
         10+ years in ISP networking. I design, automate, and troubleshoot the infrastructure
         that keeps people connected — and I write about it.
     </p>
@@ -53,11 +53,11 @@ image: "/assets/images/jesus.webp"
             <h3 style="margin-bottom: 0.25rem;">
                 <a href="{{ post.url }}">{{ post.data.title }}</a>
             </h3>
-            <div class="muted" style="font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.35rem;">
+            <div class="muted" style="font-family: var(--font-mono); font-size: 0.8125rem; margin-bottom: 0.35rem;">
                 {{ post.date | readableDate }} &middot; {{ post.templateContent | readingTime }}
             </div>
             {% if post.data.excerpt %}
-                <p class="muted" style="font-size: 0.9rem;">{{ post.data.excerpt }}</p>
+                <p class="muted" style="font-size: 1rem;">{{ post.data.excerpt }}</p>
             {% endif %}
         </div>
         {%- endif -%}
@@ -80,7 +80,7 @@ image: "/assets/images/jesus.webp"
                 <i class="fa-solid {{ project.icon }}" style="color: var(--accent);"></i>
                 <h3 style="margin: 0;">{{ project.name }}</h3>
             </div>
-            <p class="muted" style="font-size: 0.9rem; margin-bottom: 0.5rem;">{{ project.description | safe }}</p>
+            <p class="muted" style="font-size: 1rem; margin-bottom: 0.5rem;">{{ project.description | safe }}</p>
             <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
                 {%- for tag in project.tags -%}
                     <span class="tag">{{ tag }}</span>

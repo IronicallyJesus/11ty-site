@@ -7,7 +7,6 @@ This is a personal portfolio and blog website built with [Eleventy](https://www.
 ### Built With
 
 *   [Eleventy](https://www.11ty.dev/)
-*   [Tailwind CSS](https://tailwindcss.com/)
 *   [Express.js](https://expressjs.com/)
 
 ## Getting Started
@@ -18,7 +17,7 @@ To get a local copy up and running, follow these simple steps.
 
 1.  Clone the repo:
     ```sh
-    git clone https://github.com/IronicallyJesus/11ty-site.git
+    git clone https://git.twk95.com/twk95/11ty-site.git
     ```
 2.  Navigate into the project directory:
     ```sh
