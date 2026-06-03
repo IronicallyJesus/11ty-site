@@ -1,18 +1,18 @@
 ---
 title: "Jesus — Network Engineer"
 layout: "layouts/base.njk"
-description: "Industrial Switching Engineer II at Sparklight. Network engineering, homelab projects, and tech that works."
+description: "Industrial Switching Engineer II at /Sparklight. Network engineering, homelab projects, and tech that works."
 image: "/assets/images/jesus.webp"
 ---
 
 <section style="padding: 2rem 0 3rem; border-bottom: 1px solid var(--border); margin-bottom: 3rem;">
-    <span class="tag tag-accent" style="margin-bottom: 1rem;">Industrial Switching Engineer II · Sparklight</span>
-    <h1 style="font-size: 3.25rem; margin-top: 0.75rem; margin-bottom: 0.5rem; line-height: 1.1;">
+    <span class="tag tag-accent" style="margin-bottom: 1rem;">Industrial Switching Engineer II · <span class="sparklight-word"><span class="slash">/</span>Sparklight</span></span>
+    <h1 style="font-size: clamp(2.25rem, 6vw, 3.25rem); margin-top: 0.75rem; margin-bottom: 0.5rem; line-height: 1.1;">
         Networks don't care<br>about your excuses.
     </h1>
     <p class="muted" style="font-size: 1.2rem; max-width: 700px; line-height: 1.6;">
         10+ years in ISP networking. I design, automate, and troubleshoot the infrastructure
-        that keeps people connected — and I write about it.
+        that keeps people connected.
     </p>
     <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
         <a href="/about" class="btn">About Me</a>
@@ -34,9 +34,23 @@ image: "/assets/images/jesus.webp"
             <tbody>
                 {%- for cert in certifications -%}
                 <tr>
-                    <td>{{ cert.name }}</td>
+                    <td>
+                        {% if cert.verification_url %}<a href="{{ cert.verification_url }}" target="_blank" rel="noopener" title="Verify on Credly">{% endif %}
+                            {{ cert.name }}
+                        {% if cert.verification_url %}</a>{% endif %}
+                    </td>
                     <td><span class="muted">{{ cert.issuer }}</span></td>
-                    <td><span class="status"><span class="status-dot online"></span>Active</span></td>
+                    <td>
+                        <span class="status">
+                            <span class="status-dot {{ cert.status_dot }}"></span>
+                            {{ cert.status_label }}
+                        </span>
+                        {% if cert.is_permanent -%}
+                            <br><span class="tag tag-ghost" style="margin-top: 0.25rem; font-size: 0.625rem;">No expiry</span>
+                        {%- elif cert.expires -%}
+                            <br><span class="muted" style="font-size: 0.6875rem; margin-top: 0.25rem;">{{ cert.expires }}</span>
+                        {%- endif %}
+                    </td>
                 </tr>
                 {%- endfor -%}
             </tbody>
