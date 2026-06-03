@@ -90,6 +90,21 @@ if (scrollToTopBtn) {
     scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
+// --- Consent Banner ---
+const consentBanner = document.getElementById('consent-banner');
+const consentAccept = document.getElementById('consent-accept');
+
+if (consentAccept && consentBanner) {
+    if (!localStorage.getItem('privacy-consent')) {
+        consentBanner.classList.remove('hidden');
+    }
+    consentAccept.addEventListener('click', () => {
+        localStorage.setItem('privacy-consent', 'true');
+        consentBanner.classList.add('hidden');
+        window.dispatchEvent(new CustomEvent('consent-accepted'));
+    });
+}
+
 // --- Theme Toggle ---
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-toggle-icon');
