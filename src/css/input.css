@@ -293,6 +293,29 @@ th {
     font-weight: 600;
 }
 
+/* Sparklight — purple bold slash, text follows theme */
+.sparklight-word {
+    color: var(--text-primary);
+}
+.sparklight-word .slash {
+    color: #a855f7;
+    font-weight: 700;
+}
+
+/* Cable One — blue text */
+.cableone-word {
+    color: var(--blue);
+}
+
+/* Hargray — two bold red slashes, text follows theme */
+.hargray-word {
+    color: var(--text-primary);
+}
+.hargray-word .brand-slash {
+    color: #E31B23;
+    font-weight: 700;
+}
+
 ::selection {
     background: var(--accent);
     color: var(--bg-primary);

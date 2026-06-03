@@ -70,6 +70,16 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: 'UTC' }).toISODate();
   });
 
+  // Brand filter: auto-style company names in text
+  eleventyConfig.addFilter("brand", (text) => {
+    if (!text) return text;
+    return text
+      .replace(/Sparklight/g, '<span class="sparklight-word"><span class="slash">/</span>Sparklight</span>')
+      .replace(/Cable One/g, '<span class="cableone-word">Cable One</span>')
+      .replace(/(?<!\/)Hargray(?! Communications)/g, '<span class="hargray-word"><span class="brand-slash">//</span>Hargray</span>')
+      .replace(/Hargray Communications/g, '<span class="hargray-word"><span class="brand-slash">//</span>Hargray</span> Communications');
+  });
+
   // Callout shortcode (paired)
   eleventyConfig.addPairedShortcode("callout", function (content, title) {
     return `<div class="panel panel-accent" role="alert" style="margin: 1.5rem 0;">
