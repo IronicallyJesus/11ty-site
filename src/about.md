@@ -1,31 +1,57 @@
 ---
-title: "About Jesus"
-description: "A brief look into my background, my journey into tech, and what drives me today."
-date: "2025-09-30"
+title: "About"
+description: "Network engineer, homelab tinkerer, and immigrant who found his path through technology."
 layout: "layouts/page.njk"
-prose: true
-sitemapPriority: 0.8
-sitemapChangefreq: "yearly"
 image: "/assets/images/jesus.webp"
 ---
 
-<!-- About Me Section -->
-<div class="flex flex-col lg:flex-row items-center gap-12">
-    <div class="lg:w-1/3 text-center">
-        <img src="{{ image }}" width="350" height="350" alt="Jesus Otero Lagunes" style="border-color: var(--about-img-border);" class="rounded-full mx-auto shadow-2xl border-4" fetchpriority=high>
+<div style="display: flex; flex-direction: column; gap: 2rem; max-width: 800px;">
+
+<div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+    <img src="{{ image }}" width="140" height="140" alt="{{ site.author.name }}"
+        style="border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0;">
+    <div>
+        <h3>{{ site.author.name }}</h3>
+        <div class="kv" style="margin-top: 0.5rem;">
+            <span class="kv-label">Role</span>
+            <span class="kv-value">Infrastructure Switch Engineer, <span class="sparklight-word"><span class="slash">/</span>Sparklight</span></span>
+        </div>
+        <div class="kv">
+            <span class="kv-label">Focus</span>
+            <span class="kv-value">ISP networking, automation, homelab</span>
+        </div>
+        <div class="kv">
+            <span class="kv-label">Location</span>
+            <span class="kv-value">Georgia, USA</span>
+        </div>
     </div>
-    <div class="text-lg lg:w-2/3">
-        <p class="lg:text-xl mb-4">
-            What can I say? I am a husband, a nerd, an ex-gifted student, an engineer, and an immigrant. I came into the United States from Mexico at 5 years old, but even before then I loved taking things apart and finding out how they worked. In my teenage years, technology only boosted that tremendously. After high school though, without a clear path to pursue higher education I quickly joined the workforce. 
-        </p>
-        <p class="text-lg lg:text-xl mb-4">
-            After delivering a few pizzas, I landed a tech support position at a local ISP. Here what first started as just a job, quickly grew into a passion for computer networking. Now, with more than 10 years of experience, I am a highly motivated and adaptable network engineer with a proven ability to troubleshoot and resolve complex network issues. I thrive in challenging environments where I can contribute meaningfully and never stop learning.
-        </p>
-        <p class="text-lg lg:text-xl mb-4">
-            My goal is to leverage my decade of experience to help businesses optimize their network infrastructure for high availability, security, and performance. I believe in a healthy work-life balance, which allows me to stay sharp and bring my best to every project.
-        </p>
-        <p class="text-lg lg:text-xl">
-            Feel free to explore my professional journey on <a href="{{ site.author.linkedinUrl }}" target="_blank" class="hover:text-accent-primary" aria-label="LinkedIn profile of {{ site.author.name }}"><i class="fa-brands fa-linkedin" aria-hidden="true"></i>LinkedIn</a> or check out my work on <a href="{{ site.author.githubUrl }}" target="_blank" class="hover:text-accent-primary" aria-label="GitHub profile of {{ site.author.name }}"><i class="fa-brands fa-github" aria-hidden="true"></i>GitHub</a>
-        </p>
-    </div>
+</div>
+
+<p>I'm a husband, a nerd, an ex-gifted student, an engineer, and an immigrant. I came into the United States from Mexico at 5 years old, but even before then I loved taking things apart and finding out how they worked. In my teenage years, technology only boosted that tremendously. After high school though, without a clear path to pursue higher education I quickly joined the workforce.</p>
+
+<p>I taught myself networking from the ground up — starting in tech support and eventually into engineering. Today I hold Juniper certifications and design switching infrastructure at an ISP. The same curiosity that had me dismantling electronics as a kid now drives me to build homelab environments, automate network operations, and share what I learn.</p>
+
+<p>This site is where I document that journey — the labs, the configs, the mistakes, and the solutions.</p>
+
+</div>
+
+<h2 class="section-heading" style="margin-top: 3rem;">// Career Timeline</h2>
+
+<div style="position: relative; padding-left: 1.5rem; border-left: 1px solid var(--border); margin-left: 0.5rem;">
+{%- for role in roles -%}
+<div style="margin-bottom: 2rem; position: relative;">
+    <div style="position: absolute; left: -1.75rem; top: 0.35rem; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg-primary);"></div>
+    <div class="muted" style="font-family: var(--font-mono); font-size: 0.8125rem; margin-bottom: 0.25rem;">{{ role.time }}</div>
+    <h4 style="margin: 0 0 0.15rem 0;">{{ role.title }}</h4>
+    <div class="muted" style="font-size: 0.9375rem; margin-bottom: 0.5rem;">{{ role.company | brand | safe }}{% if role.location %} &middot; {{ role.location }}{% endif %}</div>
+    <p style="font-size: 1rem; color: var(--text-secondary);">{{ role.description | brand | safe }}</p>
+    {%- if role.timeline_tidbit -%}
+    <span class="tag tag-accent" style="margin-top: 0.5rem;">{{ role.timeline_tidbit | brand | safe }}</span>
+    {%- endif -%}
+</div>
+{%- endfor -%}
+</div>
+
+<div style="margin-top: 2rem;">
+    <a href="/resume" class="btn">Download Resume</a>
 </div>

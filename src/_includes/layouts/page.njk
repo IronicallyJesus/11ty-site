@@ -1,21 +1,13 @@
 ---
 layout: layouts/base.njk
 ---
-<div class="max-w-6xl mx-auto py-12">
-    <div class="mb-16 text-center">
-        <h1 class="page-title mb-6">{{ title }}</h1>
-        {% if description %}
-        <p class="text-lg article-text max-w-2xl mx-auto">
-            {{ description }}
-        </p>
-        {% endif %}
-    </div>
-
-    {% if prose %}
-    <article>
-        {{ content | safe }}
-    </article>
-    {% else %}
-    {{ content | safe }}
+<div class="page-header">
+    <h1>{{ title }}</h1>
+    {% if description %}
+    <p>{{ description }}</p>
     {% endif %}
 </div>
+
+<article>
+    {{ content | safe }}
+</article>

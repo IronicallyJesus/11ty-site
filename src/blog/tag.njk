@@ -1,0 +1,46 @@
+---
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+permalink: /blog/tag/{{ tag | slugify }}/
+layout: layouts/base.njk
+description: "Blog posts tagged with '{{ tag }}'"
+image: "/assets/images/jesus.webp"
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "Tag: {{ tag }}"
+---
+
+{% include "components/blog-header.njk" %}
+
+<p class="muted" style="margin-bottom: 1.5rem;">
+  <a href="/blog">← All posts</a>
+</p>
+
+<div style="display: flex; flex-direction: column; gap: 1.5rem;">
+{%- for post in collections.blog | reverse -%}
+  {%- if post.data.tags and tag in post.data.tags and not post.data.draft -%}
+    <div class="panel panel-rack">
+      <h3 style="margin-bottom: 0.25rem;">
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+      </h3>
+      <div class="muted" style="font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.5rem;">
+        {{ post.date | readableDate }} &middot; {{ post.templateContent | readingTime }}
+      </div>
+      {% if post.data.excerpt %}
+        <p class="muted" style="margin-bottom: 0.75rem; font-size: 0.9rem;">{{ post.data.excerpt }}</p>
+      {% endif %}
+      {% if post.data.tags %}
+        <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+          {%- for t in post.data.tags -%}
+            {%- if t != 'blog' -%}
+              <a href="/blog/tag/{{ t | slugify }}" class="tag">{{ t }}</a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {% endif %}
+    </div>
+  {%- endif -%}
+{%- endfor -%}
+</div>

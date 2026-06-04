@@ -1,0 +1,128 @@
+---
+title: "Jesus — Network Engineer"
+layout: "layouts/base.njk"
+description: "Infrastructure Switch Engineer at /Sparklight. Network engineering, homelab projects, and tech that works."
+image: "/assets/images/jesus.webp"
+---
+
+<section style="padding: 2rem 0 3rem; border-bottom: 1px solid var(--border); margin-bottom: 3rem;">
+    <span class="tag tag-accent" style="margin-bottom: 1rem;">Infrastructure Switch Engineer · <span class="sparklight-word"><span class="slash">/</span>Sparklight</span></span>
+    <h1 style="font-size: clamp(2.25rem, 6vw, 3.25rem); margin-top: 0.75rem; margin-bottom: 0.5rem; line-height: 1.1;">
+        Networks don't care<br>about your excuses.
+    </h1>
+    <p class="muted" style="font-size: 1.2rem; max-width: 700px; line-height: 1.6;">
+        10+ years in ISP networking. I design, automate, and troubleshoot the infrastructure
+        that keeps people connected.
+    </p>
+    <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <a href="/about" class="btn">About Me</a>
+        <a href="/blog" class="btn btn-ghost">Read the Blog</a>
+    </div>
+</section>
+
+<section id="skills" style="margin-bottom: 3rem;">
+    <h2 class="section-heading">// Skills &amp; Certs</h2>
+    <div class="panel">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Certification</th>
+                    <th>Vendor</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%- for cert in certifications -%}
+                <tr>
+                    <td>
+                        {% if cert.verification_url %}<a href="{{ cert.verification_url }}" target="_blank" rel="noopener" title="Verify on Credly">{% endif %}
+                            {{ cert.name }}
+                        {% if cert.verification_url %}</a>{% endif %}
+                    </td>
+                    <td><span class="muted">{{ cert.issuer }}</span></td>
+                    <td>
+                        <span class="status">
+                            <span class="status-dot {{ cert.status_dot }}"></span>
+                            {{ cert.status_label }}
+                        </span>
+                        {% if cert.is_permanent -%}
+                            <br><span class="tag tag-ghost" style="margin-top: 0.25rem; font-size: 0.625rem;">No expiry</span>
+                        {%- elif cert.expires -%}
+                            <br><span class="muted" style="font-size: 0.6875rem; margin-top: 0.25rem;">{{ cert.expires }}</span>
+                        {%- endif %}
+                    </td>
+                </tr>
+                {%- endfor -%}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section id="blog" style="margin-bottom: 3rem;">
+    <h2 class="section-heading">// Latest Posts</h2>
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+    {%- for post in collections.blog | reverse -%}
+        {%- if not post.data.draft and loop.index <= 3 %}
+        <div class="panel panel-rack">
+            <h3 style="margin-bottom: 0.25rem;">
+                <a href="{{ post.url }}">{{ post.data.title }}</a>
+            </h3>
+            <div class="muted" style="font-family: var(--font-mono); font-size: 0.8125rem; margin-bottom: 0.35rem;">
+                {{ post.date | readableDate }} &middot; {{ post.templateContent | readingTime }}
+            </div>
+            {% if post.data.excerpt %}
+                <p class="muted" style="font-size: 1rem;">{{ post.data.excerpt }}</p>
+            {% endif %}
+        </div>
+        {%- endif -%}
+    {%- endfor -%}
+    </div>
+    <div style="margin-top: 1rem;">
+        <a href="/blog" class="btn btn-ghost">All Posts →</a>
+    </div>
+</section>
+
+<section id="projects" style="margin-bottom: 3rem;">
+    <h2 class="section-heading">// Featured Projects</h2>
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+    {%- set count = 0 %}
+    {%- for project in projects -%}
+    {%- if count < 3 %}
+    {%- set count = count + 1 %}
+        <div class="panel panel-rack">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                <i class="fa-solid {{ project.icon }}" style="color: var(--accent);"></i>
+                <h3 style="margin: 0;">{{ project.name }}</h3>
+            </div>
+            <p class="muted" style="font-size: 1rem; margin-bottom: 0.5rem;">{{ project.description | safe }}</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+                {%- for tag in project.tags -%}
+                    <span class="tag">{{ tag }}</span>
+                {%- endfor -%}
+            </div>
+        </div>
+    {%- endif -%}
+    {%- endfor -%}
+    </div>
+    <div style="margin-top: 1rem;">
+        <a href="/projects" class="btn btn-ghost">All Projects →</a>
+    </div>
+</section>
+
+<section id="contact" style="margin-bottom: 3rem;">
+    <h2 class="section-heading">// Contact</h2>
+    <div class="panel">
+        <div class="kv">
+            <span class="kv-label">Email</span>
+            <span class="kv-value"><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></span>
+        </div>
+        <div class="kv">
+            <span class="kv-label">LinkedIn</span>
+            <span class="kv-value"><a href="{{ site.author.linkedinUrl }}" target="_blank" rel="noopener">{{ site.author.linkedinUrl }}</a></span>
+        </div>
+        <div class="kv">
+            <span class="kv-label">Gitea</span>
+            <span class="kv-value"><a href="{{ site.author.giteaUrl }}" target="_blank" rel="noopener">{{ site.author.giteaUrl }}</a></span>
+        </div>
+    </div>
+</section>

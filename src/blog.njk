@@ -1,33 +1,37 @@
 ---
 title: "Blog"
 layout: "layouts/base.njk"
+description: "Networking, homelab projects, Docker, Juniper, certifications, and technology experiments."
+image: "/assets/images/jesus.webp"
 ---
 
 {% include "components/blog-header.njk" %}
 
-<div class="space-y-8">
+<div style="display: flex; flex-direction: column; gap: 1.5rem;">
 {%- for post in collections.blog | reverse -%}
-  {%- set draft = post.data.draft %}
-  {%- if not draft  %}
-    <div class="card group">
-      <h2 class="text-2xl font-bold mb-1">
-        <a href="{{ post.url }}" class="card-heading hover:text-accent-primary transition-colors">{{ post.data.title }}</a>
-      </h2>
-      <div class="accent-primary font-semibold mb-1">
-        {{ post.date | readableDate }}
-      </div>
-      <div class="flex items-center meta-info mb-4">
-        <i class="fa-solid fa-clock mr-2" aria-hidden="true"></i>
-        <span>{{ post.templateContent | readingTime }}</span>
-        <span class="mx-2 separator opacity-40">|</span>
-        <i class="fa-solid fa-eye mr-2" aria-hidden="true"></i>
-        <span class="view-count" data-view-count data-slug="{{ post.fileSlug }}">...</span>
+  {%- if not post.data.draft %}
+    <div class="panel panel-rack">
+      <h3 style="margin-bottom: 0.25rem;">
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+      </h3>
+      <div class="muted" style="font-family: var(--font-mono); font-size: 0.8125rem; margin-bottom: 0.5rem;">
+        {{ post.date | readableDate }} &middot; {{ post.templateContent | readingTime }}
       </div>
       {% if post.data.excerpt %}
-        <p class="article-text">{{ post.data.excerpt }}</p>
+        <p class="muted" style="margin-bottom: 0.75rem; font-size: 1rem;">{{ post.data.excerpt }}</p>
+      {% endif %}
+      {% if post.data.tags %}
+        <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+          {%- for tag in post.data.tags -%}
+            {%- if tag != 'blog' -%}
+              <a href="/blog/tag/{{ tag | slugify }}" class="tag">{{ tag }}</a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
       {% endif %}
     </div>
   {%- endif -%}
 {%- endfor -%}
 </div>
+
 <script src="/js/blog-search.js" defer></script>
