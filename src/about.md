@@ -5,7 +5,7 @@ layout: "layouts/page.njk"
 image: "/assets/images/jesus.webp"
 ---
 
-<div style="display: flex; flex-direction: column; gap: 2rem; max-width: 800px;">
+<div style="display: flex; flex-direction: column; gap: 2rem; max-width: 800px; margin: 0 auto;">
 
 <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
     <img src="{{ image }}" width="140" height="140" alt="{{ site.author.name }}"
