@@ -38,6 +38,10 @@ app.use(helmet({
     },
     crossOriginEmbedderPolicy: false,
     crossOriginResourcePolicy: { policy: "cross-origin" },
+    strictTransportSecurity: {
+        maxAge: 31536000,
+        includeSubDomains: false,
+    },
 }));
 
 // --- Security Middleware ---
