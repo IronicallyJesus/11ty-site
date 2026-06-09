@@ -37,6 +37,7 @@ app.use(helmet({
         },
     },
     crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: { policy: "cross-origin" },
 }));
 
 // --- Security Middleware ---
