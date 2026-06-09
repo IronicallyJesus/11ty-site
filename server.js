@@ -1,12 +1,13 @@
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
 const fs = require('fs-extra');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
 const { Mutex } = require('async-mutex');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Create mutexes to prevent race conditions when updating JSON files
 const viewsMutex = new Mutex();
@@ -16,6 +17,27 @@ const likesMutex = new Mutex();
 // Used by express-rate-limit to obtain the client's IP address.
 // '1' means that the first hop (your reverse proxy) is trusted.
 app.set('trust proxy', 1);
+
+// --- Security Headers ---
+
+// 0. Helmet: Set security headers (CSP, HSTS, X-Frame-Options, etc.)
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+            styleSrc: ["'self'", "'unsafe-inline'"],
+            imgSrc: ["'self'", "data:", "https:"],
+            fontSrc: ["'self'", "https:", "data:"],
+            connectSrc: ["'self'"],
+            objectSrc: ["'none'"],
+            frameSrc: ["'none'"],
+            formAction: ["'self'"],
+            upgradeInsecureRequests: [],
+        },
+    },
+    crossOriginEmbedderPolicy: false,
+}));
 
 // --- Security Middleware ---
 
