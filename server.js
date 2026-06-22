@@ -89,6 +89,13 @@ if (initialLikesData.length === 0) {
 
 app.use(express.json());
 
+// ── Redirects ──────────────────────────────────────────────────────────────
+
+// /experience was merged into /about in the v3 redesign
+app.get('/experience', (req, res) => {
+    res.redirect(301, '/about');
+});
+
 // In production, the server also serves the static site from the `_site` directory.
 app.use(express.static('_site'));
 
