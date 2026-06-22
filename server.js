@@ -31,7 +31,7 @@ app.use(helmet({
             fontSrc: ["'self'", "https:", "data:"],
             connectSrc: ["'self'"],
             objectSrc: ["'self'"],
-            frameSrc: ["'none'"],
+            frameSrc: ["'self'"],
             formAction: ["'self'"],
             upgradeInsecureRequests: [],
         },
