@@ -12,8 +12,7 @@ image: "/assets/images/jesus.webp"
             <div class="panel" style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
                 <i class="fa-solid fa-file-pdf" style="font-size: 2.5rem; color: var(--red);"></i>
                 <p style="font-weight: 600;">Your browser doesn't support embedded PDFs.</p>
-                <p class="muted">Download the resume to view it directly.</p>
-                <a href="/resume/jesus.pdf" class="btn" download>Download PDF</a>
+                <p class="muted">Use the button below to download the resume.</p>
             </div>
         </object>
     </div>
