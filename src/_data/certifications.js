@@ -11,6 +11,7 @@ const BADGES_URL = `https://www.credly.com/users/${CREDLY_USER_ID}/badges?page=1
 const EXCLUDE_PATTERNS = [
   'Modeling Labs',   // Cisco CML course, not a cert
   'JNCIA-Junos',     // prerequisite for JNCIS, redundant
+  'Understanding'
 ];
 
 // Manual enrichment keyed by badge template ID (last segment of image_url or name match)
@@ -122,30 +123,30 @@ module.exports = async function () {
         return !EXCLUDE_PATTERNS.some(p => name.includes(p));
       })
       .map((badge) => {
-      const bt = badge.badge_template || {};
-      const name = bt.name || 'Unknown';
-      const issuer = (bt.issuer || {}).summary || 'Unknown';
-      const manual = matchManual(name) || {};
-      const status = certStatus(badge.expires_at_date, badge.state);
-      const isExpired = badge.expires_at_date && new Date(badge.expires_at_date) < new Date();
+        const bt = badge.badge_template || {};
+        const name = bt.name || 'Unknown';
+        const issuer = (bt.issuer || {}).summary || 'Unknown';
+        const manual = matchManual(name) || {};
+        const status = certStatus(badge.expires_at_date, badge.state);
+        const isExpired = badge.expires_at_date && new Date(badge.expires_at_date) < new Date();
 
-      return {
-        name: manual.display_name || name,
-        full_name: name,
-        issuer: issuer.replace(/^issued by /, ''),
-        earned: formatDate(badge.issued_at_date),
-        expires: badge.expires_at_date ? formatDate(badge.expires_at_date) : null,
-        status: status,
-        status_label: statusLabel(status),
-        status_dot: statusDotClass(status),
-        category: manual.category || '',
-        tags: manual.tags || [],
-        verification_url: `https://www.credly.com/badges/${badge.id}`,
-        image_url: badge.image_url || '',
-        is_expired: isExpired,
-        is_permanent: !badge.expires_at_date,
-      };
-    });
+        return {
+          name: manual.display_name || name,
+          full_name: name,
+          issuer: issuer.replace(/^issued by /, ''),
+          earned: formatDate(badge.issued_at_date),
+          expires: badge.expires_at_date ? formatDate(badge.expires_at_date) : null,
+          status: status,
+          status_label: statusLabel(status),
+          status_dot: statusDotClass(status),
+          category: manual.category || '',
+          tags: manual.tags || [],
+          verification_url: `https://www.credly.com/badges/${badge.id}`,
+          image_url: badge.image_url || '',
+          is_expired: isExpired,
+          is_permanent: !badge.expires_at_date,
+        };
+      });
 
     // Sort: active first, then expiring soon, then expired
     const order = { active: 0, expiring_soon: 1, expired: 2 };
