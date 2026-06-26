@@ -36,11 +36,11 @@ const MANUAL_DATA = {
     tags: ['Junos OS', 'Routing', 'Networking'],
     display_name: 'JNCIA - Junos',
   },
-  CCNA: {
+  'CCNA': {
     category: 'Foundation',
     tags: ['Cisco', 'Routing', 'Switching', 'OSPF'],
     display_name: 'CCNA',
-  },
+  }
 };
 
 function fetchCredlyBadges() {
