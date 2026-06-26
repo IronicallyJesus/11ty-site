@@ -1,12 +1,14 @@
 ---
 title: "Jesus — Network Engineer"
 layout: "layouts/base.njk"
-description: "Infrastructure Switch Engineer at /Sparklight. Network engineering, homelab projects, and tech that works."
+description: "Infrastructure Switch Engineer at /Sparklight. Network engineering, homelab projects, and tech that
+works."
 image: "/assets/images/jesus.webp"
 ---
 
 <section style="padding: 2rem 0 3rem; border-bottom: 1px solid var(--border); margin-bottom: 3rem;">
-    <span class="tag tag-accent" style="margin-bottom: 1rem;">Infrastructure Switch Engineer · <span class="sparklight-word"><span class="slash">/</span>Sparklight</span></span>
+    <span class="tag tag-accent" style="margin-bottom: 1rem;">Infrastructure Switch Engineer · <span
+            class="sparklight-word"><span class="slash">/</span>Sparklight</span></span>
     <h1 style="font-size: clamp(2.5rem, 7vw, 3.25rem); margin-top: 0.75rem; margin-bottom: 0.5rem; line-height: 1.1;">
         Networks don't care<br>about your excuses.
     </h1>
@@ -35,9 +37,10 @@ image: "/assets/images/jesus.webp"
                 {%- for cert in certifications -%}
                 <tr>
                     <td>
-                        {% if cert.verification_url %}<a href="{{ cert.verification_url }}" target="_blank" rel="noopener" title="Verify on Credly">{% endif %}
+                        {% if cert.verification_url %}<a href="{{ cert.verification_url }}" target="_blank"
+                            rel="noopener" title="Verify on Credly">{% endif %}
                             {{ cert.name }}
-                        {% if cert.verification_url %}</a>{% endif %}
+                            {% if cert.verification_url %}</a>{% endif %}
                     </td>
                     <td><span class="muted">{{ cert.issuer }}</span></td>
                     <td>
@@ -46,9 +49,10 @@ image: "/assets/images/jesus.webp"
                             {{ cert.status_label }}
                         </span>
                         {% if cert.is_permanent -%}
-                            <br><span class="tag tag-ghost" style="margin-top: 0.25rem; font-size: 0.625rem;">No expiry</span>
+                        <br><span class="muted" style="font-size: 0.6875rem; margin-top: 0.25rem;">No expiry</span>
                         {%- elif cert.expires -%}
-                            <br><span class="muted" style="font-size: 0.6875rem; margin-top: 0.25rem;">{{ cert.expires }}</span>
+                        <br><span class="muted" style="font-size: 0.6875rem; margin-top: 0.25rem;">{{ cert.expires
+                            }}</span>
                         {%- endif %}
                     </td>
                 </tr>
@@ -61,9 +65,8 @@ image: "/assets/images/jesus.webp"
 <section id="blog" style="margin-bottom: 3rem;">
     <h2 class="section-heading">// Latest Posts</h2>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-    {%- for post in collections.blog | reverse -%}
-        {%- if not post.data.draft and loop.index <= 3 %}
-        <div class="panel panel-rack">
+        {%- for post in collections.blog | reverse -%}
+        {%- if not post.data.draft and loop.index <= 3 %} <div class="panel panel-rack">
             <h3 style="margin-bottom: 0.25rem;">
                 <a href="{{ post.url }}">{{ post.data.title }}</a>
             </h3>
@@ -71,10 +74,10 @@ image: "/assets/images/jesus.webp"
                 {{ post.date | readableDate }} &middot; {{ post.templateContent | readingTime }}
             </div>
             {% if post.data.excerpt %}
-                <p class="muted" style="font-size: 1rem;">{{ post.data.excerpt }}</p>
+            <p class="muted" style="font-size: 1rem;">{{ post.data.excerpt }}</p>
             {% endif %}
-        </div>
-        {%- endif -%}
+    </div>
+    {%- endif -%}
     {%- endfor -%}
     </div>
     <div style="margin-top: 1rem;">
@@ -85,11 +88,9 @@ image: "/assets/images/jesus.webp"
 <section id="projects" style="margin-bottom: 3rem;">
     <h2 class="section-heading">// Featured Projects</h2>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-    {%- set count = 0 %}
-    {%- for project in projects -%}
-    {%- if count < 3 %}
-    {%- set count = count + 1 %}
-        <div class="panel panel-rack">
+        {%- set count = 0 %}
+        {%- for project in projects -%}
+        {%- if count < 3 %} {%- set count=count + 1 %} <div class="panel panel-rack">
             <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
                 <i class="fa-solid {{ project.icon }}" style="color: var(--accent);"></i>
                 <h3 style="margin: 0;">{{ project.name }}</h3>
@@ -97,10 +98,10 @@ image: "/assets/images/jesus.webp"
             <p class="muted" style="font-size: 1rem; margin-bottom: 0.5rem;">{{ project.description | safe }}</p>
             <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
                 {%- for tag in project.tags -%}
-                    <span class="tag">{{ tag }}</span>
+                <span class="tag">{{ tag }}</span>
                 {%- endfor -%}
             </div>
-        </div>
+    </div>
     {%- endif -%}
     {%- endfor -%}
     </div>
@@ -118,11 +119,13 @@ image: "/assets/images/jesus.webp"
         </div>
         <div class="kv">
             <span class="kv-label">LinkedIn</span>
-            <span class="kv-value"><a href="{{ site.author.linkedinUrl }}" target="_blank" rel="noopener">{{ site.author.linkedinUrl }}</a></span>
+            <span class="kv-value"><a href="{{ site.author.linkedinUrl }}" target="_blank" rel="noopener">{{
+                    site.author.linkedinUrl }}</a></span>
         </div>
         <div class="kv">
             <span class="kv-label">Gitea</span>
-            <span class="kv-value"><a href="{{ site.author.giteaUrl }}" target="_blank" rel="noopener">{{ site.author.giteaUrl }}</a></span>
+            <span class="kv-value"><a href="{{ site.author.giteaUrl }}" target="_blank" rel="noopener">{{
+                    site.author.giteaUrl }}</a></span>
         </div>
     </div>
 </section>
