@@ -38,9 +38,18 @@ image: "/assets/images/jesus.webp"
                 <tr>
                     <td>
                         {% if cert.verification_url %}<a href="{{ cert.verification_url }}" target="_blank"
-                            rel="noopener" title="Verify on Credly">{% endif %}
+                            rel="noopener" title="Verify on Credly" style="font-weight: 600;">{% endif %}
                             {{ cert.name }}
                             {% if cert.verification_url %}</a>{% endif %}
+                        {% if cert.tags and cert.tags.length > 0 %}
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.35rem;">
+                            {%- for tag in cert.tags -%}
+                            <span class="tag"
+                                style="font-size: 0.6875rem; padding: 0.05rem 0.35rem; line-height: 1.2;">{{ tag
+                                }}</span>
+                            {%- endfor -%}
+                        </div>
+                        {% endif %}
                     </td>
                     <td><span class="muted">{{ cert.issuer }}</span></td>
                     <td>

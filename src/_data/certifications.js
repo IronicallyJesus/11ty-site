@@ -9,9 +9,6 @@ const BADGES_URL = `https://www.credly.com/users/${CREDLY_USER_ID}/badges?page=1
 
 // Skip non-certification badges (courses, trainings, etc.)
 const EXCLUDE_PATTERNS = [
-  'Modeling Labs',   // Cisco CML course, not a cert
-  'JNCIA-Junos',     // prerequisite for JNCIS, redundant
-  'Understanding'
 ];
 
 // Manual enrichment keyed by badge template ID (last segment of image_url or name match)
@@ -28,17 +25,17 @@ const MANUAL_DATA = {
   },
   'JNCIS-ENT': {
     category: 'Enterprise',
-    tags: ['OSPF', 'Routing', 'Switching', 'Juniper'],
+    tags: ['Routing', 'Switching', 'OSPF', 'Juniper'],
     display_name: 'JNCIS - Enterprise',
   },
   'JNCIA-Junos': {
     category: 'Foundation',
-    tags: ['Junos OS', 'Routing', 'Networking'],
+    tags: ['Routing', 'Networking', 'Junos OS'],
     display_name: 'JNCIA - Junos',
   },
   'CCNA': {
     category: 'Foundation',
-    tags: ['Cisco', 'Routing', 'Switching', 'OSPF'],
+    tags: ['Routing', 'Switching', 'OSPF', 'Cisco'],
     display_name: 'CCNA',
   }
 };
