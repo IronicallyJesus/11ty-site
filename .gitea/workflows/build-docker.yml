@@ -6,8 +6,51 @@ on:
       - 'v*.*.*'
 
 jobs:
-  build-and-deploy:
-    uses: twk95/actions/.gitea/workflows/build-and-deploy.yml@main
-    with:
-      service_name: 11ty-page
-    secrets: inherit
+  build-and-push:
+    runs-on: runner-latest
+    container:
+      image: docker:latest
+    steps:
+      - name: Install Dependencies
+        run: apk add --no-cache git nodejs npm
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Login to Gitea Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ gitea.server_url }}
+          username: ${{ gitea.actor }}
+          password: ${{ secrets.PUSH_TOKEN }}
+
+      - name: Prepare image tags
+        id: prep
+        run: |
+          HOST=$(echo ${{ gitea.server_url }} | sed -e 's|^https://||')
+          VERSION=${{ gitea.ref_name }}
+          echo "tags=${HOST}/${{ gitea.repository }}:${VERSION},${HOST}/${{ gitea.repository }}:latest" >> $GITEA_OUTPUT
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          platforms: linux/amd64
+          tags: ${{ steps.prep.outputs.tags }}
+
+  deploy:
+    needs: build-and-push
+    runs-on: runner-latest
+    steps:
+      - name: Pull and restart 11ty-page
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            docker exec dockge-dockge-1 sh -c 'cd /opt/stacks/web-stack && docker compose pull 11ty-page && docker compose up -d --no-deps --remove-orphans 11ty-page'
