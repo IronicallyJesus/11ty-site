@@ -6,8 +6,12 @@ on:
       - 'v*.*.*'
 
 jobs:
-  build-and-deploy:
-    uses: twk95/actions/.gitea/workflows/build-and-deploy.yml@main
+  build:
+    uses: twk95/actions/.gitea/workflows/build-image.yml@main
+    secrets: inherit
+  deploy:
+    needs: build
+    uses: twk95/actions/.gitea/workflows/dockge-deploy.yml@main
     with:
       service_name: 11ty-page
     secrets: inherit
