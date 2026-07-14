@@ -1,0 +1,24 @@
+name: Publish to Docker Hub
+run-name: Publish ${{ gitea.ref_name }} to Docker Hub by @${{ gitea.actor }}
+
+on:
+  workflow_call:
+    inputs:
+      image_name:
+        required: true
+        type: string
+        description: "ironicallyjesus/11ty-site"
+    secrets:
+      DOCKER_HUB_USERNAME:
+        required: true
+      DOCKER_HUB_TOKEN:
+        required: true
+
+jobs:
+  publish:
+    uses: twk95/actions/.gitea/workflows/dockerhub-publish.yml@main
+    with:
+      image_name: ${{ inputs.image_name }}
+    secrets:
+      DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+      DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
