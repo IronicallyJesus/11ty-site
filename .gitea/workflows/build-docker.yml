@@ -15,7 +15,7 @@ jobs:
     needs: build
     uses: ./.gitea/workflows/dockerhub-publish.yml
     with:
-      image_name: ironicallyjesus/opnsense-wol-dash
+      image_name: ironicallyjesus/11ty-site
     secrets:
       DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
       DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
