@@ -2,7 +2,7 @@
 
 # STAGE 1: Builder
 # This stage builds the Eleventy site for production.
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 # Use `npm ci` for faster, more reliable builds from package-lock.json
@@ -15,11 +15,11 @@ RUN npm prune --omit=dev
 
 # STAGE 2: Production
 # This stage creates a lean, production-ready image.
-FROM node:18-alpine AS production
+FROM node:22-alpine AS production
 WORKDIR /app
 ENV DATA_DIR=/app/src/_data
 
-# The node:18-alpine image comes with a non-root 'node' user (UID/GID 1000)
+# The node:22-alpine image comes with a non-root 'node' user (UID/GID 1000)
 # which we will use. We only need su-exec to drop privileges in the entrypoint.
 # Install su-exec for dropping privileges from root
 RUN apk add --no-cache su-exec
