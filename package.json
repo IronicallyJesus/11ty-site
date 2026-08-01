@@ -6,6 +6,7 @@
     "start": "npm-run-all -p serve:eleventy dev:api",
     "serve:eleventy": "eleventy --serve",
     "dev:api": "node --watch server.js",
+    "prebuild": "node --env-file-if-exists=.env scripts/fetch-resume.mjs",
     "build": "eleventy",
     "test": "playwright test"
   },
