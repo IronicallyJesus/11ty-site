@@ -9,7 +9,15 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 # Build the site. Requires a "build": "eleventy" script in package.json
-RUN npm run build
+# The prebuild hook (scripts/fetch-resume.mjs) pulls the latest resume PDF
+# from rxresu.me. The API key enters ONLY via a BuildKit secret mount, so it
+# never lands in image layers. CACHEBUST (set per-run by CI) prevents the
+# cached layer from serving a stale PDF.
+ARG CACHEBUST=0
+RUN --mount=type=secret,id=rxresume_key \
+    echo "cachebust=${CACHEBUST}" && \
+    RXRESUME_API_KEY="$(cat /run/secrets/rxresume_key 2>/dev/null || true)" \
+    npm run build
 # After building, remove development dependencies to keep the final image small.
 RUN npm prune --omit=dev
 
